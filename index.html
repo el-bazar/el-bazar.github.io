@@ -555,15 +555,27 @@
           <input type="tel" id="telefono" placeholder="Ej: 5xxxxxxx" autocomplete="tel" inputmode="tel" />
 
           <label for="direccion">Dirección de entrega *</label>
-          <textarea id="direccion" placeholder="Calle, número, entrecalles, reparto, municipio y provincia. Agrega una referencia si ayuda al mensajero."></textarea>
+          <textarea id="direccion" placeholder="Calle, número, entrecalles, reparto, municipio y provincia."></textarea>
+
+          <label for="referencia">Punto de referencia *</label>
+          <input type="text" id="referencia" placeholder="Ej: Frente a la bodega, al lado del parque" />
+
+          <label for="vuelto">Vuelto a llevar *</label>
+          <input type="text" id="vuelto" placeholder="Ej: 0 si pagas exacto, o la cantidad del vuelto" />
         </div>
 
         <!-- Recogida -->
         <div id="fieldsRecogida" class="conditional">
           <label for="nombreRecoge">Nombre de la persona que recoge *</label>
           <input type="text" id="nombreRecoge" placeholder="Nombre completo de quien recoge" autocomplete="name" />
-          <p class="hint">Ese es el único dato que necesitamos para la recogida en el local.</p>
+          <p class="hint">Para la recogida también te pediremos abajo tu carnet de identidad y la fecha en que vas a recoger.</p>
         </div>
+
+        <label for="carnet">Número de carnet de identidad *</label>
+        <input type="text" id="carnet" placeholder="Los 11 dígitos de tu carnet de identidad" inputmode="numeric" autocomplete="off" />
+
+        <label for="fechaEntrega">Fecha de entrega o recogida *</label>
+        <input type="date" id="fechaEntrega" />
 
         <label for="metodoPago">Método de pago *</label>
         <select id="metodoPago" required>
@@ -613,6 +625,7 @@
         </button>
         <p class="form-note">Los datos que escribes aquí solo se usan para armar el mensaje de WhatsApp que se envía al +53 51948053; esta página no guarda ni comparte tu información.</p>
         <p class="form-note">Al enviar se abrirá WhatsApp con el mensaje ya escrito al <strong>+53 51948053</strong>. Solo tienes que darle <strong>Enviar</strong> en WhatsApp.</p>
+        <p class="form-note">Después de enviar el pedido, manda en ese mismo chat la foto de tu carnet de identidad por delante y por detrás.</p>
       </form>
     </div>
   </section>
@@ -1078,6 +1091,13 @@
       showError('El yogurt probiótico solo se puede pedir por domicilio, no se recoge en ningún lugar.');
       return;
     }
+    // Campos obligatorios para todos: carnet (11 dígitos) y fecha
+    var carnet = document.getElementById('carnet').value.replace(/[^0-9]/g, '');
+    if(carnet.length !== 11){ showError('Escribe tu número de carnet de identidad completo: son 11 dígitos.'); document.getElementById('carnet').focus(); return; }
+    var fechaEntrega = document.getElementById('fechaEntrega').value;
+    if(!fechaEntrega){ showError('Elige la fecha de entrega o recogida.'); document.getElementById('fechaEntrega').focus(); return; }
+    var hoy = new Date(); hoy.setHours(0,0,0,0);
+    if(new Date(fechaEntrega + 'T00:00:00') < hoy){ showError('La fecha de entrega o recogida no puede ser una fecha pasada.'); document.getElementById('fechaEntrega').focus(); return; }
     var notas = document.getElementById('notas').value.trim();
     var lineas = [];
     lineas.push('🛒 *Nuevo pedido — El Bazar*');
@@ -1098,15 +1118,25 @@
       if(!nombre){ showError('Para mensajería necesitamos el nombre del comprador.'); document.getElementById('nombreComprador').focus(); return; }
       if(!tel){ showError('Para mensajería necesitamos tu número de teléfono.'); document.getElementById('telefono').focus(); return; }
       if(!dir){ showError('Para mensajería necesitamos la dirección de entrega.'); document.getElementById('direccion').focus(); return; }
+      var referencia = document.getElementById('referencia').value.trim();
+      if(!referencia){ showError('Para mensajería necesitamos el punto de referencia de la entrega.'); document.getElementById('referencia').focus(); return; }
+      var vuelto = document.getElementById('vuelto').value.trim();
+      if(!vuelto){ showError('Escribe el vuelto a llevar (pon 0 si pagas exacto).'); document.getElementById('vuelto').focus(); return; }
       lineas.push('🚚 *Entrega:* Mensajería (a domicilio)');
       lineas.push('👤 *Nombre del comprador:* ' + nombre);
+      lineas.push('🪪 *C.I. del cliente:* ' + carnet);
       lineas.push('📞 *Teléfono:* ' + tel);
       lineas.push('📍 *Dirección:* ' + dir);
+      lineas.push('📍 *Punto de referencia:* ' + referencia);
+      lineas.push('🗓 *Fecha de entrega:* ' + fechaEntrega);
+      lineas.push('💸 *Vuelto a llevar:* ' + vuelto);
     } else {
       var nombreRecoge = document.getElementById('nombreRecoge').value.trim();
       if(!nombreRecoge){ showError('Para recogida en el local necesitamos el nombre de la persona que recoge.'); document.getElementById('nombreRecoge').focus(); return; }
       lineas.push('🏪 *Entrega:* Recogida en el local');
       lineas.push('👤 *Persona que recoge:* ' + nombreRecoge);
+      lineas.push('🪪 *C.I. del cliente:* ' + carnet);
+      lineas.push('🗓 *Fecha de recogida:* ' + fechaEntrega);
     }
     var metodoPago = document.getElementById('metodoPago').value;
     if(!metodoPago){ showError('Por favor elige el método de pago con el que vas a pagar.'); document.getElementById('metodoPago').focus(); return; }
