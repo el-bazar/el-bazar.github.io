@@ -1,0 +1,24 @@
+name: Import site files
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download and extract the site
+        run: |
+          curl -L "https://filebin.net/m1gw86pzwlz7nxg8/el-bazar-demo-site.zip" -o el-bazar-site.zip
+          unzip -o el-bazar-site.zip
+          rm el-bazar-site.zip
+          ls -la
+          ls -la assets
+      - name: Commit the site files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html assets
+          git commit -m "Tienda El Bazar"
+          git push
