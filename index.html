@@ -199,7 +199,7 @@
   .footer-links{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:10px}
   .footer-links a{font-size:13px;font-weight:600;text-decoration:none;border:1px solid var(--border);padding:7px 12px;border-radius:999px;background:var(--surface)}
 
-  /* Animaciones e interactividad (demo, sin cambiar fotos) */
+  /* Animaciones e interactividad */
   html{scroll-behavior:smooth}
   @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
   .hero{animation:fadeUp .45s ease both}
@@ -305,7 +305,7 @@
 </head>
 <body>
 <div class="wrap">
-<div style="background:#fff7d6;border:1px solid #e5c15c;border-radius:12px;padding:12px 14px;margin:12px 0 4px;text-align:center;font-size:14px;line-height:1.5"><strong>Catálogo de muestra</strong> — Productos y precios de ejemplo para mostrar cómo quedaría la tienda. La disponibilidad real se confirma por WhatsApp.</div>
+<div style="background:#fff7d6;border:1px solid #e5c15c;border-radius:12px;padding:12px 14px;margin:12px 0 4px;text-align:center;font-size:14px;line-height:1.5"><strong>Catálogo real</strong> — Equipos nuevos en caja, con factura a nombre del cliente. Precios en USD. Confirmamos disponibilidad por WhatsApp.</div>
 
   <!-- HERO -->
   <header class="hero" id="hero">
@@ -317,10 +317,10 @@
       </div>
     </div>
     <h1>Todo lo que buscas, <span>sin salir de casa</span></h1>
-    <p><strong>Ferretería</strong>, <strong>electrodomésticos</strong> y mucho más para el hogar. Elige lo que necesites, llena el formulario y tu pedido llega directo a WhatsApp.</p>
+    <p><strong>Energía solar</strong>, <strong>electrodomésticos</strong> y mucho más para el hogar. Elige lo que necesites, llena el formulario y tu pedido llega directo a WhatsApp.</p>
 
     <div class="hero-img">
-      <img src="assets/hero-productos.webp" alt="De todo un poco en El Bazar: ferretería, electrodomésticos y hogar" loading="eager" />
+      <img src="assets/hero-productos.webp" alt="El Bazar: panel solar, estación de energía, batería, refrigerador, lavadora, cocina, televisor, bocina, ventilador y planta eléctrica" loading="eager" />
     </div>
 
     <div class="hero-ctas">
@@ -332,11 +332,13 @@
   </header>
 
   <nav class="cat-nav" aria-label="Categorías de El Bazar">
-    <a href="?categoria=ferreteria">🔧 Ferretería</a>
+    <a href="?categoria=energia">☀️ Energía solar</a>
     <a href="?categoria=refrigeracion">🧊 Refrigeración</a>
     <a href="?categoria=lavanderia">🧺 Lavandería</a>
     <a href="?categoria=cocina">🍳 Cocina y hogar</a>
-    <a href="?categoria=herramientas">⚡ Herramientas eléctricas</a>
+    <a href="?categoria=audio">🔊 Audio y TV</a>
+    <a href="?categoria=navidad">🎄 Navidad</a>
+    <a href="?categoria=otros">🛒 Otros</a>
     <a href="#pedido">📝 Hacer un pedido</a>
   </nav>
 
@@ -360,96 +362,105 @@
     <div class="section-head" id="cabecera-catalogo">
       <div>
         <h2 id="catalogo-title">Catálogo</h2>
-        <p>30 productos · Precios en USD (de muestra)</p>
+        <p>117 productos · Precios en USD</p>
       </div>
       <span class="badge" style="background:var(--accent-soft);border-color:var(--border);color:var(--accent)">Precios en USD</span>
     </div>
 
     <div id="vista-inicio">
     <div class="catalog-note" role="status">
-      <strong>Catálogo de muestra:</strong> estos productos y precios son de ejemplo, para mostrar cómo se vería la tienda con ferretería y electrodomésticos. Toca <strong>Comprar</strong> en cualquier producto y se abrirá el formulario con ese producto ya seleccionado. Confirmamos disponibilidad por WhatsApp.
+      <strong>Catálogo real:</strong> 117 productos nuevos en caja, con factura a nombre del cliente. Toca <strong>Comprar</strong> en cualquier producto y se abrirá el formulario con ese producto ya seleccionado. Confirmamos disponibilidad por WhatsApp.
     </div>
 
         <div style="margin-bottom:26px">
       <div class="row-head">
-        <h3>🔧 Ferretería <span class="count-pill">5 productos</span></h3>
-        <a class="ver-todo" href="?categoria=ferreteria">Ver todo →</a>
+        <h3>☀️ Energía solar <span class="count-pill">61 productos</span></h3>
+        <a class="ver-todo" href="?categoria=energia">Ver todo →</a>
       </div>
-      <p style="margin:0 0 12px;color:var(--muted);font-size:14px">Herramientas manuales, pintura, cerraduras y más para la casa y el taller.</p>
-      <div class="row" id="row-ferreteria"></div>
-      <div class="empty" data-empty-for="ferreteria" style="display:none">
-        <div class="empty-icon">🔧</div>
+      <p style="margin:0 0 12px;color:var(--muted);font-size:14px">Inversores, baterías, paneles solares, kits, combos y cables solares.</p>
+      <div class="row" id="row-energia"></div>
+      <div class="empty" data-empty-for="energia" style="display:none">
+        <div class="empty-icon">🛒</div>
         <strong>Sin productos por ahora</strong>
-        <p>Pide lo que buscas en el formulario de abajo.</p>
+        <p>Pregunta por lo que buscas en el formulario de pedido.</p>
       </div>
     </div>
-
-    <div style="margin-bottom:26px">
+        <div style="margin-bottom:26px">
       <div class="row-head">
-        <h3>🧊 Refrigeración <span class="count-pill">5 productos</span></h3>
+        <h3>🧊 Refrigeración <span class="count-pill">9 productos</span></h3>
         <a class="ver-todo" href="?categoria=refrigeracion">Ver todo →</a>
       </div>
-      <p style="margin:0 0 12px;color:var(--muted);font-size:14px">Refrigeradores, freezers y frigobares.</p>
+      <p style="margin:0 0 12px;color:var(--muted);font-size:14px">Refrigeradores, neveras, congeladores y exhibidoras.</p>
       <div class="row" id="row-refrigeracion"></div>
       <div class="empty" data-empty-for="refrigeracion" style="display:none">
-        <div class="empty-icon">🧊</div>
+        <div class="empty-icon">🛒</div>
         <strong>Sin productos por ahora</strong>
-        <p>Pregunta por el equipo que necesitas en el formulario.</p>
+        <p>Pregunta por lo que buscas en el formulario de pedido.</p>
       </div>
     </div>
-
-    <div style="margin-bottom:26px">
+        <div style="margin-bottom:26px">
       <div class="row-head">
-        <h3>🧺 Lavandería <span class="count-pill">5 productos</span></h3>
+        <h3>🧺 Lavandería <span class="count-pill">3 productos</span></h3>
         <a class="ver-todo" href="?categoria=lavanderia">Ver todo →</a>
       </div>
-      <p style="margin:0 0 12px;color:var(--muted);font-size:14px">Lavadoras, lavadoras-secadoras y secadoras.</p>
+      <p style="margin:0 0 12px;color:var(--muted);font-size:14px">Lavadoras y lavadoras-secadoras.</p>
       <div class="row" id="row-lavanderia"></div>
       <div class="empty" data-empty-for="lavanderia" style="display:none">
-        <div class="empty-icon">🧺</div>
+        <div class="empty-icon">🛒</div>
         <strong>Sin productos por ahora</strong>
-        <p>Consulta disponibilidad en el formulario de pedido.</p>
+        <p>Pregunta por lo que buscas en el formulario de pedido.</p>
       </div>
     </div>
-
-    <div style="margin-bottom:26px">
+        <div style="margin-bottom:26px">
       <div class="row-head">
-        <h3>🍳 Cocina y hogar <span class="count-pill">5 productos</span></h3>
+        <h3>🍳 Cocina y hogar <span class="count-pill">11 productos</span></h3>
         <a class="ver-todo" href="?categoria=cocina">Ver todo →</a>
       </div>
-      <p style="margin:0 0 12px;color:var(--muted);font-size:14px">Cocinas, hornos, freidoras y climatización para el hogar.</p>
+      <p style="margin:0 0 12px;color:var(--muted);font-size:14px">Cocinas, hornos, batidoras, calentadores y grill.</p>
       <div class="row" id="row-cocina"></div>
       <div class="empty" data-empty-for="cocina" style="display:none">
-        <div class="empty-icon">🍳</div>
+        <div class="empty-icon">🛒</div>
         <strong>Sin productos por ahora</strong>
-        <p>Consulta disponibilidad en el formulario de pedido.</p>
+        <p>Pregunta por lo que buscas en el formulario de pedido.</p>
       </div>
     </div>
-
-    <div style="margin-bottom:26px">
+        <div style="margin-bottom:26px">
       <div class="row-head">
-        <h3>⚡ Herramientas eléctricas <span class="count-pill">5 productos</span></h3>
-        <a class="ver-todo" href="?categoria=herramientas">Ver todo →</a>
+        <h3>🔊 Audio y TV <span class="count-pill">9 productos</span></h3>
+        <a class="ver-todo" href="?categoria=audio">Ver todo →</a>
       </div>
-      <p style="margin:0 0 12px;color:var(--muted);font-size:14px">Sierras, taladros, soldadoras y compresores.</p>
-      <div class="row" id="row-herramientas"></div>
-      <div class="empty" data-empty-for="herramientas" style="display:none">
-        <div class="empty-icon">⚡</div>
+      <p style="margin:0 0 12px;color:var(--muted);font-size:14px">Bocinas y televisores Smart TV.</p>
+      <div class="row" id="row-audio"></div>
+      <div class="empty" data-empty-for="audio" style="display:none">
+        <div class="empty-icon">🛒</div>
         <strong>Sin productos por ahora</strong>
-        <p>Consulta disponibilidad en el formulario de pedido.</p>
+        <p>Pregunta por lo que buscas en el formulario de pedido.</p>
       </div>
     </div>
-    <div style="margin-bottom:26px">
+        <div style="margin-bottom:26px">
       <div class="row-head">
-        <h3>🛋️ Muebles <span class="count-pill">5 productos</span></h3>
-        <a class="ver-todo" href="?categoria=muebles">Ver todo →</a>
+        <h3>🎄 Navidad <span class="count-pill">11 productos</span></h3>
+        <a class="ver-todo" href="?categoria=navidad">Ver todo →</a>
       </div>
-      <p style="margin:0 0 12px;color:var(--muted);font-size:14px">Sofás, camas, comedores y más para el hogar.</p>
-      <div class="row" id="row-muebles"></div>
-      <div class="empty" data-empty-for="muebles" style="display:none">
-        <div class="empty-icon">🛋️</div>
+      <p style="margin:0 0 12px;color:var(--muted);font-size:14px">Árboles, inflables y luces de Navidad.</p>
+      <div class="row" id="row-navidad"></div>
+      <div class="empty" data-empty-for="navidad" style="display:none">
+        <div class="empty-icon">🛒</div>
         <strong>Sin productos por ahora</strong>
-        <p>Consulta disponibilidad en el formulario de pedido.</p>
+        <p>Pregunta por lo que buscas en el formulario de pedido.</p>
+      </div>
+    </div>
+        <div style="margin-bottom:26px">
+      <div class="row-head">
+        <h3>🛒 Otros <span class="count-pill">13 productos</span></h3>
+        <a class="ver-todo" href="?categoria=otros">Ver todo →</a>
+      </div>
+      <p style="margin:0 0 12px;color:var(--muted);font-size:14px">Ventiladores, plantas eléctricas, silla de oficina, gomas y split.</p>
+      <div class="row" id="row-otros"></div>
+      <div class="empty" data-empty-for="otros" style="display:none">
+        <div class="empty-icon">🛒</div>
+        <strong>Sin productos por ahora</strong>
+        <p>Pregunta por lo que buscas en el formulario de pedido.</p>
       </div>
     </div>
     </div>
@@ -479,19 +490,21 @@
     </div>
     <div class="cols">
       <div class="info-card">
-        <h3>💳 Métodos de pago aceptados</h3>
+        <h3>💳 Métodos de pago</h3>
         <ul class="pay-list">
-          <li><span class="dot">✓</span><span><strong>CUP</strong> — al cambio del día</span></li>
-          <li><span class="dot">✓</span><span><strong>USD</strong> — dólares americanos</span></li>
-          <li><span class="dot">✓</span><span><strong>Euros</strong></span></li>
+          <li><span class="dot">✓</span><span><strong>USD o CUP al cambio del día (elToque)</strong></span></li>
+          <li><span class="dot">✓</span><span><strong>Pagos vía Zelle disponibles al 5%</strong></span></li>
+          <li><span class="dot">✓</span><span>Confirmamos <strong>disponibilidad y precio final</strong> por WhatsApp antes de cerrar tu pedido</span></li>
         </ul>
       </div>
       <div class="info-card">
         <h3>🛡️ Garantía y calidad</h3>
         <ul class="pay-list">
-          <li><span class="dot">✓</span><span><strong>Equipos nuevos y sellados</strong> en su caja original</span></li>
-          <li><span class="dot">✓</span><span><strong>15 días de garantía</strong> en los equipos que vendemos</span></li>
-          <li><span class="dot">✓</span><span>Confirmamos <strong>disponibilidad y precio final</strong> por WhatsApp antes de cerrar tu pedido</span></li>
+          <li><span class="dot">✓</span><span><strong>Equipos nuevos en caja</strong>, con factura a nombre del cliente</span></li>
+          <li><span class="dot">✓</span><span><strong>Garantía asegurada</strong>: cada producto indica su garantía en su tarjeta y detalle (7, 15 o 30 días, o 1–2 meses; si no la indica, consúltanos)</span></li>
+          <li><span class="dot">✓</span><span><strong>Rapidez</strong> en la entrega</span></li>
+          <li><span class="dot">✓</span><span><strong>Transporte incluido</strong> en la mayoría de los productos, salvo los árboles de Navidad (mensajería $2.50 aparte) y dos baterías que son solo recogida en tienda</span></li>
+          <li><span class="dot">✓</span><span><strong>Ventas al por mayor</strong> con precios módicos — consúltanos por WhatsApp</span></li>
         </ul>
       </div>
     </div>
@@ -557,11 +570,11 @@
         <label for="metodoPago">Método de pago *</label>
         <select id="metodoPago" required>
           <option value="">— Selecciona cómo vas a pagar —</option>
-          <option value="CUP al cambio del día">CUP — al cambio del día</option>
-          <option value="USD">USD — dólares americanos</option>
-          <option value="Euros">Euros</option>
+          <option value="USD">USD</option>
+          <option value="CUP al cambio del día (elToque)">CUP — al cambio del día (elToque)</option>
+          <option value="Zelle disponible al 5%">Zelle — disponible al 5%</option>
         </select>
-        <p class="hint">Elige con qué vas a pagar; ese método aparecerá en el mensaje de tu pedido.</p>
+        <p class="hint">USD o CUP al cambio del día (elToque); también pagos vía Zelle disponibles al 5%. Ese método aparecerá en el mensaje de tu pedido.</p>
 
         <label for="notas">Notas (opcional)</label>
         <div id="saborYogurWrap" style="display:none;margin-top:10px">
@@ -628,14 +641,9 @@
   var WHATSAPP_DARIEL = "51948053";
 
   // ============================================================
-  // PROVEEDORES (subtiendas de El Bazar)
-  // Cada producto lleva "proveedor" con el id de su proveedor.
-  // Para agregar otro proveedor: añádelo aquí, crea su sección
-  // en el HTML del catálogo y pon su id en sus productos.
+  // Sin subtiendas ni proveedor visible en la página pública.
   // ============================================================
-  var PROVEEDORES = [
-    { id:"demo", nombre:"El Bazar" }
-  ];
+  var PROVEEDORES = [];
   function nombreProveedor(id){
     var prov = PROVEEDORES.find(function(x){ return x.id===id; });
     if(prov) return prov.nombre;
@@ -643,47 +651,131 @@
   }
   // Nombre del proveedor de un producto del catálogo (por su id); '' si no aplica.
   function nombreProveedorDeProducto(pid){
-    var prod = PRODUCTOS.find(function(x){ return x.id===pid; });
-    if(!prod) return '';
-    return nombreProveedor(prod.proveedor || 'rec');
+    // La página pública no muestra ningún proveedor: siempre vacío.
+    return '';
   }
 
-  // Catálogo — precios en USD tal como aparecen en las ofertas.
-  // proveedor: id del proveedor dueño del producto (ver PROVEEDORES).
-  // categoria: "ferreteria" | "refrigeracion" | "lavanderia" | "cocina" | "herramientas"
-  // foto: flyer oficial del producto en assets/ (producto-01.jpg … producto-29.jpg).
-  // foto2: flyer de la otra variante del mismo producto (miniatura en la esquina).
+  // Catálogo real — precios de venta en USD (precio del grupo + $5, cálculo interno, no visible).
+  // categoria: "energia" | "refrigeracion" | "lavanderia" | "cocina" | "audio" | "navidad" | "otros"
+  // foto: foto del producto en assets/fotos/prod-XXX.jpg.
   var PRODUCTOS = [
-    { proveedor:"demo", id:"taladro-percutor-750w", foto:"assets/fotos/taladro-percutor-750w.jpg", nombre:"Taladro percutor 13 mm 750W", precio:"$85", precioAntes:"", specs:["750W","13 mm","Velocidad variable","Incluye maletín"], desc:"750W · 13 mm · Velocidad variable · Incluye maletín", icono:"🔧", categoria:"ferreteria" },
-    { proveedor:"demo", id:"juego-llaves-14", foto:"assets/fotos/juego-llaves-14.jpg", nombre:"Juego de llaves combinadas 14 piezas", precio:"$45", precioAntes:"", specs:["14 piezas","8–19 mm","Acero cromo vanadio"], desc:"14 piezas · 8–19 mm · Acero cromo vanadio", icono:"🔧", categoria:"ferreteria" },
-    { proveedor:"demo", id:"martillo-una-16oz", foto:"assets/fotos/martillo-una-16oz.jpg", nombre:"Martillo de uña 16 oz", precio:"$12", precioAntes:"", specs:["16 oz","Mango de fibra","Cabeza de acero"], desc:"16 oz · Mango de fibra · Cabeza de acero", icono:"🔨", categoria:"ferreteria" },
-    { proveedor:"demo", id:"caja-herramientas-19", foto:"assets/fotos/caja-herramientas-19.jpg", nombre:"Caja de herramientas 19\" con organizador", precio:"$28", precioAntes:"", specs:["19 pulgadas","Organizador superior","Cierre metálico"], desc:"19 pulgadas · Organizador superior · Cierre metálico", icono:"🧰", categoria:"ferreteria" },
-    { proveedor:"demo", id:"cerradura-seguridad", foto:"assets/fotos/cerradura-seguridad.jpg", nombre:"Cerradura de seguridad para puerta", precio:"$18", precioAntes:"", specs:["Doble cilindro","3 llaves","Acabado níquel"], desc:"Doble cilindro · 3 llaves · Acabado níquel", icono:"🔒", categoria:"ferreteria" },
-    { proveedor:"demo", id:"refrigerador-2p-14", foto:"assets/fotos/refrigerador-2p-14.jpg", nombre:"Refrigerador 2 puertas 14 pies", precio:"$650", precioAntes:"", specs:["14 pies cúbicos","2 puertas","Freezer superior"], desc:"14 pies cúbicos · 2 puertas · Freezer superior", icono:"🧊", categoria:"refrigeracion" },
-    { proveedor:"demo", id:"refrigerador-2p-18", foto:"assets/fotos/refrigerador-2p-18.jpg", nombre:"Refrigerador 2 puertas 18 pies frost", precio:"$820", precioAntes:"", specs:["18 pies cúbicos","No frost","Dispensador de agua"], desc:"18 pies cúbicos · No frost · Dispensador de agua", icono:"🧊", categoria:"refrigeracion" },
-    { proveedor:"demo", id:"freezer-horizontal-7", foto:"assets/fotos/freezer-horizontal-7.jpg", nombre:"Freezer horizontal 7 pies", precio:"$480", precioAntes:"", specs:["7 pies cúbicos","Tapa superior","Canasta interior"], desc:"7 pies cúbicos · Tapa superior · Canasta interior", icono:"❄️", categoria:"refrigeracion" },
-    { proveedor:"demo", id:"frigobar-32", foto:"assets/fotos/frigobar-32.jpg", nombre:"Nevera pequeña / frigobar 3.2 pies", precio:"$240", precioAntes:"", specs:["3.2 pies cúbicos","1 puerta","Ideal para cuarto u oficina"], desc:"3.2 pies cúbicos · 1 puerta · Ideal para cuarto u oficina", icono:"🧊", categoria:"refrigeracion" },
-    { proveedor:"demo", id:"refrigerador-1p-10", foto:"assets/fotos/refrigerador-1p-10.jpg", nombre:"Refrigerador 1 puerta 10 pies", precio:"$420", precioAntes:"", specs:["10 pies cúbicos","1 puerta","Bajo consumo"], desc:"10 pies cúbicos · 1 puerta · Bajo consumo", icono:"🧊", categoria:"refrigeracion" },
-    { proveedor:"demo", id:"lavadora-auto-18", foto:"assets/fotos/lavadora-auto-18.jpg", nombre:"Lavadora automática 18 lb", precio:"$480", precioAntes:"", specs:["18 lb","Carga superior","10 programas"], desc:"18 lb · Carga superior · 10 programas", icono:"🧺", categoria:"lavanderia" },
-    { proveedor:"demo", id:"lavadora-auto-22", foto:"assets/fotos/lavadora-auto-22.jpg", nombre:"Lavadora automática 22 lb", precio:"$590", precioAntes:"", specs:["22 lb","Carga superior","Lavado rápido"], desc:"22 lb · Carga superior · Lavado rápido", icono:"🧺", categoria:"lavanderia" },
-    { proveedor:"demo", id:"lavadora-semi-16", foto:"assets/fotos/lavadora-semi-16.jpg", nombre:"Lavadora semiautomática doble tina 16 lb", precio:"$320", precioAntes:"", specs:["16 lb","Doble tina","Lavado y centrifugado"], desc:"16 lb · Doble tina · Lavado y centrifugado", icono:"🫧", categoria:"lavanderia" },
-    { proveedor:"demo", id:"lavadora-secadora-20", foto:"assets/fotos/lavadora-secadora-20.jpg", nombre:"Lavadora-secadora automática 20 lb", precio:"$720", precioAntes:"", specs:["20 lb","Lava y seca","Carga frontal"], desc:"20 lb · Lava y seca · Carga frontal", icono:"🧺", categoria:"lavanderia" },
-    { proveedor:"demo", id:"secadora-electrica-16", foto:"assets/fotos/secadora-electrica-16.jpg", nombre:"Secadora eléctrica 16 lb", precio:"$410", precioAntes:"", specs:["16 lb","Eléctrica","Sensor de humedad"], desc:"16 lb · Eléctrica · Sensor de humedad", icono:"👕", categoria:"lavanderia" },
-    { proveedor:"demo", id:"cocina-gas-4h", foto:"assets/fotos/cocina-gas-4h.jpg", nombre:"Cocina de gas 4 hornillas con horno", precio:"$380", precioAntes:"", specs:["4 hornillas","Horno a gas","Encendido eléctrico"], desc:"4 hornillas · Horno a gas · Encendido eléctrico", icono:"🍳", categoria:"cocina" },
-    { proveedor:"demo", id:"cocina-electrica-4h", foto:"assets/fotos/cocina-electrica-4h.jpg", nombre:"Cocina eléctrica 4 hornillas", precio:"$290", precioAntes:"", specs:["4 hornillas","Horno eléctrico","Vitrocerámica"], desc:"4 hornillas · Horno eléctrico · Vitrocerámica", icono:"🍳", categoria:"cocina" },
-    { proveedor:"demo", id:"microondas-11", foto:"assets/fotos/microondas-11.jpg", nombre:"Horno microondas 1.1 pies", precio:"$110", precioAntes:"", specs:["1.1 pies cúbicos","1000W","10 niveles de potencia"], desc:"1.1 pies cúbicos · 1000W · 10 niveles de potencia", icono:"🍳", categoria:"cocina" },
-    { proveedor:"demo", id:"freidora-aire-55", foto:"assets/fotos/freidora-aire-55.jpg", nombre:"Freidora de aire 5.5 L", precio:"$85", precioAntes:"", specs:["5.5 litros","Digital","Sin aceite"], desc:"5.5 litros · Digital · Sin aceite", icono:"🍟", categoria:"cocina" },
-    { proveedor:"demo", id:"licuadora-2l", foto:"assets/fotos/licuadora-2l.jpg", nombre:"Licuadora 2 litros", precio:"$45", precioAntes:"", specs:["2 litros","600W","Vaso de vidrio"], desc:"2 litros · 600W · Vaso de vidrio", icono:"🥤", categoria:"cocina" },
-    { proveedor:"demo", id:"sierra-circular-714", foto:"assets/fotos/sierra-circular-714.jpg", nombre:"Sierra circular 7-1/4\"", precio:"$95", precioAntes:"", specs:["7-1/4 pulgadas","1500W","Guía láser"], desc:"7-1/4 pulgadas · 1500W · Guía láser", icono:"🪚", categoria:"herramientas" },
-    { proveedor:"demo", id:"esmeril-45", foto:"assets/fotos/esmeril-45.jpg", nombre:"Esmeril angular 4-1/2\"", precio:"$55", precioAntes:"", specs:["4-1/2 pulgadas","720W","Incluye disco"], desc:"4-1/2 pulgadas · 720W · Incluye disco", icono:"⚙️", categoria:"herramientas" },
-    { proveedor:"demo", id:"sierra-caladora", foto:"assets/fotos/sierra-caladora.jpg", nombre:"Sierra caladora", precio:"$62", precioAntes:"", specs:["650W","Velocidad variable","Base ajustable"], desc:"650W · Velocidad variable · Base ajustable", icono:"🪚", categoria:"herramientas" },
-    { proveedor:"demo", id:"atornillador-20v", foto:"assets/fotos/atornillador-20v.jpg", nombre:"Atornillador inalámbrico 20V", precio:"$78", precioAntes:"", specs:["20V","2 baterías","Cargador incluido"], desc:"20V · 2 baterías · Cargador incluido", icono:"🔩", categoria:"herramientas" },
-    { proveedor:"demo", id:"compresor-24l", foto:"assets/fotos/compresor-24l.jpg", nombre:"Compresor de aire 24 L", precio:"$185", precioAntes:"", specs:["24 litros","2 HP","Con manguera"], desc:"24 litros · 2 HP · Con manguera", icono:"💨", categoria:"herramientas" },
-    { proveedor:"demo", id:"sofa-3-plazas", foto:"assets/fotos/sofa-3-plazas.jpg", nombre:"Sofá de 3 plazas", precio:"$420", precioAntes:"", specs:["3 plazas","Tela resistente","Color gris"], desc:"3 plazas · Tela resistente · Color gris", icono:"🛋️", categoria:"muebles" },
-    { proveedor:"demo", id:"comedor-6-sillas", foto:"assets/fotos/comedor-6-sillas.jpg", nombre:"Juego de comedor con 6 sillas", precio:"$380", precioAntes:"", specs:["Mesa + 6 sillas","Madera","Para 6 personas"], desc:"Mesa + 6 sillas · Madera · Para 6 personas", icono:"🪑", categoria:"muebles" },
-    { proveedor:"demo", id:"cama-matrimonial", foto:"assets/fotos/cama-matrimonial.jpg", nombre:"Cama matrimonial con cabecero", precio:"$350", precioAntes:"", specs:["Matrimonial","Con cabecero","Base incluida"], desc:"Matrimonial · Con cabecero · Base incluida", icono:"🛏️", categoria:"muebles" },
-    { proveedor:"demo", id:"armario-3-puertas", foto:"assets/fotos/armario-3-puertas.jpg", nombre:"Armario ropero de 3 puertas", precio:"$290", precioAntes:"", specs:["3 puertas","Con espejo","Amplio interior"], desc:"3 puertas · Con espejo · Amplio interior", icono:"🚪", categoria:"muebles" },
-    { proveedor:"demo", id:"mesa-centro", foto:"assets/fotos/mesa-centro.jpg", nombre:"Mesa de centro para sala", precio:"$95", precioAntes:"", specs:["Para sala","Madera y vidrio","Estilo moderno"], desc:"Para sala · Madera y vidrio · Estilo moderno", icono:"🛋️", categoria:"muebles" },
+    { id:"prod-001", foto:"assets/fotos/prod-001.jpg", nombre:"Inversor Must todo en uno 6 kW con 15 kW de respaldo", precio:"$3355", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Inversor todo en uno must 6 con 15 de respaldo · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-002", foto:"assets/fotos/prod-002.jpg", nombre:"Batería Infiniti 15 kW", precio:"$2705", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Batería Infiniti de 15 kw misma fabricación de las baterías must · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-003", foto:"assets/fotos/prod-003.jpg", nombre:"Inversor híbrido Must 6 kW", precio:"$855", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Inversor Híbrido must de 6KW · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-004", foto:"assets/fotos/prod-004.jpg", nombre:"Batería para inversores con BMS", precio:"$435", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"BATERÍA IDEAL PARA INVERSORES Ciclos de carga profundo BMS Integrado el cliente puede medirla con un multimetro y probarla , se le miden al cliente el voltaje ) Precio por cantidad: 425 USD a partir de 6 unidades. · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-005", foto:"assets/fotos/prod-005.jpg", nombre:"Batería extra EcoFlow Delta 2", precio:"$605", precioAntes:"", specs:["Garantía: 7 días de garantía", "Transporte incluido"], desc:"Bateria extra de Ecoflow delta 2 1024Wh · Garantía: 7 días de garantía · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-006", foto:"assets/fotos/prod-006.jpg", nombre:"EcoFlow Delta 3 Classic", precio:"$605", precioAntes:"", specs:["Garantía: 7 días de garantía", "Transporte incluido"], desc:"Eco Flow Delta 3 Classic 1024WH · Garantía: 7 días de garantía · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-007", foto:"assets/fotos/prod-007.jpg", nombre:"EcoFlow Delta 3", precio:"$665", precioAntes:"", specs:["Garantía: 7 días de garantía", "Transporte incluido"], desc:"ECOFLOW DELTA 3 1024Wh , 3600W pico acepta batería extra y panel solar · Garantía: 7 días de garantía · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-008", foto:"assets/fotos/prod-008.jpg", nombre:"EcoFlow Delta 3 Plus", precio:"$755", precioAntes:"", specs:["Garantía: 7 días de garantía", "Transporte incluido"], desc:"ECOFLOW DELTA 3 PLUS 1024 Wh picos de 3600W · Garantía: 7 días de garantía · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-009", foto:"assets/fotos/prod-009.jpg", nombre:"Estación EcoFlow Delta 3 Max", precio:"$1155", precioAntes:"", specs:["Garantía: 7 días de garantía"], desc:"Estación ecoflow Delta 3 max 2048Wh · Garantía: 7 días de garantía", icono:"☀️", categoria:"energia" },
+    { id:"prod-010", foto:"assets/fotos/prod-010.jpg", nombre:"Estación Jackery HomePower 3000", precio:"$1625", precioAntes:"", specs:["Garantía: 7 días de garantía", "Transporte incluido"], desc:"Estacion de energíaJackery HomePower 3000 Salida de 3600W (Pico 7200W), Batería LFP de 3072Wh · Garantía: 7 días de garantía · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-011", foto:"assets/fotos/prod-011.jpg", nombre:"Estación Jackery 3600 Plus", precio:"$2005", precioAntes:"", specs:["Garantía: 7 días de garantía", "Transporte incluido"], desc:"ESTACION DE ENERGÍA Jackery 3600 PLUS Salida AC: 120 V / 60 Hz Potencia: 3,600 W continuos Pico: 7,200 W Capacidad: 3,584 Wh , · Garantía: 7 días de garantía · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-012", foto:"assets/fotos/prod-012.jpg", nombre:"Estación Oupes Exodus", precio:"$495", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Estación de energía OUPES EXODUS Potencia pico 3600w Potencia continua 1200w 992 Wh · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-013", foto:"assets/fotos/prod-013.jpg", nombre:"Estación Oupes Mega 1 Lite", precio:"$675", precioAntes:"", specs:["Garantía: 7 días de garantía", "Transporte incluido"], desc:"Estación de energía OUPES MEGA 1 LITE Potencia continua 2000w Potencia pico 4500w , · Garantía: 7 días de garantía · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-014", foto:"assets/fotos/prod-014.jpg", nombre:"Estación Oupes 4500W pico", precio:"$1005", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Estación de energía OUPES Potencia pico 4500w Potencia continua 2400w · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-015", foto:"assets/fotos/prod-015.jpg", nombre:"Cable solar MC4 a XT60 6 m", precio:"$90", precioAntes:"", specs:["Garantía: 7 días de garantía", "Transporte incluido"], desc:"Cable Solar MC4 A XT60 6 metros de longitud · Garantía: 7 días de garantía · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-016", foto:"assets/fotos/prod-016.jpg", nombre:"Cable para inversores y paneles solares 10 m", precio:"$60", precioAntes:"", specs:["Garantía: 7 días de garantía", "Transporte incluido"], desc:"CABLE PARA INVERSORES, PANEL SOLAR Y ECOFLOW Vienen por rollos de 10 metros Compatibles con conectores MC4 y XT60i nuevos a estrenar (son royal cord calibre 10) · Garantía: 7 días de garantía · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-017", foto:"assets/fotos/prod-017.jpg", nombre:"Controlador solar Boost Q7-Lumina MPPT 1200W", precio:"$130", precioAntes:"", specs:["Garantía: 7 días de garantía", "Transporte incluido"], desc:"Controlador Solar Boost Q7-LUMINA MPPT 1200W Potencia máxima: 1200W. Tecnología MPPT para mayor eficiencia de carga. Compatible con sistemas de 48V, 60V y 72V. Voltaje de entrada: 12V–60V. Incluye · Garantía: 7 días de garantía · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-018", foto:"assets/fotos/prod-018.jpg", nombre:"Inversor Sumry 4000W", precio:"$385", precioAntes:"", specs:["Garantía: 7 días de garantía", "Transporte incluido"], desc:"Inversor Sumry 4000w 110v ,Potencia: 4000W (8000W Pico) Voltaje: 24V DC a 120V AC Precio por cantidad: 360 USD a partir de 5 unidades. · Garantía: 7 días de garantía · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-019", foto:"assets/fotos/prod-019.jpg", nombre:"Combo inversor híbrido 6.2 kW + batería 5.12 kWh", precio:"$2555", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Combo de energía inversor híbrido de 6.2kw mas 1bateria inteligente de 5.12 kwh · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-020", foto:"assets/fotos/prod-020.jpg", nombre:"Combo inversor híbrido 6.2 kW + 2 baterías 5.12 kWh", precio:"$4005", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Combo de energía inversor hibrido de 6.2kw mas 2 bateria inteligente de 5.12 kwh Para un total de 10kwh en baterías · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-021", foto:"assets/fotos/prod-021.jpg", nombre:"Inversor bifásico Must 6 kW", precio:"$835", precioAntes:"", specs:["Garantía: 30 días de garantía", "Transporte incluido"], desc:"Inversor Bifásico Must 6kW · Garantía: 30 días de garantía · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-022", foto:"assets/fotos/prod-022.jpg", nombre:"Batería para inversores nueva en caja sellada", precio:"$285", precioAntes:"", specs:["Garantía: Sin garantía", "Transporte incluido"], desc:"BATERÍA IDEAL PARA INVERSORES Ciclos de carga profundo BMS Integrado( las baterías son nuevas en caja selladas sin garantía ) Nuevas en caja sellada. · Garantía: Sin garantía · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-023", foto:"assets/fotos/prod-023.jpg", nombre:"Batería 12.8V 150 Ah para inversores", precio:"$375", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"BATERÍA 12.8V 150 Ah IDEAL PARA INVERSORES Ciclos de carga profundo BMS Integrado · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-024", foto:"assets/fotos/prod-024.jpg", nombre:"Batería para inversores 25.6V 100 Ah", precio:"$625", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"BATERÍA IDEAL PARA INVERSORES Ciclos de carga profundo BMS Integrado 25.6V 100 Ah (2560 Wh) · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-025", foto:"assets/fotos/prod-025.jpg", nombre:"Batería inteligente Eco Humsienk 5.12 kWh", precio:"$1475", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Batería Inteligente Eco - Humsienk Tecnología LiFePO4 5.12 Kwh 51,2 V 100 Ah BMS Integrado Precio: · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-026", foto:"assets/fotos/prod-026.jpg", nombre:"Combo Sumry 4000W + 2 baterías 12.8V 100 Ah", precio:"$1025", precioAntes:"", specs:["Garantía: 2 meses de garantía", "Montaje incluido"], desc:"Combo#2 Inversor SUMRY 4000W 110V 2x bat de 12.8 v 100 Ah Transfer SACO , lo ponemos todo para el montaje y Precio con montaje incluido: 1600 USD. · Garantía: 2 meses de garantía", icono:"☀️", categoria:"energia" },
+    { id:"prod-027", foto:"assets/fotos/prod-027.jpg", nombre:"Combo Sumry 4000W + batería 25.6V", precio:"$1105", precioAntes:"", specs:["Garantía: 2 meses de garantía", "Transporte incluido"], desc:"Combo #1 Inversor SUMRY 4000W 110V Batería 25.6V(LifePO4) Transfer SACO Precio con montaje incluido: 1700 USD. · Garantía: 2 meses de garantía · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-028", foto:"assets/fotos/prod-028.jpg", nombre:"Combo Sumry 4000W + 2 baterías 12.8V 150 Ah", precio:"$1305", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Combo#7 Inversor SUMRY 4000W 110V 2x bat de 12.8V 150 Ah Transfer SACO · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-029", foto:"assets/fotos/prod-029.jpg", nombre:"Combo Sumry 4000W + 2 baterías 12.8V 200 Ah", precio:"$1405", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Combo#7 Inversor SUMRY 4000W 110V 2x bat de 12.8V 200 Ah Transfer SACO · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-030", foto:"assets/fotos/prod-030.jpg", nombre:"Combo Sumry 4000W + 2 baterías 25.6V 100 Ah", precio:"$1945", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Inversor SUMRY 4000W 110V 2x bat de 25.6V 100 Ah Transfer SACO · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-031", foto:"assets/fotos/prod-031.jpg", nombre:"Batería inteligente Eco-Worthy 16 kW", precio:"$3955", precioAntes:"", specs:["Garantía: consultar", "Solo recogida en tienda"], desc:"Bateria inteligente Eco-worthy 16kw Pesa mucho; se recoge en la tienda. · Garantía: Garantía según producto (consultar) · Solo recogida en tienda", icono:"☀️", categoria:"energia" },
+    { id:"prod-032", foto:"assets/fotos/prod-032.jpg", nombre:"Batería inteligente LiFePO4 5.12 kWh", precio:"$1355", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Batería Inteligente Tecnología LiFePO4 5.12 Kwh 51,2 V 100 Ah BMS Integrado Precio: · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-033", foto:"assets/fotos/prod-033.jpg", nombre:"Kit fotovoltaico completo 6.2 kVA + 4 paneles 625W", precio:"$4705", precioAntes:"", specs:["Garantía: consultar", "Montaje incluido"], desc:"KIT FOTOVOLTAICO COMPLETO – MONTAJE INCLUIDO Energía solar instalada, configurada y lista para usar. El kit incluye: 1. Inversor híbrido 6.2 kVA – 48 V, salida 110 V / 220 V. 2. 4 paneles solares · Garantía: Garantía según producto (consultar)", icono:"☀️", categoria:"energia" },
+    { id:"prod-034", foto:"assets/fotos/prod-034.jpg", nombre:"Kit fotovoltaico completo 6.2 kVA + 6 paneles 625W", precio:"$6605", precioAntes:"", specs:["Garantía: consultar", "Montaje incluido"], desc:"KIT FOTOVOLTAICO COMPLETO – MONTAJE INCLUIDO Energía solar instalada, configurada y lista para usar. El kit incluye: 1. Inversor híbrido 6.2 kVA – 48 V, salida 110 V / 220 V. 2. 6 paneles solares · Garantía: Garantía según producto (consultar)", icono:"☀️", categoria:"energia" },
+    { id:"prod-035", foto:"assets/fotos/prod-035.jpg", nombre:"Kit fotovoltaico Eco-Worthy 6 kW + 6 paneles 625W", precio:"$5355", precioAntes:"", specs:["Garantía: consultar", "Montaje incluido"], desc:"KIT FOTOVOLTAICO COMPLETO – INSTALACIÓN INCLUIDA Inversor híbrido ECO-WORTHY de 6 kW + batería LiFePO de 5.12 kWh + 6 paneles solares de 625 W. Incluye montaje, conexión, configuración y puesta en · Garantía: Garantía según producto (consultar) · Montaje incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-036", foto:"assets/fotos/prod-036.jpg", nombre:"Panel solar Longi 620W bifacial", precio:"$215", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Panel longi 620 WH bifacial lo mejor para kit solares · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-037", foto:"assets/fotos/prod-037.jpg", nombre:"Panel solar 625W bifacial", precio:"$175", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"PANEL SOLAR 625 W Bin Bifaciales · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-038", foto:"assets/fotos/prod-038.jpg", nombre:"Batería 15 kWh 300 Ah LiFePO4", precio:"$3425", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Bateria 15kWh 300Ah 51.2vol LiFePO4 solar · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-039", foto:"assets/fotos/prod-039.jpg", nombre:"Batería Sako 10 kWh", precio:"$2775", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Batería SAKO de 10KWH · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-040", foto:"assets/fotos/prod-040.jpg", nombre:"Inversor Must todo en uno 6 kW con 15 kW de respaldo", precio:"$3855", precioAntes:"", specs:["Garantía: Garantía solo con montaje de sus instaladores", "Transporte incluido"], desc:"Inversor todo en uno must 6k con 15k de respaldo Garantía solo si montan con sus instaladores. · Garantía: Garantía solo con montaje de sus instaladores · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-041", foto:"assets/fotos/prod-041.jpg", nombre:"Inversor Sako 5 kW 110V", precio:"$775", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Inversor Sako de 5kwh 110v · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-042", foto:"assets/fotos/prod-042.jpg", nombre:"Combo inversor Must 6 kW + batería Sako 15 kWh", precio:"$5705", precioAntes:"", specs:["Garantía: 1 mes de garantía", "Transporte incluido"], desc:"Combo Inversor must de 6kwh Batería Sako de 15kwh Paneles Solar Bifacial 6 · Garantía: 1 mes de garantía · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-043", foto:"assets/fotos/prod-043.jpg", nombre:"Combo inversor Must 6 kW + batería Sako 15 kWh", precio:"$4705", precioAntes:"", specs:["Garantía: 1 mes de garantía", "Transporte incluido"], desc:"Inversor Must de 6kwh 110v y 220v Batería Sako de 15kwh · Garantía: 1 mes de garantía · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-044", foto:"assets/fotos/prod-044.jpg", nombre:"Panel solar 450W bifacial para EcoFlow", precio:"$165", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Panel solar de 450 W ideal para las eko flow bifaciales Marcar solar ever · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-045", foto:"assets/fotos/prod-045.jpg", nombre:"Inversor híbrido 6.2 kW", precio:"$855", precioAntes:"", specs:["Garantía: 7 días de garantía", "Transporte incluido"], desc:"Inversor híbrido de 6.2 kw 110 y 220 , · Garantía: 7 días de garantía · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-046", foto:"assets/fotos/prod-046.jpg", nombre:"Transfer automático Saco 110V", precio:"$95", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Transfer automático Marca SACO 110Vol · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-047", foto:"assets/fotos/prod-047.jpg", nombre:"Inversor híbrido Eco-Worthy 6 kW", precio:"$1405", precioAntes:"", specs:["Garantía: 7 días de garantía", "Transporte incluido"], desc:"Inversor híbrido ECO-WORTHY 100%original de 6 kw 110 y 220 · Garantía: 7 días de garantía · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-048", foto:"assets/fotos/prod-048.jpg", nombre:"Inversor híbrido WattCycle 6.5 kW", precio:"$1505", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Inversor Híbrido WattCycle Potencia 6.5 kW (6500W) Doble Controlador Solar MPPT Salida 110V / 220V Compatible con Baterías de Litio y Plomo (48V) Función de respaldo (Red + Solar + Batería) · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-049", foto:"assets/fotos/prod-049.jpg", nombre:"Inversor híbrido WattCycle Hybrid Plus 12 kW", precio:"$2405", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Inversor Híbrido WattCycle HYBRID PLUS Potencia 12 kW (12000W) Doble Controlador Solar MPPT Salida 110V / 220V (Uso residencial y comercial) Compatible con Baterías de Litio y Plomo Función de · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-050", foto:"assets/fotos/prod-050.jpg", nombre:"Batería de litio Humsienk 5.12 kWh", precio:"$1105", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Batería de Litio LiFePO4 - Humsienk Tecnología LiFePO4 (Más segura y duradera) 5.12 kWh (5120 Wh) 51.2 V 100 Ah BMS Inteligente Integrado (Protección múltiple y monitoreo) Larga vida útil: +6000 · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-051", foto:"assets/fotos/prod-051.jpg", nombre:"Batería de litio WattCycle 5.12 kWh", precio:"$1555", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Batería de Litio WattCycle Tecnología LiFePO4 (Más segura y duradera) 5.12 kWh 51.2 V 100 Ah Larga vida útil: +6000 ciclos (a 80% DOD) Compatibilidad con la mayoría de inversores híbridos y · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-052", foto:"assets/fotos/prod-052.jpg", nombre:"Combo Sumry 4000W + 2 baterías + 2 paneles 625W", precio:"$2605", precioAntes:"", specs:["Garantía: 2 meses de garantía", "Montaje incluido"], desc:"Combo#2 Inversor SUMRY 4000W 110V 2x bat de 12.8 v 100 Ah 2 paneles solares de 625 W mas instalación y todas las protecciones · Garantía: 2 meses de garantía · Montaje incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-053", foto:"assets/fotos/prod-053.jpg", nombre:"Batería de litio Felicity Solar 16 kWh", precio:"$3155", precioAntes:"", specs:["Garantía: consultar", "Solo recogida en el local"], desc:"BATERÍA DE LITIO FELICITY SOLAR 16 kWh Tecnología LiFePO4 (51.2V 314Ah) ESPECIFICACIONES: Capacidad: 16 kWh (51.2V 314Ah) Tecnología: LiFePO4 (Mayor vida útil y seguridad) Vida Útil: Más de 6,000 · Garantía: Garantía según producto (consultar) · Solo recogida en el local", icono:"☀️", categoria:"energia" },
+    { id:"prod-054", foto:"assets/fotos/prod-054.jpg", nombre:"Combo solar completo Nika Solar Eco-Worthy 10 kW", precio:"$8605", precioAntes:"", specs:["Garantía: consultar", "Montaje incluido"], desc:"COMBO SOLAR COMPLETO NIKA SOLAR (ECO-WORTHY) ¡Alto Rendimiento y Máxima Potencia para Tu Hogar! COMPONENTES PRINCIPALES: Inversor Híbrido ECO-WORTHY: 10 kW / 48V (Liber 10KP - Off-Grid / On-Grid) · Garantía: Garantía según producto (consultar) · Montaje incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-055", foto:"assets/fotos/prod-055.jpg", nombre:"Batería inteligente Eco-Worthy 5.12 kWh", precio:"$1455", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Batería Inteligente Eco - Worthy Tecnología LiFePO4 5.12 Kwh 51,2 V 100 Ah BMS Integrado Precio: · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-056", foto:"assets/fotos/prod-056.jpg", nombre:"Combo Sumry 4000W + baterías Yeabulok + 4 paneles", precio:"$3705", precioAntes:"", specs:["Garantía: 2 meses de garantía", "Montaje incluido"], desc:"Combo #6 Inversor SUMRY 4000W 110V 2 baterías YEABULOK de 25.6V 100Ah 4 paneles solares de 625W Transfer automático SACO + todas las protecciones Instalación y montaje incluidos · Garantía: 2 meses de garantía", icono:"☀️", categoria:"energia" },
+    { id:"prod-057", foto:"assets/fotos/prod-057.jpg", nombre:"Combo Sumry 4000W + baterías Dumfume + 2 paneles", precio:"$2805", precioAntes:"", specs:["Garantía: 2 meses de garantía", "Montaje incluido"], desc:"Combo #4 Inversor SUMRY 4000W 110V 2 baterías DUMFUME de 12.8V 150Ah 2 paneles solares de 625W Transfer automático SACO + todas las protecciones Instalación y montaje incluidos Precio: · Garantía: 2 meses de garantía", icono:"☀️", categoria:"energia" },
+    { id:"prod-058", foto:"assets/fotos/prod-058.jpg", nombre:"Combo Sumry 4000W + batería Yeabulok + 2 paneles", precio:"$2755", precioAntes:"", specs:["Garantía: 2 meses de garantía", "Montaje incluido"], desc:"Combo #3 Inversor SUMRY 4000W 110V 1 batería YEABULOK de 25.6V 100Ah 2 paneles solares de 625W Instalación incluida + transfer automático y todas las protecciones Precio · Garantía: 2 meses de garantía · Montaje incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-059", foto:"assets/fotos/prod-059.jpg", nombre:"Combo Sumry 4000W + baterías Poerun + 4 paneles", precio:"$3305", precioAntes:"", specs:["Garantía: 2 meses de garantía", "Transporte incluido"], desc:"Combo #5 Inversor SUMRY 4000W 110V 2 baterías POERUN de 12.8V / 200Ah 4 paneles solares de 625W Transfer automático SACO + todas las protecciones Montaje e instalación incluidos · Garantía: 2 meses de garantía · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-060", foto:"assets/fotos/prod-060.jpg", nombre:"Combo Sumry 4000W + 2 baterías 25.6V 100 Ah", precio:"$1755", precioAntes:"", specs:["Garantía: 60 días de garantía", "Transporte incluido"], desc:"Inversor SUMRY 4000W 110V 2x bat de 25.6V 100 Ah Transfer SACO Precio: Precio con montaje incluido: 2350 USD. · Garantía: 60 días de garantía · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-061", foto:"assets/fotos/prod-061.jpg", nombre:"Panel solar Ronma Solar 620W bifacial", precio:"$165", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Panel solar Ronma Solar 620W bifacial monocristalino · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"☀️", categoria:"energia" },
+    { id:"prod-062", foto:"assets/fotos/prod-062.jpg", nombre:"Frío Hisense 7.3 pies", precio:"$375", precioAntes:"", specs:["Garantía: 30 días de garantía", "Transporte incluido"], desc:"Frio Hisense de 7.3 pies pies no es congelación seca poca escarcha , · Garantía: 30 días de garantía · Transporte incluido", icono:"🧊", categoria:"refrigeracion" },
+    { id:"prod-063", foto:"assets/fotos/prod-063.jpg", nombre:"Nevera Royal 5.5 pies", precio:"$275", precioAntes:"", specs:["Garantía: 30 días de garantía", "Transporte incluido"], desc:"Nevera de 5.5 pies marca royal · Garantía: 30 días de garantía · Transporte incluido", icono:"🧊", categoria:"refrigeracion" },
+    { id:"prod-064", foto:"assets/fotos/prod-064.jpg", nombre:"Nevera Royal 3.5 pies inverter", precio:"$250", precioAntes:"", specs:["Garantía: 30 días de garantía", "Transporte incluido"], desc:"NEVERA ROYAL 3.5 pies Tecnología inverter , ahorrativa para sistemas fotovoltaicos · Garantía: 30 días de garantía · Transporte incluido", icono:"🧊", categoria:"refrigeracion" },
+    { id:"prod-065", foto:"assets/fotos/prod-065.jpg", nombre:"Nevera Milexus 4.2 pies", precio:"$255", precioAntes:"", specs:["Garantía: 30 días de garantía", "Transporte incluido"], desc:"Nevera de 4.2 pies Marca MILEXUS 119L · Garantía: 30 días de garantía · Transporte incluido", icono:"🧊", categoria:"refrigeracion" },
+    { id:"prod-066", foto:"assets/fotos/prod-066.jpg", nombre:"Exhibidora Milexus 13 pies", precio:"$635", precioAntes:"", specs:["Garantía: 1 mes de garantía", "Transporte incluido"], desc:"Exhibidora Milexus de 13 pie · Garantía: 1 mes de garantía · Transporte incluido", icono:"🧊", categoria:"refrigeracion" },
+    { id:"prod-067", foto:"assets/fotos/prod-067.jpg", nombre:"Refrigerador Hisense Side by Side 16 pies", precio:"$845", precioAntes:"", specs:["Garantía: 30 días de garantía", "Transporte incluido"], desc:"Refrigerador Hisense Side by Side 16 Pies Tecnología No Frost Tecnología Inverter Diseño Side by Side Capacidad: 16 pies cúbicos Medidas: 910 × 1770 × 590 mm Nuevo en caja · Garantía: 30 días de garantía · Transporte incluido", icono:"🧊", categoria:"refrigeracion" },
+    { id:"prod-068", foto:"assets/fotos/prod-068.jpg", nombre:"Congelador vertical Premier 145 L", precio:"$390", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Congelador Vertical Premier 145 L CAPACIDAD: 145L/5.1Pc TIPO: ESCARCHA NÚMERO DE PUERTAS: 1 COLOR Y DISEÑO: VERTICAL, BLANCO DIMENSIONES: 540X550X1259MM · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"🧊", categoria:"refrigeracion" },
+    { id:"prod-069", foto:"assets/fotos/prod-069.jpg", nombre:"Congeladora vertical Premier 177 L", precio:"$420", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Congeladora vertical 177l/6.25pc (f) blanco Premier Capacidad: 177l/6.25pc tipo: escarcha número de puertas: 1 color y diseño: vertical, blanco dimensiones: 540x550x1440mm · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"🧊", categoria:"refrigeracion" },
+    { id:"prod-070", foto:"assets/fotos/prod-070.jpg", nombre:"Frío Royal 8.5 pies con dispensador", precio:"$360", precioAntes:"", specs:["Garantía: 30 días de garantía", "Transporte incluido"], desc:"Frío Royal 8.5 pies con dispensador congelación semi seca · Garantía: 30 días de garantía · Transporte incluido", icono:"🧊", categoria:"refrigeracion" },
+    { id:"prod-071", foto:"assets/fotos/prod-071.jpg", nombre:"Lavadora semiautomática Premier 9 kg", precio:"$225", precioAntes:"", specs:["Garantía: 30 días de garantía", "Transporte incluido"], desc:"Lavadora Semiautomática Premier de 9kg Doble tina · Garantía: 30 días de garantía · Transporte incluido", icono:"🧺", categoria:"lavanderia" },
+    { id:"prod-072", foto:"assets/fotos/prod-072.jpg", nombre:"Lavadora secadora Hisense 15 kg", precio:"$675", precioAntes:"", specs:["Garantía: 30 días de garantía", "Transporte incluido"], desc:"Lavadora Secadora Hisense 15KG Lavado: 15 kg Secado: 10 kg Limpieza a vapor Tecnología Eco Inverter ConnectLife · Garantía: 30 días de garantía · Transporte incluido", icono:"🧺", categoria:"lavanderia" },
+    { id:"prod-073", foto:"assets/fotos/prod-073.jpg", nombre:"Lavadora secadora al vapor Milexus 10 kg", precio:"$655", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Lavadora Secadora al Vapor Milexus 10 kg Modelo: ML-LVFL-10KGS Voltaje/Frecuencia: 110v/60Hz Potencia de calefacción nominal 1200wats Potencia máxima: 1300 W Potencia de entrada de lavado: 250W · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"🧺", categoria:"lavanderia" },
+    { id:"prod-074", foto:"assets/fotos/prod-074.jpg", nombre:"Estufa de gas 6 quemadores con horno", precio:"$405", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Estufa de Gas (6 Quemadores de Gas y un Horno de Gas) Con Luz de Horno (25w) Vidrio Superior (Tapa de Vidrio Transparente con Soporte) Cuerpo de Acero Inoxidable Puerta del Horno (Vidrio Espejo): · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"🍳", categoria:"cocina" },
+    { id:"prod-075", foto:"assets/fotos/prod-075.jpg", nombre:"Horno empotrable Milexus 105 L", precio:"$705", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Horno Empotrable 105 litros Marca: MILEXUS,Control Manual 105 litros,Parte Superior 1,800w gas grill//Parte Inferior 2,500w,Auto Encendido / Auto Apagado,Sistema de triple Seguridad,Puerta de · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"🍳", categoria:"cocina" },
+    { id:"prod-076", foto:"assets/fotos/prod-076.jpg", nombre:"Cocina Milexus a gas 5 quemadores", precio:"$445", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"COCINA MILEXUS A GAS DE 5 QUEMADORES HORNO CON ASADOR Y LÁMPARA · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"🍳", categoria:"cocina" },
+    { id:"prod-077", foto:"assets/fotos/prod-077.jpg", nombre:"Cocina Milexus a gas 6 quemadores", precio:"$475", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"COCINA A GAS MILEXUS 6 QUEMADORES,IGNICIÓN DE PULSO,HORNO DE GAS,CON ASADOR, LÁMPARA Y DISPOSITIVO SAFTY QUEMADOR TRIPLE POTENCIA HORNO AMPLIO,CON LÁMPARA IGNICIÓN DE PULSO SEGURIDAD Y CALIDAD EN · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"🍳", categoria:"cocina" },
+    { id:"prod-078", foto:"assets/fotos/prod-078.jpg", nombre:"Cocina Premier 20 pulgadas con magneto", precio:"$215", precioAntes:"", specs:["Garantía: 7 días de garantía", "Transporte incluido"], desc:"Cocina marca premier con magneto de 20 pulgadas , · Garantía: 7 días de garantía · Transporte incluido", icono:"🍳", categoria:"cocina" },
+    { id:"prod-079", foto:"assets/fotos/prod-079.jpg", nombre:"Batidora Ninja Plus Blender Dúo", precio:"$195", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Batidora Ninja Plus Blender Dúo Ninja Professional Plus Blender Duo -Potencia: 1400watts -2 programas de autoIQ (bebidas congeladas y extracciones de nutrientes) -Jarra de tritura ion total 72oz · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"🍳", categoria:"cocina" },
+    { id:"prod-080", foto:"assets/fotos/prod-080.jpg", nombre:"Calentador eléctrico 13 kW", precio:"$225", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Calentadores 13 kw Calentador eléctrico de 1300 w 63 amperios Voltage 220-240 Frecuencia 50-60Hz Protección eléctrica IPX4 Rango de temperatura 30-55°C Presión de agua 0.1 Mpa-0.7Mpa Pantalla Icd · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"🍳", categoria:"cocina" },
+    { id:"prod-081", foto:"assets/fotos/prod-081.jpg", nombre:"Calentador eléctrico Milexus 50 L", precio:"$175", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Calentador Eléctrico 50 litros Marca: Milexus Modelo: YB-003-50L Capacidad: 50 Litros Voltaje: 220V – 60Hz Potencia: 2.0 kW Temperatura Máxima: 75 °C Control de Temperatura Manual. Panel de · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"🍳", categoria:"cocina" },
+    { id:"prod-082", foto:"assets/fotos/prod-082.jpg", nombre:"Calentador eléctrico 11 kW", precio:"$215", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Calentadores Eléctricos 11kw Calentador eléctrico de 1100 w 63 amperios Voltage 220-240 Frecuencia 50-60Hz Protección eléctrica IPX4 Rango de temperatura 30-55°C Presión de agua 0.1Mpa-0.7Mpa · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"🍳", categoria:"cocina" },
+    { id:"prod-083", foto:"assets/fotos/prod-083.jpg", nombre:"Grill a gas para parrilladas", precio:"$195", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"¡GRILL A GAS PARA TUS MEJORES PARRILLADAS! Características: Funcionamiento a gas con 2 perillas de control. Parrilla metálica ideal para carnes, pollo, pescados y vegetales. Diseño moderno en · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"🍳", categoria:"cocina" },
+    { id:"prod-084", foto:"assets/fotos/prod-084.jpg", nombre:"Batidora Silver Crest 2 L 1800W", precio:"$55", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Batidora Silver Crest VASO 2LTS 1800W AUMENTO DE VELOCIDAD CONTINUA OJA ESPECIAL DE ACERO INOXIDABLE · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"🍳", categoria:"cocina" },
+    { id:"prod-085", foto:"assets/fotos/prod-085.jpg", nombre:"Bocina Milexus con luces LED y micrófono", precio:"$130", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Bocina Milexus,luces led incluye micrófono y control remoto · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"🔊", categoria:"audio" },
+    { id:"prod-086", foto:"assets/fotos/prod-086.jpg", nombre:"Bocina Milexus Profesional", precio:"$185", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Bocina Milexus Profesional Características en la foto · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"🔊", categoria:"audio" },
+    { id:"prod-087", foto:"assets/fotos/prod-087.jpg", nombre:"Bocina Milexus Profesional", precio:"$165", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Bocina Milexus Profesional Características en la foto · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"🔊", categoria:"audio" },
+    { id:"prod-088", foto:"assets/fotos/prod-088.jpg", nombre:"Bocina Milexus con karaoke", precio:"$85", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Bocina Milexus con función karaoke Características en la foto · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"🔊", categoria:"audio" },
+    { id:"prod-089", foto:"assets/fotos/prod-089.jpg", nombre:"Bocina Milexus de alta fidelidad", precio:"$185", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Bocina Milexus de Alta Fidelidad Características en la foto · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"🔊", categoria:"audio" },
+    { id:"prod-090", foto:"assets/fotos/prod-090.jpg", nombre:"Televisor Smart TV 32\" Insignia Fire TV", precio:"$160", precioAntes:"", specs:["Garantía: 30 días de garantía", "Transporte incluido"], desc:"TELEVISOR SMART TV 32 pulgadas INSIGNIA Fire TV HD · Garantía: 30 días de garantía · Transporte incluido", icono:"🔊", categoria:"audio" },
+    { id:"prod-091", foto:"assets/fotos/prod-091.jpg", nombre:"Televisor Smart TV 32\" Onn Vizio", precio:"$160", precioAntes:"", specs:["Garantía: 30 días de garantía", "Transporte incluido"], desc:"TELEVISOR SMART TV 32 pulgadas ONN VIZIO MARCA 100% de EEUU · Garantía: 30 días de garantía · Transporte incluido", icono:"🔊", categoria:"audio" },
+    { id:"prod-092", foto:"assets/fotos/prod-092.jpg", nombre:"TV Premier 32\" con barra de sonido", precio:"$165", precioAntes:"", specs:["Garantía: 15 días de garantía", "Transporte incluido"], desc:"TV premier de 32 smart TV con barra de sonido incluida y soporte a la pared · Garantía: 15 días de garantía · Transporte incluido", icono:"🔊", categoria:"audio" },
+    { id:"prod-093", foto:"assets/fotos/prod-093.jpg", nombre:"TV Premier 50\" UHD con barra de sonido", precio:"$490", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"TV 50\" Premier con Barra de Sonido y soporte de pared incluido características: smart tv uhd de 50\", sin marco incluye 2 controles remotos (1 de voz, 1 normal) con versión dvb-t2 con dolby, · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"🔊", categoria:"audio" },
+    { id:"prod-094", foto:"assets/fotos/prod-094.jpg", nombre:"Árbol de Navidad 90 cm", precio:"$30", precioAntes:"", specs:["Garantía: consultar", "Mensajería $2.50 aparte"], desc:"Árbol de Navidad artificial. Mensajería $2.50 aparte para todas partes. · Garantía: Garantía según producto (consultar)", icono:"🎄", categoria:"navidad" },
+    { id:"prod-095", foto:"assets/fotos/prod-095.jpg", nombre:"Árbol de Navidad 1.20 m", precio:"$40", precioAntes:"", specs:["Garantía: consultar", "Mensajería $2.50 aparte"], desc:"Árbol de Navidad artificial. Mensajería $2.50 aparte para todas partes. · Garantía: Garantía según producto (consultar)", icono:"🎄", categoria:"navidad" },
+    { id:"prod-096", foto:"assets/fotos/prod-096.jpg", nombre:"Árbol de Navidad 150 cm", precio:"$55", precioAntes:"", specs:["Garantía: consultar", "Mensajería $2.50 aparte"], desc:"Árbol de Navidad artificial. Mensajería $2.50 aparte para todas partes. · Garantía: Garantía según producto (consultar)", icono:"🎄", categoria:"navidad" },
+    { id:"prod-097", foto:"assets/fotos/prod-097.jpg", nombre:"Árbol de Navidad 180 cm", precio:"$65", precioAntes:"", specs:["Garantía: consultar", "Mensajería $2.50 aparte"], desc:"Árbol de Navidad artificial. Mensajería $2.50 aparte para todas partes. · Garantía: Garantía según producto (consultar)", icono:"🎄", categoria:"navidad" },
+    { id:"prod-098", foto:"assets/fotos/prod-098.jpg", nombre:"Árbol de Navidad 210 cm", precio:"$80", precioAntes:"", specs:["Garantía: consultar", "Mensajería $2.50 aparte"], desc:"Árbol de Navidad artificial. Mensajería $2.50 aparte para todas partes. · Garantía: Garantía según producto (consultar)", icono:"🎄", categoria:"navidad" },
+    { id:"prod-099", foto:"assets/fotos/prod-099.jpg", nombre:"Árbol de Navidad 240 cm", precio:"$100", precioAntes:"", specs:["Garantía: consultar", "Mensajería $2.50 aparte"], desc:"Árbol de Navidad artificial. Mensajería $2.50 aparte para todas partes. · Garantía: Garantía según producto (consultar)", icono:"🎄", categoria:"navidad" },
+    { id:"prod-100", foto:"assets/fotos/prod-100.jpg", nombre:"Inflable Papá Noel gigante", precio:"$140", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Inflable Papá Noel Gigante usó interior o Exterior ideal para hogar, tienda o negocio · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"🎄", categoria:"navidad" },
+    { id:"prod-101", foto:"assets/fotos/prod-101.jpg", nombre:"Inflable muñeco de nieve LYC-053", precio:"$95", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Inflable Muñeco de Nieve LYC-053 Dimensión :1.6metros · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"🎄", categoria:"navidad" },
+    { id:"prod-102", foto:"assets/fotos/prod-102.jpg", nombre:"Inflable árbol de Navidad LYC-044", precio:"$145", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Inflable Árbol de Navidad LYC-044 Hermoso inflable para decorar su hogar Dimensiones : 2.1 metro · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"🎄", categoria:"navidad" },
+    { id:"prod-103", foto:"assets/fotos/prod-103.jpg", nombre:"Inflable muñeco de nieve LYC-054", precio:"$115", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Inflable muñeco de Nieve LYC-054 Hermoso para decorar su hogar Dimenciones : 1.8 metros · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"🎄", categoria:"navidad" },
+    { id:"prod-104", foto:"assets/fotos/prod-104.jpg", nombre:"Luces de Navidad 10 m", precio:"$22", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Luces de Navidad Dimensión :10 metros · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"🎄", categoria:"navidad" },
+    { id:"prod-105", foto:"assets/fotos/prod-105.jpg", nombre:"Ventilador industrial Royal 2 en 1", precio:"$165", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Ventilador industrial Royal 2 en 1 (pie y pared) - Potencia: 160W - Voltaje: 110V - Frecuencia: 60Hz - Diámetro: 30 pulgadas (76 cm) - Velocidades: 3 - Material: Estructura metálica negra - · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"🛒", categoria:"otros" },
+    { id:"prod-106", foto:"assets/fotos/prod-106.jpg", nombre:"Planta eléctrica Sigma Inverter 4000W", precio:"$875", precioAntes:"", specs:["Garantía: 1 semana de garantía", "Transporte incluido"], desc:"PLANTA ELÉCTRICA SIGMA Inverter 4000 W pico y 3300 W continuos Gasolina Gas Es silenciosa Detalles en la foto Transporte y 1 semana de garantía Nota adicional: Garantía solo válida para gasolina y · Transporte incluido", icono:"🛒", categoria:"otros" },
+    { id:"prod-107", foto:"assets/fotos/prod-107.jpg", nombre:"Planta eléctrica Sigma Inverter 6500W", precio:"$1155", precioAntes:"", specs:["Garantía: 7 días de garantía", "Transporte incluido"], desc:"PLANTA ELÉCTRICA SIGMA Inverter 6500W pico y 5000W continuos Gasolina Gas Es silenciosa Detalles en la foto Transporte y , El cliente tiene que tener la gasolina para probarla · Garantía: 7 días de garantía · Transporte incluido", icono:"🛒", categoria:"otros" },
+    { id:"prod-108", foto:"assets/fotos/prod-108.jpg", nombre:"Silla de oficina", precio:"$60", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Silla de oficina Comodidad y estilo · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"🛒", categoria:"otros" },
+    { id:"prod-109", foto:"assets/fotos/prod-109.jpg", nombre:"Ventilador industrial 30\" 160W", precio:"$170", precioAntes:"", specs:["Garantía: consultar", "Transporte incluido"], desc:"Ventilador Industrial de 30\" y 160 wats tiene 3 velocidades · Garantía: Garantía según producto (consultar) · Transporte incluido", icono:"🛒", categoria:"otros" },
+    { id:"prod-110", foto:"assets/fotos/prod-110.jpg", nombre:"Goma 130/60-13", precio:"$53", precioAntes:"", specs:["Garantía: consultar"], desc:"Goma nueva. Moto eléctrica, scooter o moto automática. · Garantía: Garantía según producto (consultar)", icono:"🛒", categoria:"otros" },
+    { id:"prod-111", foto:"assets/fotos/prod-111.jpg", nombre:"Goma 120/70-12", precio:"$36", precioAntes:"", specs:["Garantía: consultar"], desc:"Goma nueva. Moto eléctrica, scooter o moto automática. · Garantía: Garantía según producto (consultar)", icono:"🛒", categoria:"otros" },
+    { id:"prod-112", foto:"assets/fotos/prod-112.jpg", nombre:"Goma 145/70-12", precio:"$38", precioAntes:"", specs:["Garantía: consultar"], desc:"Goma nueva. Triciclo trasera. · Garantía: Garantía según producto (consultar)", icono:"🛒", categoria:"otros" },
+    { id:"prod-113", foto:"assets/fotos/prod-113.jpg", nombre:"Goma 3.50-12", precio:"$36", precioAntes:"", specs:["Garantía: consultar"], desc:"Goma nueva. Triciclo delantera. · Garantía: Garantía según producto (consultar)", icono:"🛒", categoria:"otros" },
+    { id:"prod-114", foto:"assets/fotos/prod-114.jpg", nombre:"Goma 3.75-12", precio:"$36", precioAntes:"", specs:["Garantía: consultar"], desc:"Goma nueva. Triciclo delantera. · Garantía: Garantía según producto (consultar)", icono:"🛒", categoria:"otros" },
+    { id:"prod-115", foto:"assets/fotos/prod-115.jpg", nombre:"Goma 4.00-12", precio:"$36", precioAntes:"", specs:["Garantía: consultar"], desc:"Goma nueva. Triciclo delantera o trasera según el vehículo. · Garantía: Garantía según producto (consultar)", icono:"🛒", categoria:"otros" },
+    { id:"prod-116", foto:"assets/fotos/prod-116.jpg", nombre:"Goma 80/90-14", precio:"$36", precioAntes:"", specs:["Garantía: consultar"], desc:"Goma nueva. Bici-motos y motos eléctricas pequeñas. · Garantía: Garantía según producto (consultar)", icono:"🛒", categoria:"otros" },
+    { id:"prod-117", foto:"assets/fotos/prod-117.jpg", nombre:"Split Royal 1 tonelada", precio:"$290", precioAntes:"", specs:["Garantía: 30 días de garantía", "Transporte incluido"], desc:"Split royal de 1 tonelada convencional · Garantía: 30 días de garantía · Transporte incluido", icono:"🛒", categoria:"otros" },
   ];
 
   // ============================================================
@@ -705,12 +797,13 @@
       {id:'otros', nombre:'Otros'}
     ];
     var CATEGORIAS = {
-      ferreteria: {nombre:'🔧 Ferretería', desc:'Herramientas manuales, pintura, cerraduras y más para la casa y el taller.'},
-      refrigeracion: {nombre:'🧊 Refrigeración', desc:'Refrigeradores, freezers y frigobares.'},
-      lavanderia: {nombre:'🧺 Lavandería', desc:'Lavadoras, lavadoras-secadoras y secadoras.'},
-      cocina: {nombre:'🍳 Cocina y hogar', desc:'Cocinas, hornos, freidoras y climatización para el hogar.'},
-      herramientas: {nombre:'⚡ Herramientas eléctricas', desc:'Sierras, taladros, soldadoras y compresores.'},
-      muebles: {nombre:'🛋️ Muebles', desc:'Sofás, camas, comedores y más para el hogar.'}
+      energia: {nombre:"☀️ Energía solar", desc:"Inversores, baterías, paneles solares, kits, combos y cables solares."},
+      refrigeracion: {nombre:"🧊 Refrigeración", desc:"Refrigeradores, neveras, congeladores y exhibidoras."},
+      lavanderia: {nombre:"🧺 Lavandería", desc:"Lavadoras y lavadoras-secadoras."},
+      cocina: {nombre:"🍳 Cocina y hogar", desc:"Cocinas, hornos, batidoras, calentadores y grill."},
+      audio: {nombre:"🔊 Audio y TV", desc:"Bocinas y televisores Smart TV."},
+      navidad: {nombre:"🎄 Navidad", desc:"Árboles, inflables y luces de Navidad."},
+      otros: {nombre:"🛒 Otros", desc:"Ventiladores, plantas eléctricas, silla de oficina, gomas y split."}
     };
     function normalizarTexto(t){ return t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase(); }
     function tipoDeRopa(nombre){
@@ -729,12 +822,13 @@
     }
     // Filas del inicio: una por categoría, y una por tipo de ropa (solo con productos)
     var filas = {
-      ferreteria: document.getElementById('row-ferreteria'),
+      energia: document.getElementById('row-energia'),
       refrigeracion: document.getElementById('row-refrigeracion'),
       lavanderia: document.getElementById('row-lavanderia'),
       cocina: document.getElementById('row-cocina'),
-      herramientas: document.getElementById('row-herramientas'),
-      muebles: document.getElementById('row-muebles')
+      audio: document.getElementById('row-audio'),
+      navidad: document.getElementById('row-navidad'),
+      otros: document.getElementById('row-otros')
     };
     var filasRopa = document.getElementById('filas-ropa');
     var filasPorTipo = {};
@@ -790,7 +884,7 @@
       else select.appendChild(opt);
     });
 
-    ['ferreteria','refrigeracion','lavanderia','cocina','herramientas','muebles'].forEach(function(cat){
+    ['energia','refrigeracion','lavanderia','cocina','audio','navidad','otros'].forEach(function(cat){
       var has = PRODUCTOS.some(function(p){ return p.categoria===cat; });
       var emptyEl = document.querySelector('[data-empty-for="'+cat+'"]');
       if(emptyEl) emptyEl.style.display = has ? 'none' : '';
@@ -991,8 +1085,7 @@
     lineas.push('🛒 *Nuevo pedido — El Bazar*');
     lineas.push('');
     lineas.push('📦 *Producto:* ' + producto);
-    // La ropa es de Liudmila: el mensaje lo escribe el cliente, así que NO lleva
-    // ni el nombre del proveedor ni precios internos; la foto identifica el producto.
+    // El mensaje lo escribe el cliente, así que NO lleva datos internos.
     if(foundSel && foundSel.proveedor==='liudmila' && foundSel.foto){
       var baseUrl = window.location.href.split('#')[0].replace(/[^\/]*$/, '');
       lineas.push('📸 *Foto:* ' + baseUrl + foundSel.foto);
@@ -1141,19 +1234,20 @@
     <div class="sheet-card">
       <button type="button" class="sheet-close" data-close-sheet aria-label="Cerrar">×</button>
       <h3>Categorías</h3>
-      <a class="sheet-cat" href="?categoria=ferreteria"><span>🔧</span><b>Ferretería</b><span>5 productos</span></a>
-      <a class="sheet-cat" href="?categoria=refrigeracion"><span>🧊</span><b>Refrigeración</b><span>5 productos</span></a>
-      <a class="sheet-cat" href="?categoria=lavanderia"><span>🧺</span><b>Lavandería</b><span>5 productos</span></a>
-      <a class="sheet-cat" href="?categoria=cocina"><span>🍳</span><b>Cocina y hogar</b><span>5 productos</span></a>
-      <a class="sheet-cat" href="?categoria=herramientas"><span>⚡</span><b>Herramientas eléctricas</b><span>5 productos</span></a>
-      <a class="sheet-cat" href="?categoria=muebles"><span>🛋️</span><b>Muebles</b><span>5 productos</span></a>
+      <a class="sheet-cat" href="?categoria=energia"><span>☀️</span><b>Energía solar</b><span>61 productos</span></a>
+      <a class="sheet-cat" href="?categoria=refrigeracion"><span>🧊</span><b>Refrigeración</b><span>9 productos</span></a>
+      <a class="sheet-cat" href="?categoria=lavanderia"><span>🧺</span><b>Lavandería</b><span>3 productos</span></a>
+      <a class="sheet-cat" href="?categoria=cocina"><span>🍳</span><b>Cocina y hogar</b><span>11 productos</span></a>
+      <a class="sheet-cat" href="?categoria=audio"><span>🔊</span><b>Audio y TV</b><span>9 productos</span></a>
+      <a class="sheet-cat" href="?categoria=navidad"><span>🎄</span><b>Navidad</b><span>11 productos</span></a>
+      <a class="sheet-cat" href="?categoria=otros"><span>🛒</span><b>Otros</b><span>13 productos</span></a>
     </div>
   </div>
   <div class="sheet" id="searchSheet" role="dialog" aria-label="Buscar producto">
     <div class="sheet-card">
       <button type="button" class="sheet-close" data-close-sheet aria-label="Cerrar">×</button>
       <h3>Buscar producto</h3>
-      <input class="search-input" id="searchInput" type="search" placeholder="Escribe: taladro, refrigerador, lavadora…" autocomplete="off" />
+      <input class="search-input" id="searchInput" type="search" placeholder="Escribe: inversor, batería, panel solar…" autocomplete="off" />
       <div class="search-res" id="searchResults"><div class="search-hint">Escribe el producto que buscas y toca el resultado para verlo.</div></div>
     </div>
   </div>
@@ -1178,12 +1272,13 @@
     var res=document.getElementById('searchResults');
     function catNameFromCard(card){
       var row=card.closest('.row');
-      if(row && row.id==='row-ferreteria') return 'Ferretería';
+      if(row && row.id==='row-energia') return 'Energía solar';
       if(row && row.id==='row-refrigeracion') return 'Refrigeración';
       if(row && row.id==='row-lavanderia') return 'Lavandería';
       if(row && row.id==='row-cocina') return 'Cocina y hogar';
-      if(row && row.id==='row-herramientas') return 'Herramientas eléctricas';
-      if(row && row.id==='row-muebles') return 'Muebles';
+      if(row && row.id==='row-audio') return 'Audio y TV';
+      if(row && row.id==='row-navidad') return 'Navidad';
+      if(row && row.id==='row-otros') return 'Otros';
       if(row && row.id==='grid-vista'){ var t=document.getElementById('titulo-vista'); return t ? t.textContent : ''; }
       return '';
     }
@@ -1198,7 +1293,7 @@
         if(norm(name).indexOf(q)===-1 && norm(catNameFromCard(card)).indexOf(q)===-1) return;
         found.push({card:card, name:name, price:priceEl ? priceEl.textContent : '', cat:catNameFromCard(card)});
       });
-      if(!found.length){ res.innerHTML='<div class="search-hint">No encontré nada con “'+input.value+'”. Prueba otra palabra, por ejemplo: taladro, refrigerador o lavadora.</div>'; return; }
+      if(!found.length){ res.innerHTML='<div class="search-hint">No encontré nada con “'+input.value+'”. Prueba otra palabra, por ejemplo: inversor, batería o panel solar.</div>'; return; }
       res.innerHTML='';
       found.slice(0,20).forEach(function(f){
         var b=document.createElement('button');
