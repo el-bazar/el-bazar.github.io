@@ -502,6 +502,9 @@
           <li><span class="dot">✓</span><span><strong>Garantía asegurada</strong>: cada producto indica su garantía en su tarjeta y detalle (7, 15 o 30 días, o 1–2 meses; si no la indica, consúltanos)</span></li>
           <li><span class="dot">✓</span><span><strong>Rapidez</strong> en la entrega</span></li>
           <li><span class="dot">✓</span><span><strong>Transporte incluido</strong> en la mayoría de los productos, salvo los árboles de Navidad (mensajería $2.50 aparte) y dos baterías que son solo recogida en tienda</span></li>
+          <li><span class="dot">✓</span><span>Los productos de más de <strong>$1000 USD</strong> no se pueden pagar en <strong>CUP</strong> (solo <strong>USD</strong> o <strong>Zelle</strong>)</span></li>
+          <li><span class="dot">✓</span><span>El pago en <strong>CUP</strong> se calcula con el cambio del día de <strong>elToque + 15 pesos por dólar</strong></span></li>
+          <li><span class="dot">✓</span><span>El pago en <strong>CUP</strong> siempre se <strong>confirma primero</strong> por WhatsApp antes de cerrar el pedido</span></li>
           <li><span class="dot">✓</span><span><strong>Ventas al por mayor</strong> con precios módicos — consúltanos por WhatsApp</span></li>
         </ul>
       </div>
@@ -583,10 +586,12 @@
         <select id="metodoPago" required>
           <option value="">— Selecciona cómo vas a pagar —</option>
           <option value="USD">USD</option>
-          <option value="CUP al cambio del día (elToque)">CUP — al cambio del día (elToque)</option>
+          <option value="CUP al cambio del día (elToque + 15)">CUP — al cambio del día (elToque + 15)</option>
           <option value="Zelle disponible al 5%">Zelle — disponible al 5%</option>
         </select>
-        <p class="hint">USD o CUP al cambio del día (elToque); también pagos vía Zelle disponibles al 5%. Ese método aparecerá en el mensaje de tu pedido.</p>
+        <p class="hint">USD o CUP al cambio del día (elToque + 15 pesos por dólar); también pagos vía Zelle disponibles al 5%. Ese método aparecerá en el mensaje de tu pedido.</p>
+        <p class="hint" id="notaPagoUSD" style="display:none">Este producto cuesta más de $1000 USD y no se puede pagar en CUP (solo USD o Zelle).</p>
+        <p class="hint" id="notaConfirmarCUP" style="display:none">El pago en CUP hay que confirmarlo primero por WhatsApp antes de cerrar el pedido.</p>
 
         <label for="notas">Notas (opcional)</label>
         <div id="saborYogurWrap" style="display:none;margin-top:10px">
@@ -1058,8 +1063,36 @@
     toggleEntrega();
   }
   selectProd.addEventListener('change', toggleEntregaProducto);
+  // Productos de más de $1000 USD: solo se pueden pagar en USD (sin CUP ni Zelle)
+  function togglePagoSegunPrecio(){
+    var found = PRODUCTOS.find(function(p){ return p.id===selectProd.value; });
+    var sel = document.getElementById('metodoPago');
+    var nota = document.getElementById('notaPagoUSD');
+    if(!sel) return;
+    var precio = found && found.precio ? parseFloat(String(found.precio).replace(/[^0-9.]/g, '')) : 0;
+    var soloUSD = precio > 1000;
+    for(var i = 0; i < sel.options.length; i++){
+      var opt = sel.options[i];
+      // Solo se desactiva el CUP en productos de más de $1000; el Zelle NO se desactiva
+      if(opt.value.indexOf('CUP') !== -1) opt.disabled = soloUSD;
+      else opt.disabled = false;
+    }
+    if(soloUSD){
+      if(sel.value.indexOf('CUP') !== -1) sel.value = 'USD';
+      if(nota) nota.style.display = '';
+    } else {
+      if(nota) nota.style.display = 'none';
+    }
+  }
+  selectProd.addEventListener('change', togglePagoSegunPrecio);
+  var selPago = document.getElementById('metodoPago');
+  if(selPago) selPago.addEventListener('change', function(){
+    var n = document.getElementById('notaConfirmarCUP');
+    if(n) n.style.display = selPago.value.indexOf('CUP') !== -1 ? '' : 'none';
+  });
   toggleEntrega();
   toggleEntregaProducto();
+  togglePagoSegunPrecio();
   toggleManual();
 
   function showError(msg){
@@ -1177,6 +1210,12 @@
     }
     var metodoPago = document.getElementById('metodoPago').value;
     if(!metodoPago){ showError('Por favor elige el método de pago con el que vas a pagar.'); document.getElementById('metodoPago').focus(); return; }
+    var prodPrecio = 0;
+    if(selectProd.value && selectProd.value !== '__consultar__'){
+      var prodSel = PRODUCTOS.find(function(pp){ return pp.id===selectProd.value; });
+      if(prodSel && prodSel.precio) prodPrecio = parseFloat(String(prodSel.precio).replace(/[^0-9.]/g, ''));
+    }
+    if(prodPrecio > 1000 && metodoPago.indexOf('CUP') !== -1){ showError('Este producto cuesta más de $1000 USD y no se puede pagar en CUP (solo USD o Zelle).'); document.getElementById('metodoPago').focus(); return; }
     lineas.push('💳 *Método de pago:* ' + metodoPago);
 
     if(notas){
@@ -1228,6 +1267,7 @@
     if(typeof toggleSabor === 'function') toggleSabor();
     if(typeof toggleTalla === 'function') toggleTalla();
     if(typeof toggleEntregaProducto === 'function') toggleEntregaProducto();
+    if(typeof togglePagoSegunPrecio === 'function') togglePagoSegunPrecio();
     var mw = document.getElementById('productoManualWrap');
     if(mw) mw.classList.remove('visible');
     abrirPedido();
