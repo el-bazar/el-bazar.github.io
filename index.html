@@ -360,7 +360,7 @@
     <div class="section-head" id="cabecera-catalogo">
       <div>
         <h2 id="catalogo-title">Catálogo</h2>
-        <p>40 productos · Precios en USD (de muestra)</p>
+        <p>30 productos · Precios en USD (de muestra)</p>
       </div>
       <span class="badge" style="background:var(--accent-soft);border-color:var(--border);color:var(--accent)">Precios en USD</span>
     </div>
@@ -372,7 +372,7 @@
 
         <div style="margin-bottom:26px">
       <div class="row-head">
-        <h3>🔧 Ferretería <span class="count-pill">8 productos</span></h3>
+        <h3>🔧 Ferretería <span class="count-pill">5 productos</span></h3>
         <a class="ver-todo" href="?categoria=ferreteria">Ver todo →</a>
       </div>
       <p style="margin:0 0 12px;color:var(--muted);font-size:14px">Herramientas manuales, pintura, cerraduras y más para la casa y el taller.</p>
@@ -386,7 +386,7 @@
 
     <div style="margin-bottom:26px">
       <div class="row-head">
-        <h3>🧊 Refrigeración <span class="count-pill">8 productos</span></h3>
+        <h3>🧊 Refrigeración <span class="count-pill">5 productos</span></h3>
         <a class="ver-todo" href="?categoria=refrigeracion">Ver todo →</a>
       </div>
       <p style="margin:0 0 12px;color:var(--muted);font-size:14px">Refrigeradores, freezers y frigobares.</p>
@@ -400,7 +400,7 @@
 
     <div style="margin-bottom:26px">
       <div class="row-head">
-        <h3>🧺 Lavandería <span class="count-pill">8 productos</span></h3>
+        <h3>🧺 Lavandería <span class="count-pill">5 productos</span></h3>
         <a class="ver-todo" href="?categoria=lavanderia">Ver todo →</a>
       </div>
       <p style="margin:0 0 12px;color:var(--muted);font-size:14px">Lavadoras, lavadoras-secadoras y secadoras.</p>
@@ -414,7 +414,7 @@
 
     <div style="margin-bottom:26px">
       <div class="row-head">
-        <h3>🍳 Cocina y hogar <span class="count-pill">8 productos</span></h3>
+        <h3>🍳 Cocina y hogar <span class="count-pill">5 productos</span></h3>
         <a class="ver-todo" href="?categoria=cocina">Ver todo →</a>
       </div>
       <p style="margin:0 0 12px;color:var(--muted);font-size:14px">Cocinas, hornos, freidoras y climatización para el hogar.</p>
@@ -428,13 +428,26 @@
 
     <div style="margin-bottom:26px">
       <div class="row-head">
-        <h3>⚡ Herramientas eléctricas <span class="count-pill">8 productos</span></h3>
+        <h3>⚡ Herramientas eléctricas <span class="count-pill">5 productos</span></h3>
         <a class="ver-todo" href="?categoria=herramientas">Ver todo →</a>
       </div>
       <p style="margin:0 0 12px;color:var(--muted);font-size:14px">Sierras, taladros, soldadoras y compresores.</p>
       <div class="row" id="row-herramientas"></div>
       <div class="empty" data-empty-for="herramientas" style="display:none">
         <div class="empty-icon">⚡</div>
+        <strong>Sin productos por ahora</strong>
+        <p>Consulta disponibilidad en el formulario de pedido.</p>
+      </div>
+    </div>
+    <div style="margin-bottom:26px">
+      <div class="row-head">
+        <h3>🛋️ Muebles <span class="count-pill">5 productos</span></h3>
+        <a class="ver-todo" href="?categoria=muebles">Ver todo →</a>
+      </div>
+      <p style="margin:0 0 12px;color:var(--muted);font-size:14px">Sofás, camas, comedores y más para el hogar.</p>
+      <div class="row" id="row-muebles"></div>
+      <div class="empty" data-empty-for="muebles" style="display:none">
+        <div class="empty-icon">🛋️</div>
         <strong>Sin productos por ahora</strong>
         <p>Consulta disponibilidad en el formulario de pedido.</p>
       </div>
@@ -641,46 +654,36 @@
   // foto: flyer oficial del producto en assets/ (producto-01.jpg … producto-29.jpg).
   // foto2: flyer de la otra variante del mismo producto (miniatura en la esquina).
   var PRODUCTOS = [
-    { proveedor:"demo", id:"taladro-percutor-750w", nombre:"Taladro percutor 13 mm 750W", precio:"$85", precioAntes:"", specs:["750W","13 mm","Velocidad variable","Incluye maletín"], desc:"750W · 13 mm · Velocidad variable · Incluye maletín", icono:"🔧", categoria:"ferreteria" },
-    { proveedor:"demo", id:"juego-llaves-14", nombre:"Juego de llaves combinadas 14 piezas", precio:"$45", precioAntes:"", specs:["14 piezas","8–19 mm","Acero cromo vanadio"], desc:"14 piezas · 8–19 mm · Acero cromo vanadio", icono:"🔧", categoria:"ferreteria" },
-    { proveedor:"demo", id:"martillo-una-16oz", nombre:"Martillo de uña 16 oz", precio:"$12", precioAntes:"", specs:["16 oz","Mango de fibra","Cabeza de acero"], desc:"16 oz · Mango de fibra · Cabeza de acero", icono:"🔨", categoria:"ferreteria" },
-    { proveedor:"demo", id:"caja-herramientas-19", nombre:"Caja de herramientas 19\" con organizador", precio:"$28", precioAntes:"", specs:["19 pulgadas","Organizador superior","Cierre metálico"], desc:"19 pulgadas · Organizador superior · Cierre metálico", icono:"🧰", categoria:"ferreteria" },
-    { proveedor:"demo", id:"cerradura-seguridad", nombre:"Cerradura de seguridad para puerta", precio:"$18", precioAntes:"", specs:["Doble cilindro","3 llaves","Acabado níquel"], desc:"Doble cilindro · 3 llaves · Acabado níquel", icono:"🔒", categoria:"ferreteria" },
-    { proveedor:"demo", id:"pintura-vinilica-5gal", nombre:"Pintura vinílica blanca 5 galones", precio:"$42", precioAntes:"", specs:["5 galones","Interior y exterior","Acabado mate"], desc:"5 galones · Interior y exterior · Acabado mate", icono:"🎨", categoria:"ferreteria" },
-    { proveedor:"demo", id:"juego-brocas-29", nombre:"Juego de brocas 29 piezas", precio:"$22", precioAntes:"", specs:["29 piezas","Metal y madera","Estuche organizador"], desc:"29 piezas · Metal y madera · Estuche organizador", icono:"🔩", categoria:"ferreteria" },
-    { proveedor:"demo", id:"escalera-aluminio-6", nombre:"Escalera de aluminio 6 peldaños", precio:"$65", precioAntes:"", specs:["6 peldaños","Aluminio","Plegable"], desc:"6 peldaños · Aluminio · Plegable", icono:"🪜", categoria:"ferreteria" },
-    { proveedor:"demo", id:"refrigerador-2p-14", nombre:"Refrigerador 2 puertas 14 pies", precio:"$650", precioAntes:"", specs:["14 pies cúbicos","2 puertas","Freezer superior"], desc:"14 pies cúbicos · 2 puertas · Freezer superior", icono:"🧊", categoria:"refrigeracion" },
-    { proveedor:"demo", id:"refrigerador-2p-18", nombre:"Refrigerador 2 puertas 18 pies frost", precio:"$820", precioAntes:"", specs:["18 pies cúbicos","No frost","Dispensador de agua"], desc:"18 pies cúbicos · No frost · Dispensador de agua", icono:"🧊", categoria:"refrigeracion" },
-    { proveedor:"demo", id:"freezer-horizontal-7", nombre:"Freezer horizontal 7 pies", precio:"$480", precioAntes:"", specs:["7 pies cúbicos","Tapa superior","Canasta interior"], desc:"7 pies cúbicos · Tapa superior · Canasta interior", icono:"❄️", categoria:"refrigeracion" },
-    { proveedor:"demo", id:"frigobar-32", nombre:"Nevera pequeña / frigobar 3.2 pies", precio:"$240", precioAntes:"", specs:["3.2 pies cúbicos","1 puerta","Ideal para cuarto u oficina"], desc:"3.2 pies cúbicos · 1 puerta · Ideal para cuarto u oficina", icono:"🧊", categoria:"refrigeracion" },
-    { proveedor:"demo", id:"refrigerador-1p-10", nombre:"Refrigerador 1 puerta 10 pies", precio:"$420", precioAntes:"", specs:["10 pies cúbicos","1 puerta","Bajo consumo"], desc:"10 pies cúbicos · 1 puerta · Bajo consumo", icono:"🧊", categoria:"refrigeracion" },
-    { proveedor:"demo", id:"freezer-vertical-5", nombre:"Freezer vertical 5 pies", precio:"$550", precioAntes:"", specs:["5 pies cúbicos","Puerta vertical","Repisas ajustables"], desc:"5 pies cúbicos · Puerta vertical · Repisas ajustables", icono:"❄️", categoria:"refrigeracion" },
-    { proveedor:"demo", id:"refrigerador-inverter-16", nombre:"Refrigerador inverter 16 pies", precio:"$890", precioAntes:"", specs:["16 pies cúbicos","Compresor inverter","No frost"], desc:"16 pies cúbicos · Compresor inverter · No frost", icono:"🧊", categoria:"refrigeracion" },
-    { proveedor:"demo", id:"dispensador-agua", nombre:"Dispensador / enfriador de agua", precio:"$95", precioAntes:"", specs:["Agua fría y caliente","Para botellón","Base con gabinete"], desc:"Agua fría y caliente · Para botellón · Base con gabinete", icono:"💧", categoria:"refrigeracion" },
-    { proveedor:"demo", id:"lavadora-auto-18", nombre:"Lavadora automática 18 lb", precio:"$480", precioAntes:"", specs:["18 lb","Carga superior","10 programas"], desc:"18 lb · Carga superior · 10 programas", icono:"🧺", categoria:"lavanderia" },
-    { proveedor:"demo", id:"lavadora-auto-22", nombre:"Lavadora automática 22 lb", precio:"$590", precioAntes:"", specs:["22 lb","Carga superior","Lavado rápido"], desc:"22 lb · Carga superior · Lavado rápido", icono:"🧺", categoria:"lavanderia" },
-    { proveedor:"demo", id:"lavadora-semi-16", nombre:"Lavadora semiautomática doble tina 16 lb", precio:"$320", precioAntes:"", specs:["16 lb","Doble tina","Lavado y centrifugado"], desc:"16 lb · Doble tina · Lavado y centrifugado", icono:"🫧", categoria:"lavanderia" },
-    { proveedor:"demo", id:"lavadora-secadora-20", nombre:"Lavadora-secadora automática 20 lb", precio:"$720", precioAntes:"", specs:["20 lb","Lava y seca","Carga frontal"], desc:"20 lb · Lava y seca · Carga frontal", icono:"🧺", categoria:"lavanderia" },
-    { proveedor:"demo", id:"secadora-electrica-16", nombre:"Secadora eléctrica 16 lb", precio:"$410", precioAntes:"", specs:["16 lb","Eléctrica","Sensor de humedad"], desc:"16 lb · Eléctrica · Sensor de humedad", icono:"👕", categoria:"lavanderia" },
-    { proveedor:"demo", id:"lavadora-auto-14", nombre:"Lavadora automática 14 lb", precio:"$390", precioAntes:"", specs:["14 lb","Carga superior","8 programas"], desc:"14 lb · Carga superior · 8 programas", icono:"🧺", categoria:"lavanderia" },
-    { proveedor:"demo", id:"lavadora-frontal-20", nombre:"Lavadora de carga frontal 20 lb", precio:"$680", precioAntes:"", specs:["20 lb","Carga frontal","Inverter"], desc:"20 lb · Carga frontal · Inverter", icono:"🧺", categoria:"lavanderia" },
-    { proveedor:"demo", id:"lavadora-portatil-10", nombre:"Lavadora portátil 10 lb", precio:"$210", precioAntes:"", specs:["10 lb","Portátil","Ideal para apartamentos"], desc:"10 lb · Portátil · Ideal para apartamentos", icono:"🫧", categoria:"lavanderia" },
-    { proveedor:"demo", id:"cocina-gas-4h", nombre:"Cocina de gas 4 hornillas con horno", precio:"$380", precioAntes:"", specs:["4 hornillas","Horno a gas","Encendido eléctrico"], desc:"4 hornillas · Horno a gas · Encendido eléctrico", icono:"🍳", categoria:"cocina" },
-    { proveedor:"demo", id:"cocina-electrica-4h", nombre:"Cocina eléctrica 4 hornillas", precio:"$290", precioAntes:"", specs:["4 hornillas","Horno eléctrico","Vitrocerámica"], desc:"4 hornillas · Horno eléctrico · Vitrocerámica", icono:"🍳", categoria:"cocina" },
-    { proveedor:"demo", id:"microondas-11", nombre:"Horno microondas 1.1 pies", precio:"$110", precioAntes:"", specs:["1.1 pies cúbicos","1000W","10 niveles de potencia"], desc:"1.1 pies cúbicos · 1000W · 10 niveles de potencia", icono:"🍳", categoria:"cocina" },
-    { proveedor:"demo", id:"freidora-aire-55", nombre:"Freidora de aire 5.5 L", precio:"$85", precioAntes:"", specs:["5.5 litros","Digital","Sin aceite"], desc:"5.5 litros · Digital · Sin aceite", icono:"🍟", categoria:"cocina" },
-    { proveedor:"demo", id:"licuadora-2l", nombre:"Licuadora 2 litros", precio:"$45", precioAntes:"", specs:["2 litros","600W","Vaso de vidrio"], desc:"2 litros · 600W · Vaso de vidrio", icono:"🥤", categoria:"cocina" },
-    { proveedor:"demo", id:"olla-arrocera-10", nombre:"Olla arrocera 10 tazas", precio:"$55", precioAntes:"", specs:["10 tazas","Mantiene caliente","Antiadherente"], desc:"10 tazas · Mantiene caliente · Antiadherente", icono:"🍚", categoria:"cocina" },
-    { proveedor:"demo", id:"ventilador-pedestal-18", nombre:"Ventilador de pedestal 18\"", precio:"$48", precioAntes:"", specs:["18 pulgadas","3 velocidades","Oscilante"], desc:"18 pulgadas · 3 velocidades · Oscilante", icono:"🌀", categoria:"cocina" },
-    { proveedor:"demo", id:"split-12000", nombre:"Aire acondicionado split 12000 BTU", precio:"$520", precioAntes:"", specs:["12000 BTU","Inverter","Frío y calor"], desc:"12000 BTU · Inverter · Frío y calor", icono:"❄️", categoria:"cocina" },
-    { proveedor:"demo", id:"sierra-circular-714", nombre:"Sierra circular 7-1/4\"", precio:"$95", precioAntes:"", specs:["7-1/4 pulgadas","1500W","Guía láser"], desc:"7-1/4 pulgadas · 1500W · Guía láser", icono:"🪚", categoria:"herramientas" },
-    { proveedor:"demo", id:"esmeril-45", nombre:"Esmeril angular 4-1/2\"", precio:"$55", precioAntes:"", specs:["4-1/2 pulgadas","720W","Incluye disco"], desc:"4-1/2 pulgadas · 720W · Incluye disco", icono:"⚙️", categoria:"herramientas" },
-    { proveedor:"demo", id:"sierra-caladora", nombre:"Sierra caladora", precio:"$62", precioAntes:"", specs:["650W","Velocidad variable","Base ajustable"], desc:"650W · Velocidad variable · Base ajustable", icono:"🪚", categoria:"herramientas" },
-    { proveedor:"demo", id:"atornillador-20v", nombre:"Atornillador inalámbrico 20V", precio:"$78", precioAntes:"", specs:["20V","2 baterías","Cargador incluido"], desc:"20V · 2 baterías · Cargador incluido", icono:"🔩", categoria:"herramientas" },
-    { proveedor:"demo", id:"compresor-24l", nombre:"Compresor de aire 24 L", precio:"$185", precioAntes:"", specs:["24 litros","2 HP","Con manguera"], desc:"24 litros · 2 HP · Con manguera", icono:"💨", categoria:"herramientas" },
-    { proveedor:"demo", id:"soldadora-200a", nombre:"Soldadora inverter 200A", precio:"$145", precioAntes:"", specs:["200A","Inverter","Electrodo y TIG"], desc:"200A · Inverter · Electrodo y TIG", icono:"⚡", categoria:"herramientas" },
-    { proveedor:"demo", id:"lijadora-orbital", nombre:"Lijadora orbital", precio:"$48", precioAntes:"", specs:["300W","Base velcro","Recolector de polvo"], desc:"300W · Base velcro · Recolector de polvo", icono:"🪵", categoria:"herramientas" },
-    { proveedor:"demo", id:"soplador-inalambrico", nombre:"Soplador y aspiradora inalámbrico", precio:"$58", precioAntes:"", specs:["20V","Sopla y aspira","Batería incluida"], desc:"20V · Sopla y aspira · Batería incluida", icono:"🍃", categoria:"herramientas" },
+    { proveedor:"demo", id:"taladro-percutor-750w", foto:"assets/fotos/taladro-percutor-750w.jpg", nombre:"Taladro percutor 13 mm 750W", precio:"$85", precioAntes:"", specs:["750W","13 mm","Velocidad variable","Incluye maletín"], desc:"750W · 13 mm · Velocidad variable · Incluye maletín", icono:"🔧", categoria:"ferreteria" },
+    { proveedor:"demo", id:"juego-llaves-14", foto:"assets/fotos/juego-llaves-14.jpg", nombre:"Juego de llaves combinadas 14 piezas", precio:"$45", precioAntes:"", specs:["14 piezas","8–19 mm","Acero cromo vanadio"], desc:"14 piezas · 8–19 mm · Acero cromo vanadio", icono:"🔧", categoria:"ferreteria" },
+    { proveedor:"demo", id:"martillo-una-16oz", foto:"assets/fotos/martillo-una-16oz.jpg", nombre:"Martillo de uña 16 oz", precio:"$12", precioAntes:"", specs:["16 oz","Mango de fibra","Cabeza de acero"], desc:"16 oz · Mango de fibra · Cabeza de acero", icono:"🔨", categoria:"ferreteria" },
+    { proveedor:"demo", id:"caja-herramientas-19", foto:"assets/fotos/caja-herramientas-19.jpg", nombre:"Caja de herramientas 19\" con organizador", precio:"$28", precioAntes:"", specs:["19 pulgadas","Organizador superior","Cierre metálico"], desc:"19 pulgadas · Organizador superior · Cierre metálico", icono:"🧰", categoria:"ferreteria" },
+    { proveedor:"demo", id:"cerradura-seguridad", foto:"assets/fotos/cerradura-seguridad.jpg", nombre:"Cerradura de seguridad para puerta", precio:"$18", precioAntes:"", specs:["Doble cilindro","3 llaves","Acabado níquel"], desc:"Doble cilindro · 3 llaves · Acabado níquel", icono:"🔒", categoria:"ferreteria" },
+    { proveedor:"demo", id:"refrigerador-2p-14", foto:"assets/fotos/refrigerador-2p-14.jpg", nombre:"Refrigerador 2 puertas 14 pies", precio:"$650", precioAntes:"", specs:["14 pies cúbicos","2 puertas","Freezer superior"], desc:"14 pies cúbicos · 2 puertas · Freezer superior", icono:"🧊", categoria:"refrigeracion" },
+    { proveedor:"demo", id:"refrigerador-2p-18", foto:"assets/fotos/refrigerador-2p-18.jpg", nombre:"Refrigerador 2 puertas 18 pies frost", precio:"$820", precioAntes:"", specs:["18 pies cúbicos","No frost","Dispensador de agua"], desc:"18 pies cúbicos · No frost · Dispensador de agua", icono:"🧊", categoria:"refrigeracion" },
+    { proveedor:"demo", id:"freezer-horizontal-7", foto:"assets/fotos/freezer-horizontal-7.jpg", nombre:"Freezer horizontal 7 pies", precio:"$480", precioAntes:"", specs:["7 pies cúbicos","Tapa superior","Canasta interior"], desc:"7 pies cúbicos · Tapa superior · Canasta interior", icono:"❄️", categoria:"refrigeracion" },
+    { proveedor:"demo", id:"frigobar-32", foto:"assets/fotos/frigobar-32.jpg", nombre:"Nevera pequeña / frigobar 3.2 pies", precio:"$240", precioAntes:"", specs:["3.2 pies cúbicos","1 puerta","Ideal para cuarto u oficina"], desc:"3.2 pies cúbicos · 1 puerta · Ideal para cuarto u oficina", icono:"🧊", categoria:"refrigeracion" },
+    { proveedor:"demo", id:"refrigerador-1p-10", foto:"assets/fotos/refrigerador-1p-10.jpg", nombre:"Refrigerador 1 puerta 10 pies", precio:"$420", precioAntes:"", specs:["10 pies cúbicos","1 puerta","Bajo consumo"], desc:"10 pies cúbicos · 1 puerta · Bajo consumo", icono:"🧊", categoria:"refrigeracion" },
+    { proveedor:"demo", id:"lavadora-auto-18", foto:"assets/fotos/lavadora-auto-18.jpg", nombre:"Lavadora automática 18 lb", precio:"$480", precioAntes:"", specs:["18 lb","Carga superior","10 programas"], desc:"18 lb · Carga superior · 10 programas", icono:"🧺", categoria:"lavanderia" },
+    { proveedor:"demo", id:"lavadora-auto-22", foto:"assets/fotos/lavadora-auto-22.jpg", nombre:"Lavadora automática 22 lb", precio:"$590", precioAntes:"", specs:["22 lb","Carga superior","Lavado rápido"], desc:"22 lb · Carga superior · Lavado rápido", icono:"🧺", categoria:"lavanderia" },
+    { proveedor:"demo", id:"lavadora-semi-16", foto:"assets/fotos/lavadora-semi-16.jpg", nombre:"Lavadora semiautomática doble tina 16 lb", precio:"$320", precioAntes:"", specs:["16 lb","Doble tina","Lavado y centrifugado"], desc:"16 lb · Doble tina · Lavado y centrifugado", icono:"🫧", categoria:"lavanderia" },
+    { proveedor:"demo", id:"lavadora-secadora-20", foto:"assets/fotos/lavadora-secadora-20.jpg", nombre:"Lavadora-secadora automática 20 lb", precio:"$720", precioAntes:"", specs:["20 lb","Lava y seca","Carga frontal"], desc:"20 lb · Lava y seca · Carga frontal", icono:"🧺", categoria:"lavanderia" },
+    { proveedor:"demo", id:"secadora-electrica-16", foto:"assets/fotos/secadora-electrica-16.jpg", nombre:"Secadora eléctrica 16 lb", precio:"$410", precioAntes:"", specs:["16 lb","Eléctrica","Sensor de humedad"], desc:"16 lb · Eléctrica · Sensor de humedad", icono:"👕", categoria:"lavanderia" },
+    { proveedor:"demo", id:"cocina-gas-4h", foto:"assets/fotos/cocina-gas-4h.jpg", nombre:"Cocina de gas 4 hornillas con horno", precio:"$380", precioAntes:"", specs:["4 hornillas","Horno a gas","Encendido eléctrico"], desc:"4 hornillas · Horno a gas · Encendido eléctrico", icono:"🍳", categoria:"cocina" },
+    { proveedor:"demo", id:"cocina-electrica-4h", foto:"assets/fotos/cocina-electrica-4h.jpg", nombre:"Cocina eléctrica 4 hornillas", precio:"$290", precioAntes:"", specs:["4 hornillas","Horno eléctrico","Vitrocerámica"], desc:"4 hornillas · Horno eléctrico · Vitrocerámica", icono:"🍳", categoria:"cocina" },
+    { proveedor:"demo", id:"microondas-11", foto:"assets/fotos/microondas-11.jpg", nombre:"Horno microondas 1.1 pies", precio:"$110", precioAntes:"", specs:["1.1 pies cúbicos","1000W","10 niveles de potencia"], desc:"1.1 pies cúbicos · 1000W · 10 niveles de potencia", icono:"🍳", categoria:"cocina" },
+    { proveedor:"demo", id:"freidora-aire-55", foto:"assets/fotos/freidora-aire-55.jpg", nombre:"Freidora de aire 5.5 L", precio:"$85", precioAntes:"", specs:["5.5 litros","Digital","Sin aceite"], desc:"5.5 litros · Digital · Sin aceite", icono:"🍟", categoria:"cocina" },
+    { proveedor:"demo", id:"licuadora-2l", foto:"assets/fotos/licuadora-2l.jpg", nombre:"Licuadora 2 litros", precio:"$45", precioAntes:"", specs:["2 litros","600W","Vaso de vidrio"], desc:"2 litros · 600W · Vaso de vidrio", icono:"🥤", categoria:"cocina" },
+    { proveedor:"demo", id:"sierra-circular-714", foto:"assets/fotos/sierra-circular-714.jpg", nombre:"Sierra circular 7-1/4\"", precio:"$95", precioAntes:"", specs:["7-1/4 pulgadas","1500W","Guía láser"], desc:"7-1/4 pulgadas · 1500W · Guía láser", icono:"🪚", categoria:"herramientas" },
+    { proveedor:"demo", id:"esmeril-45", foto:"assets/fotos/esmeril-45.jpg", nombre:"Esmeril angular 4-1/2\"", precio:"$55", precioAntes:"", specs:["4-1/2 pulgadas","720W","Incluye disco"], desc:"4-1/2 pulgadas · 720W · Incluye disco", icono:"⚙️", categoria:"herramientas" },
+    { proveedor:"demo", id:"sierra-caladora", foto:"assets/fotos/sierra-caladora.jpg", nombre:"Sierra caladora", precio:"$62", precioAntes:"", specs:["650W","Velocidad variable","Base ajustable"], desc:"650W · Velocidad variable · Base ajustable", icono:"🪚", categoria:"herramientas" },
+    { proveedor:"demo", id:"atornillador-20v", foto:"assets/fotos/atornillador-20v.jpg", nombre:"Atornillador inalámbrico 20V", precio:"$78", precioAntes:"", specs:["20V","2 baterías","Cargador incluido"], desc:"20V · 2 baterías · Cargador incluido", icono:"🔩", categoria:"herramientas" },
+    { proveedor:"demo", id:"compresor-24l", foto:"assets/fotos/compresor-24l.jpg", nombre:"Compresor de aire 24 L", precio:"$185", precioAntes:"", specs:["24 litros","2 HP","Con manguera"], desc:"24 litros · 2 HP · Con manguera", icono:"💨", categoria:"herramientas" },
+    { proveedor:"demo", id:"sofa-3-plazas", foto:"assets/fotos/sofa-3-plazas.jpg", nombre:"Sofá de 3 plazas", precio:"$420", precioAntes:"", specs:["3 plazas","Tela resistente","Color gris"], desc:"3 plazas · Tela resistente · Color gris", icono:"🛋️", categoria:"muebles" },
+    { proveedor:"demo", id:"comedor-6-sillas", foto:"assets/fotos/comedor-6-sillas.jpg", nombre:"Juego de comedor con 6 sillas", precio:"$380", precioAntes:"", specs:["Mesa + 6 sillas","Madera","Para 6 personas"], desc:"Mesa + 6 sillas · Madera · Para 6 personas", icono:"🪑", categoria:"muebles" },
+    { proveedor:"demo", id:"cama-matrimonial", foto:"assets/fotos/cama-matrimonial.jpg", nombre:"Cama matrimonial con cabecero", precio:"$350", precioAntes:"", specs:["Matrimonial","Con cabecero","Base incluida"], desc:"Matrimonial · Con cabecero · Base incluida", icono:"🛏️", categoria:"muebles" },
+    { proveedor:"demo", id:"armario-3-puertas", foto:"assets/fotos/armario-3-puertas.jpg", nombre:"Armario ropero de 3 puertas", precio:"$290", precioAntes:"", specs:["3 puertas","Con espejo","Amplio interior"], desc:"3 puertas · Con espejo · Amplio interior", icono:"🚪", categoria:"muebles" },
+    { proveedor:"demo", id:"mesa-centro", foto:"assets/fotos/mesa-centro.jpg", nombre:"Mesa de centro para sala", precio:"$95", precioAntes:"", specs:["Para sala","Madera y vidrio","Estilo moderno"], desc:"Para sala · Madera y vidrio · Estilo moderno", icono:"🛋️", categoria:"muebles" },
   ];
 
   // ============================================================
@@ -706,7 +709,8 @@
       refrigeracion: {nombre:'🧊 Refrigeración', desc:'Refrigeradores, freezers y frigobares.'},
       lavanderia: {nombre:'🧺 Lavandería', desc:'Lavadoras, lavadoras-secadoras y secadoras.'},
       cocina: {nombre:'🍳 Cocina y hogar', desc:'Cocinas, hornos, freidoras y climatización para el hogar.'},
-      herramientas: {nombre:'⚡ Herramientas eléctricas', desc:'Sierras, taladros, soldadoras y compresores.'}
+      herramientas: {nombre:'⚡ Herramientas eléctricas', desc:'Sierras, taladros, soldadoras y compresores.'},
+      muebles: {nombre:'🛋️ Muebles', desc:'Sofás, camas, comedores y más para el hogar.'}
     };
     function normalizarTexto(t){ return t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase(); }
     function tipoDeRopa(nombre){
@@ -729,7 +733,8 @@
       refrigeracion: document.getElementById('row-refrigeracion'),
       lavanderia: document.getElementById('row-lavanderia'),
       cocina: document.getElementById('row-cocina'),
-      herramientas: document.getElementById('row-herramientas')
+      herramientas: document.getElementById('row-herramientas'),
+      muebles: document.getElementById('row-muebles')
     };
     var filasRopa = document.getElementById('filas-ropa');
     var filasPorTipo = {};
@@ -785,7 +790,7 @@
       else select.appendChild(opt);
     });
 
-    ['ferreteria','refrigeracion','lavanderia','cocina','herramientas'].forEach(function(cat){
+    ['ferreteria','refrigeracion','lavanderia','cocina','herramientas','muebles'].forEach(function(cat){
       var has = PRODUCTOS.some(function(p){ return p.categoria===cat; });
       var emptyEl = document.querySelector('[data-empty-for="'+cat+'"]');
       if(emptyEl) emptyEl.style.display = has ? 'none' : '';
@@ -1136,11 +1141,12 @@
     <div class="sheet-card">
       <button type="button" class="sheet-close" data-close-sheet aria-label="Cerrar">×</button>
       <h3>Categorías</h3>
-      <a class="sheet-cat" href="?categoria=ferreteria"><span>🔧</span><b>Ferretería</b><span>8 productos</span></a>
-      <a class="sheet-cat" href="?categoria=refrigeracion"><span>🧊</span><b>Refrigeración</b><span>8 productos</span></a>
-      <a class="sheet-cat" href="?categoria=lavanderia"><span>🧺</span><b>Lavandería</b><span>8 productos</span></a>
-      <a class="sheet-cat" href="?categoria=cocina"><span>🍳</span><b>Cocina y hogar</b><span>8 productos</span></a>
-      <a class="sheet-cat" href="?categoria=herramientas"><span>⚡</span><b>Herramientas eléctricas</b><span>8 productos</span></a>
+      <a class="sheet-cat" href="?categoria=ferreteria"><span>🔧</span><b>Ferretería</b><span>5 productos</span></a>
+      <a class="sheet-cat" href="?categoria=refrigeracion"><span>🧊</span><b>Refrigeración</b><span>5 productos</span></a>
+      <a class="sheet-cat" href="?categoria=lavanderia"><span>🧺</span><b>Lavandería</b><span>5 productos</span></a>
+      <a class="sheet-cat" href="?categoria=cocina"><span>🍳</span><b>Cocina y hogar</b><span>5 productos</span></a>
+      <a class="sheet-cat" href="?categoria=herramientas"><span>⚡</span><b>Herramientas eléctricas</b><span>5 productos</span></a>
+      <a class="sheet-cat" href="?categoria=muebles"><span>🛋️</span><b>Muebles</b><span>5 productos</span></a>
     </div>
   </div>
   <div class="sheet" id="searchSheet" role="dialog" aria-label="Buscar producto">
@@ -1177,6 +1183,7 @@
       if(row && row.id==='row-lavanderia') return 'Lavandería';
       if(row && row.id==='row-cocina') return 'Cocina y hogar';
       if(row && row.id==='row-herramientas') return 'Herramientas eléctricas';
+      if(row && row.id==='row-muebles') return 'Muebles';
       if(row && row.id==='grid-vista'){ var t=document.getElementById('titulo-vista'); return t ? t.textContent : ''; }
       return '';
     }
