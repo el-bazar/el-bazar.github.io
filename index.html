@@ -529,14 +529,14 @@
 
         <label>Tipo de entrega *</label>
         <div class="radio-group" role="radiogroup" aria-label="Tipo de entrega">
-          <div class="radio-option">
+          <div class="radio-option" id="opcionMensajeria">
             <input type="radio" name="entrega" id="entregaMensajeria" value="mensajeria" checked />
             <label class="radio-label" for="entregaMensajeria" style="margin:0">
               <strong>🚚 Mensajería</strong>
               <span>Entrega a domicilio</span>
             </label>
           </div>
-          <div class="radio-option">
+          <div class="radio-option" id="opcionRecogida">
             <input type="radio" name="entrega" id="entregaRecogida" value="recogida" />
             <label class="radio-label" for="entregaRecogida" style="margin:0">
               <strong>🏪 Recogida en el local</strong>
@@ -545,6 +545,8 @@
           </div>
         </div>
         <p id="notaYogurDomicilio" class="hint" style="display:none">El yogurt probiótico solo se puede pedir por domicilio: no se recoge en ningún lugar.</p>
+
+        <p class="hint" id="notaEntrega" style="display:none"></p>
 
         <!-- Mensajería -->
         <div id="fieldsMensajeria" class="conditional visible">
@@ -1022,7 +1024,42 @@
   document.querySelectorAll('input[name="entrega"]').forEach(function(r){
     r.addEventListener('change', toggleEntrega);
   });
+  // Cada producto solo muestra la entrega que tiene disponible según lo publicado:
+  // solo recogida -> solo la opción de recogida; transporte/montaje/mensajería
+  // publicado -> solo mensajería; sin dato publicado -> se muestran las dos y se
+  // confirma por WhatsApp.
+  function toggleEntregaProducto(){
+    var found = PRODUCTOS.find(function(p){ return p.id===selectProd.value; });
+    var opMens = document.getElementById('opcionMensajeria');
+    var opRec = document.getElementById('opcionRecogida');
+    var nota = document.getElementById('notaEntrega');
+    if(!found || selectProd.value === '__consultar__' || selectProd.value === ''){
+      if(opMens) opMens.style.display = '';
+      if(opRec) opRec.style.display = '';
+      if(nota) nota.style.display = 'none';
+      return;
+    }
+    var texto = ((found.specs || []).join(' ') + ' ' + (found.desc || ''));
+    if(texto.indexOf('Solo recogida') !== -1){
+      if(opMens) opMens.style.display = 'none';
+      if(opRec) opRec.style.display = '';
+      if(radioRecogida) radioRecogida.checked = true;
+      if(nota){ nota.textContent = 'Este producto solo se recoge en el local, según lo publicado.'; nota.style.display = ''; }
+    } else if(texto.indexOf('Transporte incluido') !== -1 || texto.indexOf('Montaje incluido') !== -1 || texto.indexOf('Mensajería') !== -1){
+      if(opMens) opMens.style.display = '';
+      if(opRec) opRec.style.display = 'none';
+      if(radioMensajeria) radioMensajeria.checked = true;
+      if(nota){ nota.textContent = 'Este producto solo se entrega por mensajería, según lo publicado.'; nota.style.display = ''; }
+    } else {
+      if(opMens) opMens.style.display = '';
+      if(opRec) opRec.style.display = '';
+      if(nota){ nota.textContent = 'La entrega de este producto se confirma por WhatsApp.'; nota.style.display = ''; }
+    }
+    toggleEntrega();
+  }
+  selectProd.addEventListener('change', toggleEntregaProducto);
   toggleEntrega();
+  toggleEntregaProducto();
   toggleManual();
 
   function showError(msg){
@@ -1190,6 +1227,7 @@
     if(typeof toggleManual === 'function') toggleManual();
     if(typeof toggleSabor === 'function') toggleSabor();
     if(typeof toggleTalla === 'function') toggleTalla();
+    if(typeof toggleEntregaProducto === 'function') toggleEntregaProducto();
     var mw = document.getElementById('productoManualWrap');
     if(mw) mw.classList.remove('visible');
     abrirPedido();
