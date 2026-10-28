@@ -1,0 +1,1023 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<meta name="description" content="El Bazar — Tienda en Cuba: tecnología, comida y más. Pide por WhatsApp." />
+<link rel="icon" type="image/png" href="assets/favicon.png" />
+<link rel="apple-touch-icon" href="assets/favicon.png" />
+<title>El Bazar — De todo en un solo lugar</title>
+<style>
+  :root{
+    --bg:#fcfbf8;
+    --bg-soft:#f4f0e6;
+    --surface:#ffffff;
+    --text:#171410;
+    --muted:#6f6450;
+    --border:#e7dfca;
+    --accent:#8a6a12;
+    --accent-2:#6f5508;
+    --accent-fill:#d9b45c;
+    --accent-soft:#f6edd3;
+    --accent-text:#191204;
+    --warning-bg:#fdf6dd;
+    --warning-border:#e3cb85;
+    --warning-text:#6d5200;
+    --radius:16px;
+    --radius-sm:12px;
+    --shadow:0 4px 20px rgba(60,45,5,.08);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0c0b09;
+      --bg-soft:#171512;
+      --surface:#1c1a16;
+      --text:#f4efe3;
+      --muted:#b0a68d;
+      --border:#38332a;
+      --accent:#e0bc63;
+      --accent-2:#f0d488;
+      --accent-fill:#d9b45c;
+      --accent-soft:#2b2413;
+      --accent-text:#171204;
+      --warning-bg:#2c240e;
+      --warning-border:#6b5a1e;
+      --warning-text:#eed488;
+      --shadow:0 4px 20px rgba(0,0,0,.45);
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  img{max-width:100%;display:block}
+  .wrap{max-width:680px;margin:0 auto;padding:0 16px}
+  /* Hero */
+  .hero{padding:20px 0 8px}
+  .brand{display:flex;align-items:center;gap:14px}
+  .brand-logo{width:76px;height:76px;flex:0 0 76px;border-radius:18px;border:1px solid var(--border);box-shadow:var(--shadow);object-fit:cover}
+  .brand-name{display:block;font-size:31px;font-weight:900;letter-spacing:-.02em;line-height:1;color:var(--text)}
+  .brand-name span{color:var(--accent)}
+  .brand-tag{display:block;margin-top:5px;font-size:13.5px;font-weight:600;color:var(--muted)}
+  .hero h1{font-size:38px;line-height:.95;letter-spacing:-.03em;margin:14px 0 10px;font-weight:900}
+  .hero h1 span{color:var(--accent)}
+  .hero p{margin:0;color:var(--muted);font-size:16px;line-height:1.55;max-width:54ch}
+  .hero-img{margin:18px 0 0;border-radius:20px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);aspect-ratio:4/3;background:var(--bg-soft)}
+  .hero-img img{width:100%;height:100%;object-fit:cover}
+  .hero-ctas{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 14px;border-radius:999px;font-weight:700;font-size:15px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:.15s;white-space:nowrap;text-align:center}
+  @media(max-width:420px){.btn{font-size:14px;padding:13px 10px}}
+  .btn-primary{background:var(--accent-fill);color:var(--accent-text);flex:1;min-width:150px}
+  .btn-primary:active{transform:scale(.98)}
+  .btn-secondary{background:var(--surface);color:var(--text);border-color:var(--border);flex:1;min-width:150px}
+  /* Sections */
+  section{padding:22px 0 4px}
+  [id]{scroll-margin-top:72px}
+  .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:12px}
+  .section-head h2{font-size:22px;line-height:1.1;letter-spacing:-.02em;margin:0;font-weight:800}
+  .section-head p{margin:4px 0 0;color:var(--muted);font-size:14px}
+  .badge{font-size:12px;font-weight:700;padding:6px 9px;border-radius:999px;background:var(--warning-bg);border:1px solid var(--warning-border);color:var(--warning-text);white-space:nowrap}
+  /* Catalog */
+  .notice{background:var(--warning-bg);border:1px solid var(--warning-border);color:var(--warning-text);border-radius:var(--radius);padding:14px 16px;font-size:14px;line-height:1.5;margin-bottom:14px}
+  .notice strong{color:inherit}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  @media(max-width:480px){.product-body{padding:8px}.product-name{font-size:12.5px}.product-price{font-size:15px}.product-price .cur{font-size:11px}.price-old{font-size:11.5px}.product-desc{font-size:11.5px}.specs li{font-size:10.5px;padding:3px 5px}.product-btn{font-size:12px;padding:9px 4px}.offer-tag{font-size:9px;padding:3px 6px;top:6px;left:6px}.product-btn-row{flex-direction:column;gap:6px}}
+  .product{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;position:relative}
+  .product-img{aspect-ratio:1/1;background:#ffffff;overflow:hidden;position:relative;border-bottom:1px solid var(--border)}
+  .product-img img{width:100%;height:100%;object-fit:cover}
+  .product-img .product-img-alt{position:absolute;right:8px;bottom:8px;width:31%;height:auto;aspect-ratio:1/1;object-fit:cover;border:2px solid #ffffff;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,.22)}
+  .product-photo{aspect-ratio:1/1;background:linear-gradient(180deg,var(--bg-soft),var(--accent-soft));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;border-bottom:1px solid var(--border);color:var(--muted)}
+  .product-photo .ph-icon{font-size:38px;line-height:1}
+  .product-photo .ph-label{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;opacity:.75}
+  .offer-tag{position:absolute;top:10px;left:10px;z-index:2;background:#dc2626;color:#fff;font-size:11px;font-weight:800;letter-spacing:.04em;padding:5px 8px;border-radius:999px;text-transform:uppercase;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+  .product-body{padding:12px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .product-name{font-weight:700;font-size:15px;line-height:1.3}
+  .product-price-row{display:flex;align-items:baseline;gap:7px;flex-wrap:wrap}
+  .product-price{font-weight:800;font-size:18px;color:var(--accent)}
+  .product-price .cur{font-size:13px;font-weight:700}
+  .price-old{font-size:13.5px;color:var(--muted);text-decoration:line-through;font-weight:600}
+  .product-desc{font-size:12.8px;color:var(--muted);line-height:1.5}
+  .specs{list-style:none;margin:2px 0 4px;padding:0;display:flex;flex-wrap:wrap;gap:5px}
+  .specs li{font-size:11.8px;line-height:1.3;background:var(--bg-soft);border:1px solid var(--border);padding:4px 7px;border-radius:999px;color:var(--text)}
+  .product-btn{margin-top:auto;width:100%;padding:11px;border-radius:999px;border:0;background:var(--accent-fill);color:var(--accent-text);font-weight:700;cursor:pointer;font-size:14px}
+  .product-btn-row{display:flex;gap:8px;margin-top:auto}
+  .product-btn-row .product-btn{margin-top:0;flex:1;min-width:0}
+  .product-btn-view{background:var(--surface);color:var(--text);border:1px solid var(--border)}
+  .product-img,.product-photo{cursor:pointer}
+  /* Vista de producto */
+  .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:100;display:flex;align-items:center;justify-content:center;padding:16px}
+  .modal-backdrop[hidden]{display:none}
+  .modal{background:var(--surface);border:1px solid var(--border);border-radius:20px;width:100%;max-width:440px;max-height:90vh;overflow:auto;box-shadow:0 12px 40px rgba(0,0,0,.3);position:relative}
+  .modal-close{position:absolute;top:10px;right:10px;z-index:2;width:34px;height:34px;border-radius:50%;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:20px;line-height:1;cursor:pointer}
+  .modal-img{background:#fff;border-bottom:1px solid var(--border)}
+  .modal-img img{width:100%;height:auto;display:block}
+  .modal-body{padding:18px;display:flex;flex-direction:column;gap:10px}
+  .modal-name{font-weight:800;font-size:20px;line-height:1.25}
+  .modal-price{font-weight:800;font-size:22px;color:var(--accent)}
+  .modal-old{font-size:15px;color:var(--muted);text-decoration:line-through;font-weight:600;margin-left:8px}
+  .modal-cur{font-size:13px;font-weight:700;color:var(--muted);margin-left:6px}
+  .modal-desc{margin:0;font-size:14.5px;color:var(--muted);line-height:1.55}
+  .count-pill{display:inline-flex;align-items:center;background:var(--accent-soft);color:var(--accent);border:1px solid var(--border);font-size:12px;font-weight:800;padding:3px 8px;border-radius:999px;margin-left:6px;vertical-align:middle;white-space:nowrap}
+  .catalog-note{background:var(--accent-soft);border:1px solid var(--border);color:var(--text);border-radius:var(--radius);padding:13px 15px;font-size:14px;line-height:1.5;margin-bottom:18px}
+  .catalog-note strong{color:var(--accent)}
+  /* Sección por proveedor (subtienda) */
+  .provider-head{display:flex;align-items:center;gap:12px;background:var(--accent-soft);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:20px}
+  .provider-icon{font-size:26px;line-height:1}
+  .provider-head h3{margin:0;font-size:19px;letter-spacing:-.01em}
+  .provider-head p{margin:2px 0 0;font-size:13px;color:var(--muted)}
+  .empty{border:1.5px dashed var(--border);border-radius:var(--radius);padding:22px 16px;text-align:center;background:var(--bg-soft)}
+  .empty-icon{font-size:28px;margin-bottom:6px}
+  .empty strong{display:block;font-size:15px;margin-bottom:4px}
+  .empty p{margin:0;font-size:13.5px;color:var(--muted);line-height:1.5}
+  .skeleton{margin-top:12px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;opacity:.55}
+  .skeleton-card{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:var(--surface)}
+  .skeleton-img{aspect-ratio:4/3;background:var(--bg-soft);display:flex;align-items:center;justify-content:center;font-size:22px}
+  .skeleton-body{padding:10px}
+  .skeleton-line{height:10px;border-radius:999px;background:var(--border);margin-bottom:8px}
+  .skeleton-line.short{width:55%}
+  /* Steps */
+  .steps{display:grid;gap:10px}
+  .step{display:flex;gap:12px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px}
+  .step-num{width:32px;height:32px;flex:0 0 32px;border-radius:50%;background:var(--accent-fill);color:var(--accent-text);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px}
+  .step strong{display:block;font-size:15px}
+  .step p{margin:2px 0 0;font-size:14px;color:var(--muted)}
+  /* Info cards */
+  .info-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
+  .info-card h3{margin:0 0 10px;font-size:16px}
+  .pay-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+  .pay-list li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;line-height:1.45}
+  .dot{width:22px;height:22px;flex:0 0 22px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;margin-top:1px}
+  .cols{display:grid;gap:12px}
+  @media(min-width:560px){.cols{grid-template-columns:1fr 1fr}}
+  /* Form */
+  .form-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:18px;box-shadow:var(--shadow)}
+  .form-card h2{margin:0 0 4px;font-size:22px;letter-spacing:-.02em}
+  .form-card>p{margin:0 0 16px;color:var(--muted);font-size:14px}
+  label{font-size:13.5px;font-weight:700;display:block;margin:14px 0 6px}
+  label:first-of-type{margin-top:0}
+  input,select,textarea{width:100%;padding:13px 14px;border-radius:12px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:16px;font-family:inherit;outline:none}
+  input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+  textarea{resize:vertical;min-height:72px}
+  .hint{font-size:12.5px;color:var(--muted);margin-top:5px;line-height:1.4}
+  .radio-group{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+  .cat-nav{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;position:sticky;top:0;z-index:60;background:var(--bg);margin:6px -16px 2px;padding:10px 16px;border-bottom:1px solid var(--border)}
+  .cat-nav::-webkit-scrollbar{display:none}
+  .cat-nav a{flex:0 0 auto;text-decoration:none;font-weight:700;font-size:15px;color:var(--text);background:var(--surface);border:1.5px solid var(--border);border-radius:999px;padding:10px 18px;box-shadow:var(--shadow)}
+  .cat-nav a:active{border-color:var(--accent);color:var(--accent)}
+  /* Filas horizontales del inicio */
+  .row{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 14px;scrollbar-width:none}
+  .row::-webkit-scrollbar{display:none}
+  .row .product{flex:0 0 170px;scroll-snap-align:start}
+  @media(min-width:560px){.row .product{flex-basis:185px}}
+  .row-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:0 0 10px}
+  .row-head h3{margin:0;font-size:18px}
+  .ver-todo{flex:0 0 auto;font-size:14px;font-weight:700;color:var(--accent);text-decoration:none;white-space:nowrap}
+  .ver-todo:active{text-decoration:underline}
+  #vista-inicio[hidden],#vista-categoria[hidden],#barra-tipos[hidden],#cabecera-catalogo[hidden]{display:none}
+  .tipo-bar{display:flex;gap:10px;overflow-x:auto;padding:4px 2px 12px;scrollbar-width:none}
+  .tipo-bar::-webkit-scrollbar{display:none}
+  .tipo-bar a{flex:0 0 auto;text-decoration:none;font-weight:700;font-size:14px;color:var(--text);background:var(--surface);border:1.5px solid var(--border);border-radius:999px;padding:8px 15px}
+  .tipo-bar a.activo{border-color:var(--accent);color:var(--accent)}
+  .volver{display:inline-block;margin-bottom:12px;font-weight:700;color:var(--accent);text-decoration:none}
+  .radio-option{position:relative}
+  .radio-option input{position:absolute;opacity:0;pointer-events:none}
+  .radio-label{display:flex;flex-direction:column;gap:2px;padding:13px;border:1px solid var(--border);border-radius:12px;cursor:pointer;background:var(--bg)}
+  .radio-label strong{font-size:14.5px}
+  .radio-label span{font-size:12.5px;color:var(--muted);line-height:1.35;font-weight:400}
+  .radio-option input:checked + .radio-label{border-color:var(--accent);background:var(--accent-soft);box-shadow:0 0 0 1px var(--accent)}
+  .conditional{display:none;margin-top:4px}
+  .conditional.visible{display:block}
+  .submit-btn{width:100%;margin-top:18px;padding:15px;border:0;border-radius:999px;background:#25D366;color:#0b2e18;font-weight:800;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
+  .submit-btn:active{transform:scale(.99)}
+  .form-note{font-size:12.5px;color:var(--muted);text-align:center;margin-top:10px;line-height:1.45}
+  .error{display:none;background:#fef2f2;border:1px solid #fecaca;color:#991b1b;border-radius:12px;padding:11px 13px;font-size:13.5px;margin-top:12px;line-height:1.45}
+  @media(prefers-color-scheme:dark){.error{background:#2a1212;border-color:#5c2323;color:#fca5a5}}
+  .error.show{display:block}
+  footer{padding:28px 0 36px;text-align:center;color:var(--muted);font-size:13px;line-height:1.6}
+  footer strong{color:var(--text)}
+  .footer-links{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:10px}
+  .footer-links a{font-size:13px;font-weight:600;text-decoration:none;border:1px solid var(--border);padding:7px 12px;border-radius:999px;background:var(--surface)}
+
+  /* Animaciones e interactividad (demo, sin cambiar fotos) */
+  html{scroll-behavior:smooth}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .hero{animation:fadeUp .45s ease both}
+  .hero-img img{transition:transform .4s ease}
+  .hero-img:hover img{transform:scale(1.03)}
+  .btn,.product-btn{transition:transform .15s ease,box-shadow .15s ease,background .15s ease,border-color .15s ease}
+  .btn:hover,.product-btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,0,0,.18)}
+  .btn:active,.product-btn:active{transform:scale(.97);box-shadow:none}
+  .product{transition:transform .18s ease,box-shadow .18s ease}
+  .product:hover{transform:translateY(-4px);box-shadow:0 12px 24px rgba(0,0,0,.18)}
+  .product-photo .ph-icon{transition:transform .2s ease;display:inline-block}
+  .product:hover .ph-icon{transform:scale(1.2) rotate(-4deg)}
+  .cat-nav a{transition:transform .15s ease,background .15s ease,border-color .15s ease}
+  .cat-nav a:hover{transform:translateY(-1px);background:var(--accent-soft);border-color:var(--accent)}
+  .ver-todo{transition:transform .15s ease}
+  .ver-todo:hover{transform:translateX(3px)}
+  .row{scroll-behavior:smooth}
+  .wa-float{position:fixed;right:16px;bottom:16px;z-index:90;width:56px;height:56px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;font-size:26px;text-decoration:none;box-shadow:0 8px 20px rgba(0,0,0,.3);transition:transform .15s ease}
+  .wa-float:hover{transform:scale(1.08)}
+  @keyframes waPulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.45)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+  .wa-float{animation:waPulse 2.4s infinite}
+  .top-float{position:fixed;right:16px;bottom:84px;z-index:90;width:44px;height:44px;border-radius:50%;background:var(--surface);color:var(--text);border:1px solid var(--border);display:none;align-items:center;justify-content:center;font-size:18px;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.2)}
+  .top-float.show{display:flex}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero{animation:none}.wa-float{animation:none}*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div style="background:#fff7d6;border:1px solid #e5c15c;border-radius:12px;padding:12px 14px;margin:12px 0 4px;text-align:center;font-size:14px;line-height:1.5"><strong>Catálogo de muestra</strong> — Productos y precios de ejemplo para mostrar cómo quedaría la tienda. La disponibilidad real se confirma por WhatsApp.</div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="brand">
+      <img class="brand-logo" src="assets/logo-el-bazar.png" alt="Logo de El Bazar: una B dorada formada por una bolsa de compras sobre fondo negro" />
+      <div>
+        <span class="brand-name">El <span>Bazar</span></span>
+        <span class="brand-tag">De todo en un solo lugar · Ventas en Cuba</span>
+      </div>
+    </div>
+    <h1>Todo lo que buscas, <span>sin salir de casa</span></h1>
+    <p><strong>Ferretería</strong>, <strong>electrodomésticos</strong> y mucho más para el hogar. Elige lo que necesites, llena el formulario y tu pedido llega directo a WhatsApp.</p>
+
+    <div class="hero-img">
+      <img src="assets/hero-productos.webp" alt="De todo un poco en El Bazar: ferretería, electrodomésticos y hogar" loading="eager" />
+    </div>
+
+    <div class="hero-ctas">
+      <a href="#catalogo" class="btn btn-primary">Ver catálogo</a>
+      <a href="#pedido" class="btn btn-secondary">Hacer un pedido →</a>
+    </div>
+
+
+  </header>
+
+  <nav class="cat-nav" aria-label="Categorías de El Bazar">
+    <a href="?categoria=ferreteria">🔧 Ferretería</a>
+    <a href="?categoria=refrigeracion">🧊 Refrigeración</a>
+    <a href="?categoria=lavanderia">🧺 Lavandería</a>
+    <a href="?categoria=cocina">🍳 Cocina y hogar</a>
+    <a href="?categoria=herramientas">⚡ Herramientas eléctricas</a>
+    <a href="#pedido">📝 Hacer un pedido</a>
+  </nav>
+
+  <!-- CÓMO PEDIR -->
+  <section aria-labelledby="como-title">
+    <div class="section-head">
+      <div>
+        <h2 id="como-title">¿Cómo pedir?</h2>
+        <p>En menos de un minuto</p>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div><strong>Elige el producto</strong><p>Revisa el catálogo o escribe el que buscas en el formulario.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div><strong>Llena tus datos</strong><p>Selecciona mensajería o recogida y completa la información.</p></div></div>
+      <div class="step"><div class="step-num">3</div><div><strong>Envía por WhatsApp</strong><p>Se abrirá WhatsApp con tu pedido listo. Solo dale enviar.</p></div></div>
+    </div>
+  </section>
+
+  <!-- CATÁLOGO -->
+  <section id="catalogo" aria-labelledby="catalogo-title">
+    <div class="section-head" id="cabecera-catalogo">
+      <div>
+        <h2 id="catalogo-title">Catálogo</h2>
+        <p>40 productos · Precios en USD (de muestra)</p>
+      </div>
+      <span class="badge" style="background:var(--accent-soft);border-color:var(--border);color:var(--accent)">Precios en USD</span>
+    </div>
+
+    <div id="vista-inicio">
+    <div class="catalog-note" role="status">
+      <strong>Catálogo de muestra:</strong> estos productos y precios son de ejemplo, para mostrar cómo se vería la tienda con ferretería y electrodomésticos. Toca <strong>Comprar</strong> en cualquier producto y se abrirá el formulario con ese producto ya seleccionado. Confirmamos disponibilidad por WhatsApp.
+    </div>
+
+        <div style="margin-bottom:26px">
+      <div class="row-head">
+        <h3>🔧 Ferretería <span class="count-pill">8 productos</span></h3>
+        <a class="ver-todo" href="?categoria=ferreteria">Ver todo →</a>
+      </div>
+      <p style="margin:0 0 12px;color:var(--muted);font-size:14px">Herramientas manuales, pintura, cerraduras y más para la casa y el taller.</p>
+      <div class="row" id="row-ferreteria"></div>
+      <div class="empty" data-empty-for="ferreteria" style="display:none">
+        <div class="empty-icon">🔧</div>
+        <strong>Sin productos por ahora</strong>
+        <p>Pide lo que buscas en el formulario de abajo.</p>
+      </div>
+    </div>
+
+    <div style="margin-bottom:26px">
+      <div class="row-head">
+        <h3>🧊 Refrigeración <span class="count-pill">8 productos</span></h3>
+        <a class="ver-todo" href="?categoria=refrigeracion">Ver todo →</a>
+      </div>
+      <p style="margin:0 0 12px;color:var(--muted);font-size:14px">Refrigeradores, freezers y frigobares.</p>
+      <div class="row" id="row-refrigeracion"></div>
+      <div class="empty" data-empty-for="refrigeracion" style="display:none">
+        <div class="empty-icon">🧊</div>
+        <strong>Sin productos por ahora</strong>
+        <p>Pregunta por el equipo que necesitas en el formulario.</p>
+      </div>
+    </div>
+
+    <div style="margin-bottom:26px">
+      <div class="row-head">
+        <h3>🧺 Lavandería <span class="count-pill">8 productos</span></h3>
+        <a class="ver-todo" href="?categoria=lavanderia">Ver todo →</a>
+      </div>
+      <p style="margin:0 0 12px;color:var(--muted);font-size:14px">Lavadoras, lavadoras-secadoras y secadoras.</p>
+      <div class="row" id="row-lavanderia"></div>
+      <div class="empty" data-empty-for="lavanderia" style="display:none">
+        <div class="empty-icon">🧺</div>
+        <strong>Sin productos por ahora</strong>
+        <p>Consulta disponibilidad en el formulario de pedido.</p>
+      </div>
+    </div>
+
+    <div style="margin-bottom:26px">
+      <div class="row-head">
+        <h3>🍳 Cocina y hogar <span class="count-pill">8 productos</span></h3>
+        <a class="ver-todo" href="?categoria=cocina">Ver todo →</a>
+      </div>
+      <p style="margin:0 0 12px;color:var(--muted);font-size:14px">Cocinas, hornos, freidoras y climatización para el hogar.</p>
+      <div class="row" id="row-cocina"></div>
+      <div class="empty" data-empty-for="cocina" style="display:none">
+        <div class="empty-icon">🍳</div>
+        <strong>Sin productos por ahora</strong>
+        <p>Consulta disponibilidad en el formulario de pedido.</p>
+      </div>
+    </div>
+
+    <div style="margin-bottom:26px">
+      <div class="row-head">
+        <h3>⚡ Herramientas eléctricas <span class="count-pill">8 productos</span></h3>
+        <a class="ver-todo" href="?categoria=herramientas">Ver todo →</a>
+      </div>
+      <p style="margin:0 0 12px;color:var(--muted);font-size:14px">Sierras, taladros, soldadoras y compresores.</p>
+      <div class="row" id="row-herramientas"></div>
+      <div class="empty" data-empty-for="herramientas" style="display:none">
+        <div class="empty-icon">⚡</div>
+        <strong>Sin productos por ahora</strong>
+        <p>Consulta disponibilidad en el formulario de pedido.</p>
+      </div>
+    </div>
+    </div>
+
+<div id="vista-categoria" hidden>
+      <a class="volver" href="index.html">← Inicio</a>
+      <div class="section-head">
+        <div>
+          <h2 id="titulo-vista"></h2>
+          <p id="subtitulo-vista"></p>
+        </div>
+      </div>
+      <nav class="tipo-bar" id="barra-tipos" hidden aria-label="Tipos de ropa"></nav>
+      <div class="grid" id="grid-vista"></div>
+      <div class="empty" id="vista-vacia" style="display:none">
+        <div class="empty-icon">🔍</div>
+        <strong>Sin productos por aquí</strong>
+        <p>Pregunta por lo que buscas en el formulario de pedido.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGO Y GARANTÍA -->
+  <section aria-labelledby="pago-title">
+    <div class="section-head">
+      <div><h2 id="pago-title">Pago y garantía</h2><p>Todo claro antes de pedir</p></div>
+    </div>
+    <div class="cols">
+      <div class="info-card">
+        <h3>💳 Métodos de pago aceptados</h3>
+        <ul class="pay-list">
+          <li><span class="dot">✓</span><span><strong>CUP</strong> — al cambio del día</span></li>
+          <li><span class="dot">✓</span><span><strong>USD</strong> — dólares americanos</span></li>
+          <li><span class="dot">✓</span><span><strong>Euros</strong></span></li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h3>🛡️ Garantía y calidad</h3>
+        <ul class="pay-list">
+          <li><span class="dot">✓</span><span><strong>Equipos nuevos y sellados</strong> en su caja original</span></li>
+          <li><span class="dot">✓</span><span><strong>15 días de garantía</strong> en los equipos que vendemos</span></li>
+          <li><span class="dot">✓</span><span>Confirmamos <strong>disponibilidad y precio final</strong> por WhatsApp antes de cerrar tu pedido</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULARIO DE PEDIDO -->
+  <section id="pedido" aria-labelledby="pedido-title">
+    <div class="form-card">
+      <h2 id="pedido-title">Haz tu pedido</h2>
+      <p>Completa los datos y se abrirá WhatsApp con tu pedido listo para enviar al <strong>+53 51948053</strong>.</p>
+
+      <form id="orderForm" novalidate>
+        <label for="productoSelect">¿Qué quieres pedir? *</label>
+        <select id="productoSelect" required>
+          <option value="">— Selecciona una opción —</option>
+          <option value="__consultar__">Consultar disponibilidad de un producto</option>
+        </select>
+        <div id="productoManualWrap" class="conditional">
+          <label for="productoManual">Escribe el producto que buscas *</label>
+          <input type="text" id="productoManual" placeholder="Ej: refrigerador, lavadora, taladro…" autocomplete="off" />
+        </div>
+        <p class="hint">También puedes elegir “Consultar disponibilidad” y escribir libremente otro producto que busques.</p>
+
+        <label>Tipo de entrega *</label>
+        <div class="radio-group" role="radiogroup" aria-label="Tipo de entrega">
+          <div class="radio-option">
+            <input type="radio" name="entrega" id="entregaMensajeria" value="mensajeria" checked />
+            <label class="radio-label" for="entregaMensajeria" style="margin:0">
+              <strong>🚚 Mensajería</strong>
+              <span>Entrega a domicilio</span>
+            </label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" name="entrega" id="entregaRecogida" value="recogida" />
+            <label class="radio-label" for="entregaRecogida" style="margin:0">
+              <strong>🏪 Recogida en el local</strong>
+              <span>Pasas a recogerlo tú</span>
+            </label>
+          </div>
+        </div>
+        <p id="notaYogurDomicilio" class="hint" style="display:none">El yogurt probiótico solo se puede pedir por domicilio: no se recoge en ningún lugar.</p>
+
+        <!-- Mensajería -->
+        <div id="fieldsMensajeria" class="conditional visible">
+          <label for="nombreComprador">Nombre del comprador *</label>
+          <input type="text" id="nombreComprador" placeholder="Tu nombre completo" autocomplete="name" />
+
+          <label for="telefono">Número de teléfono *</label>
+          <input type="tel" id="telefono" placeholder="Ej: 5xxxxxxx" autocomplete="tel" inputmode="tel" />
+
+          <label for="direccion">Dirección de entrega *</label>
+          <textarea id="direccion" placeholder="Calle, número, entrecalles, reparto, municipio y provincia. Agrega una referencia si ayuda al mensajero."></textarea>
+        </div>
+
+        <!-- Recogida -->
+        <div id="fieldsRecogida" class="conditional">
+          <label for="nombreRecoge">Nombre de la persona que recoge *</label>
+          <input type="text" id="nombreRecoge" placeholder="Nombre completo de quien recoge" autocomplete="name" />
+          <p class="hint">Ese es el único dato que necesitamos para la recogida en el local.</p>
+        </div>
+
+        <label for="metodoPago">Método de pago *</label>
+        <select id="metodoPago" required>
+          <option value="">— Selecciona cómo vas a pagar —</option>
+          <option value="CUP al cambio del día">CUP — al cambio del día</option>
+          <option value="USD">USD — dólares americanos</option>
+          <option value="Euros">Euros</option>
+        </select>
+        <p class="hint">Elige con qué vas a pagar; ese método aparecerá en el mensaje de tu pedido.</p>
+
+        <label for="notas">Notas (opcional)</label>
+        <div id="saborYogurWrap" style="display:none;margin-top:10px">
+          <label for="saborYogur">Sabor del yogurt
+            <select id="saborYogur">
+              <option value="">— Elige el sabor —</option>
+              <option>Maracuyá</option>
+              <option>Plátano</option>
+              <option>Fresa</option>
+              <option>Naranja Piña</option>
+              <option>Tutti Frutti</option>
+            </select>
+          </label>
+        </div>
+        <div id="azucarYogurWrap" style="display:none;margin-top:10px">
+          <label for="azucarYogur">Azúcar del yogurt
+            <select id="azucarYogur">
+              <option value="">— Elige —</option>
+              <option>Con azúcar</option>
+              <option>Sin azúcar</option>
+            </select>
+          </label>
+        </div>
+        <div id="tallaRopaWrap" style="display:none;margin-top:10px">
+          <label for="tallaRopa">Talla
+            <select id="tallaRopa">
+              <option value="">— Elige tu talla —</option>
+            </select>
+          </label>
+        </div>
+
+        <input type="text" id="notas" placeholder="Color, capacidad, horario preferido, etc." autocomplete="off" />
+
+        <div class="error" id="formError" role="alert"></div>
+
+        <button type="submit" class="submit-btn">
+          <span>💬</span> Enviar pedido por WhatsApp
+        </button>
+        <p class="form-note">Los datos que escribes aquí solo se usan para armar el mensaje de WhatsApp que se envía al +53 51948053; esta página no guarda ni comparte tu información.</p>
+        <p class="form-note">Al enviar se abrirá WhatsApp con el mensaje ya escrito al <strong>+53 51948053</strong>. Solo tienes que darle <strong>Enviar</strong> en WhatsApp.</p>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <strong>El Bazar</strong><br>
+    Ferretería · Refrigeración · Lavandería · Cocina y hogar · Herramientas eléctricas<br>
+    Equipos nuevos y sellados · 15 días de garantía en los equipos que vendemos
+    <div class="footer-links">
+      <a href="#catalogo">Catálogo</a>
+      <a href="#pedido">Hacer pedido</a>
+      <a href="https://wa.me/51948053" target="_blank" rel="noopener">WhatsApp: +53 51948053</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // ============================================================
+  // CONFIGURACIÓN — Editar aquí cuando lleguen las ofertas reales
+  // ============================================================
+  // Número de WhatsApp del dueño (Dariel) — destino de los pedidos.
+  // Formato internacional sin + ni espacios: 53 (Cuba) + 51948053
+  var WHATSAPP_DARIEL = "51948053";
+
+  // ============================================================
+  // PROVEEDORES (subtiendas de El Bazar)
+  // Cada producto lleva "proveedor" con el id de su proveedor.
+  // Para agregar otro proveedor: añádelo aquí, crea su sección
+  // en el HTML del catálogo y pon su id en sus productos.
+  // ============================================================
+  var PROVEEDORES = [
+    { id:"demo", nombre:"El Bazar" }
+  ];
+  function nombreProveedor(id){
+    var prov = PROVEEDORES.find(function(x){ return x.id===id; });
+    if(prov) return prov.nombre;
+    return id ? id : 'El Bazar';
+  }
+  // Nombre del proveedor de un producto del catálogo (por su id); '' si no aplica.
+  function nombreProveedorDeProducto(pid){
+    var prod = PRODUCTOS.find(function(x){ return x.id===pid; });
+    if(!prod) return '';
+    return nombreProveedor(prod.proveedor || 'rec');
+  }
+
+  // Catálogo — precios en USD tal como aparecen en las ofertas.
+  // proveedor: id del proveedor dueño del producto (ver PROVEEDORES).
+  // categoria: "ferreteria" | "refrigeracion" | "lavanderia" | "cocina" | "herramientas"
+  // foto: flyer oficial del producto en assets/ (producto-01.jpg … producto-29.jpg).
+  // foto2: flyer de la otra variante del mismo producto (miniatura en la esquina).
+  var PRODUCTOS = [
+    { proveedor:"demo", id:"taladro-percutor-750w", nombre:"Taladro percutor 13 mm 750W", precio:"$85", precioAntes:"", specs:["750W","13 mm","Velocidad variable","Incluye maletín"], desc:"750W · 13 mm · Velocidad variable · Incluye maletín", icono:"🔧", categoria:"ferreteria" },
+    { proveedor:"demo", id:"juego-llaves-14", nombre:"Juego de llaves combinadas 14 piezas", precio:"$45", precioAntes:"", specs:["14 piezas","8–19 mm","Acero cromo vanadio"], desc:"14 piezas · 8–19 mm · Acero cromo vanadio", icono:"🔧", categoria:"ferreteria" },
+    { proveedor:"demo", id:"martillo-una-16oz", nombre:"Martillo de uña 16 oz", precio:"$12", precioAntes:"", specs:["16 oz","Mango de fibra","Cabeza de acero"], desc:"16 oz · Mango de fibra · Cabeza de acero", icono:"🔨", categoria:"ferreteria" },
+    { proveedor:"demo", id:"caja-herramientas-19", nombre:"Caja de herramientas 19\" con organizador", precio:"$28", precioAntes:"", specs:["19 pulgadas","Organizador superior","Cierre metálico"], desc:"19 pulgadas · Organizador superior · Cierre metálico", icono:"🧰", categoria:"ferreteria" },
+    { proveedor:"demo", id:"cerradura-seguridad", nombre:"Cerradura de seguridad para puerta", precio:"$18", precioAntes:"", specs:["Doble cilindro","3 llaves","Acabado níquel"], desc:"Doble cilindro · 3 llaves · Acabado níquel", icono:"🔒", categoria:"ferreteria" },
+    { proveedor:"demo", id:"pintura-vinilica-5gal", nombre:"Pintura vinílica blanca 5 galones", precio:"$42", precioAntes:"", specs:["5 galones","Interior y exterior","Acabado mate"], desc:"5 galones · Interior y exterior · Acabado mate", icono:"🎨", categoria:"ferreteria" },
+    { proveedor:"demo", id:"juego-brocas-29", nombre:"Juego de brocas 29 piezas", precio:"$22", precioAntes:"", specs:["29 piezas","Metal y madera","Estuche organizador"], desc:"29 piezas · Metal y madera · Estuche organizador", icono:"🔩", categoria:"ferreteria" },
+    { proveedor:"demo", id:"escalera-aluminio-6", nombre:"Escalera de aluminio 6 peldaños", precio:"$65", precioAntes:"", specs:["6 peldaños","Aluminio","Plegable"], desc:"6 peldaños · Aluminio · Plegable", icono:"🪜", categoria:"ferreteria" },
+    { proveedor:"demo", id:"refrigerador-2p-14", nombre:"Refrigerador 2 puertas 14 pies", precio:"$650", precioAntes:"", specs:["14 pies cúbicos","2 puertas","Freezer superior"], desc:"14 pies cúbicos · 2 puertas · Freezer superior", icono:"🧊", categoria:"refrigeracion" },
+    { proveedor:"demo", id:"refrigerador-2p-18", nombre:"Refrigerador 2 puertas 18 pies frost", precio:"$820", precioAntes:"", specs:["18 pies cúbicos","No frost","Dispensador de agua"], desc:"18 pies cúbicos · No frost · Dispensador de agua", icono:"🧊", categoria:"refrigeracion" },
+    { proveedor:"demo", id:"freezer-horizontal-7", nombre:"Freezer horizontal 7 pies", precio:"$480", precioAntes:"", specs:["7 pies cúbicos","Tapa superior","Canasta interior"], desc:"7 pies cúbicos · Tapa superior · Canasta interior", icono:"❄️", categoria:"refrigeracion" },
+    { proveedor:"demo", id:"frigobar-32", nombre:"Nevera pequeña / frigobar 3.2 pies", precio:"$240", precioAntes:"", specs:["3.2 pies cúbicos","1 puerta","Ideal para cuarto u oficina"], desc:"3.2 pies cúbicos · 1 puerta · Ideal para cuarto u oficina", icono:"🧊", categoria:"refrigeracion" },
+    { proveedor:"demo", id:"refrigerador-1p-10", nombre:"Refrigerador 1 puerta 10 pies", precio:"$420", precioAntes:"", specs:["10 pies cúbicos","1 puerta","Bajo consumo"], desc:"10 pies cúbicos · 1 puerta · Bajo consumo", icono:"🧊", categoria:"refrigeracion" },
+    { proveedor:"demo", id:"freezer-vertical-5", nombre:"Freezer vertical 5 pies", precio:"$550", precioAntes:"", specs:["5 pies cúbicos","Puerta vertical","Repisas ajustables"], desc:"5 pies cúbicos · Puerta vertical · Repisas ajustables", icono:"❄️", categoria:"refrigeracion" },
+    { proveedor:"demo", id:"refrigerador-inverter-16", nombre:"Refrigerador inverter 16 pies", precio:"$890", precioAntes:"", specs:["16 pies cúbicos","Compresor inverter","No frost"], desc:"16 pies cúbicos · Compresor inverter · No frost", icono:"🧊", categoria:"refrigeracion" },
+    { proveedor:"demo", id:"dispensador-agua", nombre:"Dispensador / enfriador de agua", precio:"$95", precioAntes:"", specs:["Agua fría y caliente","Para botellón","Base con gabinete"], desc:"Agua fría y caliente · Para botellón · Base con gabinete", icono:"💧", categoria:"refrigeracion" },
+    { proveedor:"demo", id:"lavadora-auto-18", nombre:"Lavadora automática 18 lb", precio:"$480", precioAntes:"", specs:["18 lb","Carga superior","10 programas"], desc:"18 lb · Carga superior · 10 programas", icono:"🧺", categoria:"lavanderia" },
+    { proveedor:"demo", id:"lavadora-auto-22", nombre:"Lavadora automática 22 lb", precio:"$590", precioAntes:"", specs:["22 lb","Carga superior","Lavado rápido"], desc:"22 lb · Carga superior · Lavado rápido", icono:"🧺", categoria:"lavanderia" },
+    { proveedor:"demo", id:"lavadora-semi-16", nombre:"Lavadora semiautomática doble tina 16 lb", precio:"$320", precioAntes:"", specs:["16 lb","Doble tina","Lavado y centrifugado"], desc:"16 lb · Doble tina · Lavado y centrifugado", icono:"🫧", categoria:"lavanderia" },
+    { proveedor:"demo", id:"lavadora-secadora-20", nombre:"Lavadora-secadora automática 20 lb", precio:"$720", precioAntes:"", specs:["20 lb","Lava y seca","Carga frontal"], desc:"20 lb · Lava y seca · Carga frontal", icono:"🧺", categoria:"lavanderia" },
+    { proveedor:"demo", id:"secadora-electrica-16", nombre:"Secadora eléctrica 16 lb", precio:"$410", precioAntes:"", specs:["16 lb","Eléctrica","Sensor de humedad"], desc:"16 lb · Eléctrica · Sensor de humedad", icono:"👕", categoria:"lavanderia" },
+    { proveedor:"demo", id:"lavadora-auto-14", nombre:"Lavadora automática 14 lb", precio:"$390", precioAntes:"", specs:["14 lb","Carga superior","8 programas"], desc:"14 lb · Carga superior · 8 programas", icono:"🧺", categoria:"lavanderia" },
+    { proveedor:"demo", id:"lavadora-frontal-20", nombre:"Lavadora de carga frontal 20 lb", precio:"$680", precioAntes:"", specs:["20 lb","Carga frontal","Inverter"], desc:"20 lb · Carga frontal · Inverter", icono:"🧺", categoria:"lavanderia" },
+    { proveedor:"demo", id:"lavadora-portatil-10", nombre:"Lavadora portátil 10 lb", precio:"$210", precioAntes:"", specs:["10 lb","Portátil","Ideal para apartamentos"], desc:"10 lb · Portátil · Ideal para apartamentos", icono:"🫧", categoria:"lavanderia" },
+    { proveedor:"demo", id:"cocina-gas-4h", nombre:"Cocina de gas 4 hornillas con horno", precio:"$380", precioAntes:"", specs:["4 hornillas","Horno a gas","Encendido eléctrico"], desc:"4 hornillas · Horno a gas · Encendido eléctrico", icono:"🍳", categoria:"cocina" },
+    { proveedor:"demo", id:"cocina-electrica-4h", nombre:"Cocina eléctrica 4 hornillas", precio:"$290", precioAntes:"", specs:["4 hornillas","Horno eléctrico","Vitrocerámica"], desc:"4 hornillas · Horno eléctrico · Vitrocerámica", icono:"🍳", categoria:"cocina" },
+    { proveedor:"demo", id:"microondas-11", nombre:"Horno microondas 1.1 pies", precio:"$110", precioAntes:"", specs:["1.1 pies cúbicos","1000W","10 niveles de potencia"], desc:"1.1 pies cúbicos · 1000W · 10 niveles de potencia", icono:"🍳", categoria:"cocina" },
+    { proveedor:"demo", id:"freidora-aire-55", nombre:"Freidora de aire 5.5 L", precio:"$85", precioAntes:"", specs:["5.5 litros","Digital","Sin aceite"], desc:"5.5 litros · Digital · Sin aceite", icono:"🍟", categoria:"cocina" },
+    { proveedor:"demo", id:"licuadora-2l", nombre:"Licuadora 2 litros", precio:"$45", precioAntes:"", specs:["2 litros","600W","Vaso de vidrio"], desc:"2 litros · 600W · Vaso de vidrio", icono:"🥤", categoria:"cocina" },
+    { proveedor:"demo", id:"olla-arrocera-10", nombre:"Olla arrocera 10 tazas", precio:"$55", precioAntes:"", specs:["10 tazas","Mantiene caliente","Antiadherente"], desc:"10 tazas · Mantiene caliente · Antiadherente", icono:"🍚", categoria:"cocina" },
+    { proveedor:"demo", id:"ventilador-pedestal-18", nombre:"Ventilador de pedestal 18\"", precio:"$48", precioAntes:"", specs:["18 pulgadas","3 velocidades","Oscilante"], desc:"18 pulgadas · 3 velocidades · Oscilante", icono:"🌀", categoria:"cocina" },
+    { proveedor:"demo", id:"split-12000", nombre:"Aire acondicionado split 12000 BTU", precio:"$520", precioAntes:"", specs:["12000 BTU","Inverter","Frío y calor"], desc:"12000 BTU · Inverter · Frío y calor", icono:"❄️", categoria:"cocina" },
+    { proveedor:"demo", id:"sierra-circular-714", nombre:"Sierra circular 7-1/4\"", precio:"$95", precioAntes:"", specs:["7-1/4 pulgadas","1500W","Guía láser"], desc:"7-1/4 pulgadas · 1500W · Guía láser", icono:"🪚", categoria:"herramientas" },
+    { proveedor:"demo", id:"esmeril-45", nombre:"Esmeril angular 4-1/2\"", precio:"$55", precioAntes:"", specs:["4-1/2 pulgadas","720W","Incluye disco"], desc:"4-1/2 pulgadas · 720W · Incluye disco", icono:"⚙️", categoria:"herramientas" },
+    { proveedor:"demo", id:"sierra-caladora", nombre:"Sierra caladora", precio:"$62", precioAntes:"", specs:["650W","Velocidad variable","Base ajustable"], desc:"650W · Velocidad variable · Base ajustable", icono:"🪚", categoria:"herramientas" },
+    { proveedor:"demo", id:"atornillador-20v", nombre:"Atornillador inalámbrico 20V", precio:"$78", precioAntes:"", specs:["20V","2 baterías","Cargador incluido"], desc:"20V · 2 baterías · Cargador incluido", icono:"🔩", categoria:"herramientas" },
+    { proveedor:"demo", id:"compresor-24l", nombre:"Compresor de aire 24 L", precio:"$185", precioAntes:"", specs:["24 litros","2 HP","Con manguera"], desc:"24 litros · 2 HP · Con manguera", icono:"💨", categoria:"herramientas" },
+    { proveedor:"demo", id:"soldadora-200a", nombre:"Soldadora inverter 200A", precio:"$145", precioAntes:"", specs:["200A","Inverter","Electrodo y TIG"], desc:"200A · Inverter · Electrodo y TIG", icono:"⚡", categoria:"herramientas" },
+    { proveedor:"demo", id:"lijadora-orbital", nombre:"Lijadora orbital", precio:"$48", precioAntes:"", specs:["300W","Base velcro","Recolector de polvo"], desc:"300W · Base velcro · Recolector de polvo", icono:"🪵", categoria:"herramientas" },
+    { proveedor:"demo", id:"soplador-inalambrico", nombre:"Soplador y aspiradora inalámbrico", precio:"$58", precioAntes:"", specs:["20V","Sopla y aspira","Batería incluida"], desc:"20V · Sopla y aspira · Batería incluida", icono:"🍃", categoria:"herramientas" },
+  ];
+
+  // ============================================================
+  // Render del catálogo
+  // ============================================================
+  (function renderCatalog(){
+    // Tipos de ropa (orden de prioridad: primer match gana)
+    var TIPOS_ROPA = [
+      {id:'conjuntos', nombre:'Conjuntos'},
+      {id:'vestidos', nombre:'Vestidos'},
+      {id:'pijamas', nombre:'Pijamas y camisones'},
+      {id:'hoodies', nombre:'Hoodies y sudaderas'},
+      {id:'monos', nombre:'Monos y enterizos'},
+      {id:'pantalones', nombre:'Pantalones'},
+      {id:'faldas', nombre:'Faldas'},
+      {id:'tops', nombre:'Tops y blusas'},
+      {id:'abrigos', nombre:'Abrigos y chaquetas'},
+      {id:'shorts', nombre:'Shorts'},
+      {id:'otros', nombre:'Otros'}
+    ];
+    var CATEGORIAS = {
+      ferreteria: {nombre:'🔧 Ferretería', desc:'Herramientas manuales, pintura, cerraduras y más para la casa y el taller.'},
+      refrigeracion: {nombre:'🧊 Refrigeración', desc:'Refrigeradores, freezers y frigobares.'},
+      lavanderia: {nombre:'🧺 Lavandería', desc:'Lavadoras, lavadoras-secadoras y secadoras.'},
+      cocina: {nombre:'🍳 Cocina y hogar', desc:'Cocinas, hornos, freidoras y climatización para el hogar.'},
+      herramientas: {nombre:'⚡ Herramientas eléctricas', desc:'Sierras, taladros, soldadoras y compresores.'}
+    };
+    function normalizarTexto(t){ return t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase(); }
+    function tipoDeRopa(nombre){
+      var n = normalizarTexto(nombre);
+      if (/\bconjunto\b/.test(n)) return 'conjuntos';
+      if (/\bvestido\b/.test(n)) return 'vestidos';
+      if (/\bpijama\b|\bcamison\b/.test(n)) return 'pijamas';
+      if (/\bhoodie\b|\bsudadera\b/.test(n)) return 'hoodies';
+      if (/\bmono\b|\benterizo\b|\bjumpsuit\b/.test(n)) return 'monos';
+      if (/\bpantalon\b|\bpalazzo\b|\bjogger\b|\bleggings\b/.test(n)) return 'pantalones';
+      if (/\bfalda\b|\bsaya\b/.test(n)) return 'faldas';
+      if (/\btop\b|\bblusa\b|\bcamiseta\b|\bcamisa\b|\bcorset\b|\bbody\b|\bcrop\b/.test(n)) return 'tops';
+      if (/\babrigo\b|\bchaqueta\b|\bsueter\b|\bpullover\b|\bcardigan\b/.test(n)) return 'abrigos';
+      if (/\bshort\b|\bbermuda\b/.test(n)) return 'shorts';
+      return 'otros';
+    }
+    // Filas del inicio: una por categoría, y una por tipo de ropa (solo con productos)
+    var filas = {
+      ferreteria: document.getElementById('row-ferreteria'),
+      refrigeracion: document.getElementById('row-refrigeracion'),
+      lavanderia: document.getElementById('row-lavanderia'),
+      cocina: document.getElementById('row-cocina'),
+      herramientas: document.getElementById('row-herramientas')
+    };
+    var filasRopa = document.getElementById('filas-ropa');
+    var filasPorTipo = {};
+    TIPOS_ROPA.forEach(function(t){
+      var n = PRODUCTOS.filter(function(p){ return p.categoria==='ropa' && tipoDeRopa(p.nombre)===t.id; }).length;
+      if(!n) return;
+      var block = document.createElement('div');
+      block.style.marginBottom = '26px';
+      block.innerHTML = '<div class="row-head"><h3>'+t.nombre+' <span class="count-pill">'+n+' productos</span></h3><a class="ver-todo" href="?categoria=ropa&tipo='+t.id+'">Ver todo →</a></div><div class="row" id="row-ropa-'+t.id+'"></div>';
+      filasRopa.appendChild(block);
+      filasPorTipo[t.id] = block.querySelector('.row');
+    });
+    var tarjetas = [];
+    var select = document.getElementById('productoSelect');
+    var consultarOpt = select.querySelector('option[value="__consultar__"]');
+
+    PRODUCTOS.forEach(function(p){
+      var hogar = p.categoria==='ropa' ? filasPorTipo[tipoDeRopa(p.nombre)] : filas[p.categoria];
+      if(hogar){
+        var card = document.createElement('article');
+        card.className = 'product';
+        // Recuadro de imagen: flyer oficial del producto; foto2 (si existe) va como miniatura de la otra variante
+        var mediaHtml = p.foto
+          ? '<div class="product-img"><img src="'+p.foto+'" alt="" loading="lazy">' + (p.foto2 ? '<img class="product-img-alt" src="'+p.foto2+'" alt="" loading="lazy">' : '') + '</div>'
+          : '<div class="product-photo" aria-hidden="true"><span class="ph-icon">'+(p.icono||'🖼️')+'</span><span class="ph-label">Foto del producto</span></div>';
+        var offerHtml = p.precioAntes ? '<span class="offer-tag">Oferta</span>' : '';
+        var priceHtml = '<div class="product-price-row"><span class="product-price"></span>' + (p.precioAntes ? '<span class="price-old"></span>' : '') + '<span style="font-size:12px;font-weight:700;color:var(--muted)">'+(p.moneda||'USD')+'</span></div>';
+        card.innerHTML = offerHtml + mediaHtml +
+          '<div class="product-body">' +
+            '<div class="product-name"></div>' +
+            priceHtml +
+            '<div class="product-btn-row"><button type="button" class="product-btn">Comprar</button><button type="button" class="product-btn product-btn-view">Ver producto</button></div>' +
+          '</div>';
+        var imgEl = card.querySelector('.product-img img');
+        if(imgEl) imgEl.alt = 'Flyer de ' + p.nombre;
+        var imgAltEl = card.querySelector('.product-img-alt');
+        if(imgAltEl) imgAltEl.alt = 'Flyer de ' + p.nombre + ' en otro color';
+        card.querySelector('.product-name').textContent = p.nombre;
+        card.querySelector('.product-price').textContent = p.precio;
+        if(p.precioAntes) card.querySelector('.price-old').textContent = p.precioAntes;
+        card.querySelector('.product-btn').addEventListener('click', function(){ comprarProducto(p); });
+        card.querySelector('.product-btn-view').addEventListener('click', function(){ abrirProducto(p); });
+        var mediaEl = card.querySelector('.product-img') || card.querySelector('.product-photo');
+        if(mediaEl) mediaEl.addEventListener('click', function(){ abrirProducto(p); });
+        hogar.appendChild(card); tarjetas.push({p:p, card:card, hogar:hogar});
+      }
+      var opt = document.createElement('option');
+      opt.value = p.id;
+      opt.textContent = p.precio ? (p.nombre + ' — ' + p.precio + (p.precioAntes ? ' (antes ' + p.precioAntes + ')' : '')) : p.nombre;
+      // Insertar productos antes de la opción "Consultar" para que el catálogo vaya primero
+      if(consultarOpt) select.insertBefore(opt, consultarOpt);
+      else select.appendChild(opt);
+    });
+
+    ['ferreteria','refrigeracion','lavanderia','cocina','herramientas'].forEach(function(cat){
+      var has = PRODUCTOS.some(function(p){ return p.categoria===cat; });
+      var emptyEl = document.querySelector('[data-empty-for="'+cat+'"]');
+      if(emptyEl) emptyEl.style.display = has ? 'none' : '';
+    });
+    document.querySelectorAll('.skeleton').forEach(function(el){ el.style.display='none'; });
+
+    // Vistas de categoría (?categoria=...): mueven las tarjetas a la cuadrícula
+    // vertical y las devuelven a su fila al volver al inicio.
+    var vistaInicio = document.getElementById('vista-inicio');
+    var vistaCat = document.getElementById('vista-categoria');
+    var cabeceraCat = document.getElementById('cabecera-catalogo');
+    var gridVista = document.getElementById('grid-vista');
+    var barraTipos = document.getElementById('barra-tipos');
+    function mostrarVista(){
+      var q = new URLSearchParams(window.location.search);
+      var cat = q.get('categoria');
+      var tipo = q.get('tipo');
+      var enVista = !!(cat && CATEGORIAS[cat]);
+      tarjetas.forEach(function(t){ t.hogar.appendChild(t.card); });
+      if(!enVista){
+        vistaInicio.hidden = false;
+        vistaCat.hidden = true;
+        cabeceraCat.hidden = false;
+        return;
+      }
+      var esRopa = cat==='ropa';
+      var tipoValido = esRopa && !!tipo && !!filasPorTipo[tipo];
+      var titulo = CATEGORIAS[cat].nombre;
+      if(tipoValido){
+        var tn = TIPOS_ROPA.filter(function(t){ return t.id===tipo; })[0];
+        if(tn) titulo += ' · ' + tn.nombre;
+      }
+      var lista = tarjetas.filter(function(t){
+        if(t.p.categoria!==cat) return false;
+        if(tipoValido) return tipoDeRopa(t.p.nombre)===tipo;
+        return true;
+      });
+      lista.forEach(function(t){ gridVista.appendChild(t.card); });
+      document.getElementById('titulo-vista').textContent = titulo;
+      document.getElementById('subtitulo-vista').textContent = CATEGORIAS[cat].desc + ' · ' + lista.length + ' productos';
+      if(esRopa){
+        var html = '<a href="?categoria=ropa"' + (!tipoValido ? ' class="activo"' : '') + '>Todos</a>';
+        TIPOS_ROPA.forEach(function(t){
+          if(!filasPorTipo[t.id]) return;
+          html += '<a href="?categoria=ropa&tipo='+t.id+'"' + (tipo===t.id ? ' class="activo"' : '') + '>'+t.nombre+'</a>';
+        });
+        barraTipos.innerHTML = html;
+        barraTipos.hidden = false;
+      } else {
+        barraTipos.hidden = true;
+      }
+      document.getElementById('vista-vacia').style.display = lista.length ? 'none' : '';
+      vistaInicio.hidden = true;
+      vistaCat.hidden = false;
+      cabeceraCat.hidden = true;
+    }
+    mostrarVista();
+  })();
+
+  // ============================================================
+  // Formulario: lógica de entrega y producto manual
+  // ============================================================
+  var form = document.getElementById('orderForm');
+  var selectProd = document.getElementById('productoSelect');
+  var manualWrap = document.getElementById('productoManualWrap');
+  var fieldsMens = document.getElementById('fieldsMensajeria');
+  var fieldsRec = document.getElementById('fieldsRecogida');
+  var errorBox = document.getElementById('formError');
+
+  function toggleManual(){
+    var isManual = selectProd.value === '__consultar__' || selectProd.value === '';
+    // Solo mostramos el campo libre cuando elige "Consultar" explícitamente
+    manualWrap.classList.toggle('visible', selectProd.value === '__consultar__');
+  }
+  // El selector de sabor y el de azúcar solo aparecen para el yogurt probiótico;
+  // el yogurt además solo se entrega a domicilio (sin recogida)
+  var saborWrap = document.getElementById('saborYogurWrap');
+  var saborSel = document.getElementById('saborYogur');
+  var azucarWrap = document.getElementById('azucarYogurWrap');
+  var azucarSel = document.getElementById('azucarYogur');
+  var notaDom = document.getElementById('notaYogurDomicilio');
+  var radioRecogida = document.getElementById('entregaRecogida');
+  var radioMensajeria = document.getElementById('entregaMensajeria');
+  function toggleSabor(){
+    var isYogurt = selectProd.value === 'yogurt-probiotico-4lt';
+    if(saborWrap) saborWrap.style.display = isYogurt ? '' : 'none';
+    if(!isYogurt && saborSel) saborSel.value = '';
+    if(azucarWrap) azucarWrap.style.display = isYogurt ? '' : 'none';
+    if(!isYogurt && azucarSel) azucarSel.value = '';
+    if(notaDom) notaDom.style.display = isYogurt ? '' : 'none';
+    if(radioRecogida) radioRecogida.disabled = isYogurt;
+    if(isYogurt && radioMensajeria){
+      radioMensajeria.checked = true;
+      toggleEntrega();
+    }
+  }
+  // El selector de talla solo aparece para productos de ropa con tallas
+  var tallaWrap = document.getElementById('tallaRopaWrap');
+  var tallaSel = document.getElementById('tallaRopa');
+  function toggleTalla(){
+    var found = PRODUCTOS.find(function(p){ return p.id===selectProd.value; });
+    var tallas = (found && found.tallas) ? found.tallas : [];
+    if(tallaWrap){
+      tallaWrap.style.display = tallas.length ? '' : 'none';
+    }
+    if(tallaSel){
+      tallaSel.innerHTML = '<option value="">— Elige tu talla —</option>' +
+        tallas.map(function(t){ return '<option></option>'; }).join('');
+      var opts = tallaSel.querySelectorAll('option');
+      tallas.forEach(function(t,i){ if(opts[i+1]) opts[i+1].textContent = t; });
+    }
+  }
+  selectProd.addEventListener('change', toggleManual);
+  selectProd.addEventListener('change', toggleSabor);
+  selectProd.addEventListener('change', toggleTalla);
+
+  function toggleEntrega(){
+    var tipo = document.querySelector('input[name="entrega"]:checked').value;
+    fieldsMens.classList.toggle('visible', tipo==='mensajeria');
+    fieldsRec.classList.toggle('visible', tipo==='recogida');
+    errorBox.classList.remove('show');
+  }
+  document.querySelectorAll('input[name="entrega"]').forEach(function(r){
+    r.addEventListener('change', toggleEntrega);
+  });
+  toggleEntrega();
+  toggleManual();
+
+  function showError(msg){
+    errorBox.textContent = msg;
+    errorBox.classList.add('show');
+    errorBox.scrollIntoView({behavior:'smooth', block:'center'});
+  }
+  function getProductoTexto(){
+    var v = selectProd.value;
+    if(!v) return '';
+    if(v==='__consultar__'){
+      return document.getElementById('productoManual').value.trim();
+    }
+    var found = PRODUCTOS.find(function(p){ return p.id===v; });
+    if(found){
+      var txt = found.precio ? (found.nombre + ' (' + found.precio + ')') : found.nombre;
+      if(found.id==='yogurt-probiotico-4lt' && saborSel && saborSel.value){
+        txt += ' — Sabor: ' + saborSel.value;
+      }
+      if(found.id==='yogurt-probiotico-4lt' && azucarSel && azucarSel.value){
+        txt += ' — Azúcar: ' + azucarSel.value;
+      }
+      if(found.tallas && found.tallas.length && tallaSel && tallaSel.value){
+        txt += ' — Talla: ' + tallaSel.value;
+      }
+      return txt;
+    }
+    var opt = selectProd.options[selectProd.selectedIndex];
+    return opt ? opt.textContent : v;
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    errorBox.classList.remove('show');
+
+    var producto = getProductoTexto();
+    if(!selectProd.value){
+      showError('Por favor selecciona qué quieres pedir. Si no está en la lista, elige "Consultar disponibilidad de un producto".');
+      selectProd.focus();
+      return;
+    }
+    if(selectProd.value==='__consultar__' && !producto){
+      showError('Escribe el producto que buscas para poder ayudarte.');
+      document.getElementById('productoManual').focus();
+      return;
+    }
+
+    var tipo = document.querySelector('input[name="entrega"]:checked').value;
+    if(selectProd.value==='yogurt-probiotico-4lt' && saborSel && !saborSel.value){
+      showError('Elige el sabor del yogurt para completar tu pedido.');
+      saborSel.focus();
+      return;
+    }
+    if(selectProd.value==='yogurt-probiotico-4lt' && azucarSel && !azucarSel.value){
+      showError('Elige si quieres el yogurt con azúcar o sin azúcar.');
+      azucarSel.focus();
+      return;
+    }
+    var foundSel = PRODUCTOS.find(function(p){ return p.id===selectProd.value; });
+    if(foundSel && foundSel.tallas && foundSel.tallas.length && tallaSel && !tallaSel.value){
+      showError('Elige tu talla para completar tu pedido.');
+      tallaSel.focus();
+      return;
+    }
+    if(selectProd.value==='yogurt-probiotico-4lt' && tipo==='recogida'){
+      showError('El yogurt probiótico solo se puede pedir por domicilio, no se recoge en ningún lugar.');
+      return;
+    }
+    var notas = document.getElementById('notas').value.trim();
+    var lineas = [];
+    lineas.push('🛒 *Nuevo pedido — El Bazar*');
+    lineas.push('');
+    lineas.push('📦 *Producto:* ' + producto);
+    // La ropa es de Liudmila: el mensaje lo escribe el cliente, así que NO lleva
+    // ni el nombre del proveedor ni precios internos; la foto identifica el producto.
+    if(foundSel && foundSel.proveedor==='liudmila' && foundSel.foto){
+      var baseUrl = window.location.href.split('#')[0].replace(/[^\/]*$/, '');
+      lineas.push('📸 *Foto:* ' + baseUrl + foundSel.foto);
+    }
+    var provNombre = nombreProveedorDeProducto(selectProd.value);
+    if(provNombre && !(foundSel && foundSel.proveedor==='liudmila')) lineas.push('🏪 *Proveedor:* ' + provNombre);
+
+    if(tipo==='mensajeria'){
+      var nombre = document.getElementById('nombreComprador').value.trim();
+      var tel = document.getElementById('telefono').value.trim();
+      var dir = document.getElementById('direccion').value.trim();
+      if(!nombre){ showError('Para mensajería necesitamos el nombre del comprador.'); document.getElementById('nombreComprador').focus(); return; }
+      if(!tel){ showError('Para mensajería necesitamos tu número de teléfono.'); document.getElementById('telefono').focus(); return; }
+      if(!dir){ showError('Para mensajería necesitamos la dirección de entrega.'); document.getElementById('direccion').focus(); return; }
+      lineas.push('🚚 *Entrega:* Mensajería (a domicilio)');
+      lineas.push('👤 *Nombre del comprador:* ' + nombre);
+      lineas.push('📞 *Teléfono:* ' + tel);
+      lineas.push('📍 *Dirección:* ' + dir);
+    } else {
+      var nombreRecoge = document.getElementById('nombreRecoge').value.trim();
+      if(!nombreRecoge){ showError('Para recogida en el local necesitamos el nombre de la persona que recoge.'); document.getElementById('nombreRecoge').focus(); return; }
+      lineas.push('🏪 *Entrega:* Recogida en el local');
+      lineas.push('👤 *Persona que recoge:* ' + nombreRecoge);
+    }
+    var metodoPago = document.getElementById('metodoPago').value;
+    if(!metodoPago){ showError('Por favor elige el método de pago con el que vas a pagar.'); document.getElementById('metodoPago').focus(); return; }
+    lineas.push('💳 *Método de pago:* ' + metodoPago);
+
+    if(notas){
+      lineas.push('📝 *Notas:* ' + notas);
+    }
+
+    var mensaje = lineas.join('\n');
+    var url = 'https://wa.me/' + WHATSAPP_DARIEL + '?text=' + encodeURIComponent(mensaje);
+    // window.open puede ser bloqueado dentro de la vista embebida de la app;
+    // si no abre la pestaña, navegamos en la misma ventana como respaldo.
+    var win = null;
+    try { win = window.open(url, '_blank'); } catch(err) { win = null; }
+    if(!win){
+      window.location.href = url;
+    }
+  });
+</script>
+<script data-goatcounter="https://elbazarcu.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  <div class="modal-backdrop" id="productModal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-label="Detalle del producto">
+      <button type="button" class="modal-close" id="modalClose" aria-label="Cerrar">×</button>
+      <div class="modal-img" id="modalImg"></div>
+      <div class="modal-body">
+        <div class="modal-name" id="modalName"></div>
+        <div><span class="modal-price" id="modalPrice"></span><span class="modal-old" id="modalOld"></span><span class="modal-cur" id="modalCur"></span></div>
+        <p class="modal-desc" id="modalDesc"></p>
+        <ul class="specs" id="modalSpecs"></ul>
+        <button type="button" class="product-btn" id="modalBuy">Comprar</button>
+      </div>
+    </div>
+  </div>
+  <script>
+  var modalProducto = null;
+  function comprarProducto(p){
+    var select = document.getElementById('productoSelect');
+    select.value = p.id;
+    if(typeof toggleManual === 'function') toggleManual();
+    if(typeof toggleSabor === 'function') toggleSabor();
+    if(typeof toggleTalla === 'function') toggleTalla();
+    var mw = document.getElementById('productoManualWrap');
+    if(mw) mw.classList.remove('visible');
+    document.getElementById('pedido').scrollIntoView({behavior:'smooth'});
+    var fc = document.getElementById('orderForm');
+    if(fc){ fc.style.boxShadow = '0 0 0 3px var(--accent-soft)'; setTimeout(function(){ fc.style.boxShadow=''; }, 1200); }
+  }
+  function abrirProducto(p){
+    modalProducto = p;
+    var imgBox = document.getElementById('modalImg');
+    imgBox.innerHTML = p.foto ? '<img src="'+p.foto+'" alt="">' : '<div class="product-photo" aria-hidden="true"><span class="ph-icon">'+(p.icono||'\uD83D\uDDBC\uFE0F')+'</span><span class="ph-label">Foto del producto</span></div>';
+    var im = imgBox.querySelector('img'); if(im) im.alt = 'Foto de ' + p.nombre;
+    document.getElementById('modalName').textContent = p.nombre;
+    document.getElementById('modalPrice').textContent = p.precio;
+    document.getElementById('modalOld').textContent = p.precioAntes || '';
+    document.getElementById('modalCur').textContent = p.moneda || 'USD';
+    var d = document.getElementById('modalDesc');
+    d.textContent = p.desc || '';
+    d.style.display = p.desc ? '' : 'none';
+    var sp = document.getElementById('modalSpecs');
+    sp.innerHTML = (p.specs||[]).map(function(){ return '<li></li>'; }).join('');
+    var lis = sp.querySelectorAll('li');
+    (p.specs||[]).forEach(function(s,i){ if(lis[i]) lis[i].textContent = s; });
+    sp.style.display = (p.specs && p.specs.length) ? '' : 'none';
+    document.getElementById('productModal').hidden = false;
+    document.body.style.overflow = 'hidden';
+  }
+  function cerrarProducto(){
+    document.getElementById('productModal').hidden = true;
+    document.body.style.overflow = '';
+  }
+  document.getElementById('modalClose').addEventListener('click', cerrarProducto);
+  document.getElementById('productModal').addEventListener('click', function(e){ if(e.target === this) cerrarProducto(); });
+  document.getElementById('modalBuy').addEventListener('click', function(){ if(modalProducto){ cerrarProducto(); comprarProducto(modalProducto); } });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && !document.getElementById('productModal').hidden) cerrarProducto(); });
+  </script>
+
+  <a class="wa-float" href="https://wa.me/51948053" target="_blank" rel="noopener" aria-label="Pedir por WhatsApp">💬</a>
+  <button class="top-float" id="btnTop" type="button" aria-label="Volver arriba">↑</button>
+  <script>
+  (function(){
+    var btn = document.getElementById('btnTop');
+    if(!btn) return;
+    window.addEventListener('scroll', function(){ btn.classList.toggle('show', window.scrollY > 600); }, {passive:true});
+    btn.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+  })();
+  </script>
+</body>
+</html>
