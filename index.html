@@ -224,6 +224,51 @@
   .top-float{position:fixed;right:16px;bottom:84px;z-index:90;width:44px;height:44px;border-radius:50%;background:var(--surface);color:var(--text);border:1px solid var(--border);display:none;align-items:center;justify-content:center;font-size:18px;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.2)}
   .top-float.show{display:flex}
   @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero{animation:none}.wa-float{animation:none}*{transition:none!important}}
+
+  /* Liquid glass + movimientos (estilo iOS moderno) */
+  @keyframes popIn{from{opacity:0;transform:scale(.88) translateY(18px)}to{opacity:1;transform:scale(1) translateY(0)}}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  .btn-primary,.product-btn:not(.product-btn-view){
+    background:linear-gradient(135deg,rgba(255,224,138,.92),rgba(217,180,92,.68));
+    -webkit-backdrop-filter:blur(14px) saturate(180%);backdrop-filter:blur(14px) saturate(180%);
+    border:1px solid rgba(255,255,255,.65);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.75),inset 0 -1px 0 rgba(0,0,0,.08),0 8px 20px rgba(60,45,5,.22);
+  }
+  .btn-secondary,.product-btn-view{
+    background:color-mix(in srgb,var(--surface) 58%,transparent);
+    -webkit-backdrop-filter:blur(14px) saturate(180%);backdrop-filter:blur(14px) saturate(180%);
+    border:1px solid rgba(255,255,255,.55);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 6px 16px rgba(0,0,0,.12);
+  }
+  .cat-nav{
+    background:color-mix(in srgb,var(--bg) 62%,transparent);
+    -webkit-backdrop-filter:blur(16px) saturate(180%);backdrop-filter:blur(16px) saturate(180%);
+  }
+  .cat-nav a{
+    background:color-mix(in srgb,var(--surface) 58%,transparent);
+    -webkit-backdrop-filter:blur(12px) saturate(180%);backdrop-filter:blur(12px) saturate(180%);
+    border:1px solid rgba(255,255,255,.5);
+  }
+  .wa-float{
+    background:linear-gradient(135deg,rgba(74,222,128,.92),rgba(37,211,102,.7));
+    -webkit-backdrop-filter:blur(12px) saturate(180%);backdrop-filter:blur(12px) saturate(180%);
+    border:1px solid rgba(255,255,255,.65);
+  }
+  .top-float{
+    background:color-mix(in srgb,var(--surface) 60%,transparent);
+    -webkit-backdrop-filter:blur(12px) saturate(180%);backdrop-filter:blur(12px) saturate(180%);
+    border:1px solid rgba(255,255,255,.5);
+  }
+  .modal{animation:popIn .3s cubic-bezier(.34,1.56,.64,1) both}
+  .modal-backdrop{animation:fadeIn .2s ease both}
+  .product{transition:transform .22s cubic-bezier(.34,1.56,.64,1),box-shadow .22s ease}
+  .product:hover{transform:scale(1.04) translateY(-4px)}
+  .product:active{transform:scale(.97)}
+  /* Pedido en ventana emergente (ya no baja hasta el final) */
+  #pedido{position:fixed;inset:0;z-index:120;display:none;align-items:flex-end;justify-content:center;padding:12px;background:rgba(0,0,0,.55);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+  #pedido.open{display:flex;animation:fadeIn .2s ease both}
+  #pedido .form-card{position:relative;width:100%;max-width:520px;max-height:88vh;overflow:auto;animation:popIn .3s cubic-bezier(.34,1.56,.64,1) both}
+  @media(min-width:560px){#pedido{align-items:center}}
 </style>
 </head>
 <body>
@@ -410,6 +455,7 @@
   <!-- FORMULARIO DE PEDIDO -->
   <section id="pedido" aria-labelledby="pedido-title">
     <div class="form-card">
+      <button type="button" class="modal-close" id="pedidoClose" aria-label="Cerrar">×</button>
       <h2 id="pedido-title">Haz tu pedido</h2>
       <p>Completa los datos y se abrirá WhatsApp con tu pedido listo para enviar al <strong>+53 51948053</strong>.</p>
 
@@ -949,6 +995,7 @@
     if(!win){
       window.location.href = url;
     }
+    if(typeof cerrarPedido === 'function'){ setTimeout(cerrarPedido, 400); }
   });
 </script>
 <script data-goatcounter="https://elbazarcu.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
@@ -967,6 +1014,16 @@
   </div>
   <script>
   var modalProducto = null;
+  function abrirPedido(){
+    var sec = document.getElementById('pedido');
+    if(sec) sec.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function cerrarPedido(){
+    var sec = document.getElementById('pedido');
+    if(sec) sec.classList.remove('open');
+    document.body.style.overflow = '';
+  }
   function comprarProducto(p){
     var select = document.getElementById('productoSelect');
     select.value = p.id;
@@ -975,7 +1032,7 @@
     if(typeof toggleTalla === 'function') toggleTalla();
     var mw = document.getElementById('productoManualWrap');
     if(mw) mw.classList.remove('visible');
-    document.getElementById('pedido').scrollIntoView({behavior:'smooth'});
+    abrirPedido();
     var fc = document.getElementById('orderForm');
     if(fc){ fc.style.boxShadow = '0 0 0 3px var(--accent-soft)'; setTimeout(function(){ fc.style.boxShadow=''; }, 1200); }
   }
@@ -1017,6 +1074,21 @@
     if(!btn) return;
     window.addEventListener('scroll', function(){ btn.classList.toggle('show', window.scrollY > 600); }, {passive:true});
     btn.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+  })();
+  </script>
+
+  <script>
+  (function(){
+    document.querySelectorAll('a[href="#pedido"]').forEach(function(a){
+      a.addEventListener('click', function(e){ e.preventDefault(); if(typeof abrirPedido === 'function') abrirPedido(); });
+    });
+    var sec = document.getElementById('pedido');
+    if(sec) sec.addEventListener('click', function(e){ if(e.target === sec && typeof cerrarPedido === 'function') cerrarPedido(); });
+    var closeBtn = document.getElementById('pedidoClose');
+    if(closeBtn) closeBtn.addEventListener('click', function(){ if(typeof cerrarPedido === 'function') cerrarPedido(); });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && sec && sec.classList.contains('open') && typeof cerrarPedido === 'function') cerrarPedido();
+    });
   })();
   </script>
 </body>
