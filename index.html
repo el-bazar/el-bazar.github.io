@@ -269,6 +269,33 @@
   #pedido.open{display:flex;animation:fadeIn .2s ease both}
   #pedido .form-card{position:relative;width:100%;max-width:520px;max-height:88vh;overflow:auto;animation:popIn .3s cubic-bezier(.34,1.56,.64,1) both}
   @media(min-width:560px){#pedido{align-items:center}}
+
+  /* Barra inferior flotante estilo iOS (dock) */
+  body{padding-bottom:100px}
+  .cat-nav{display:none}
+  .wa-float,.top-float{display:none!important}
+  .dock{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(12px + env(safe-area-inset-bottom));z-index:110;width:min(520px,calc(100% - 24px));display:flex;justify-content:space-between;gap:4px;padding:8px 10px;border-radius:28px;background:color-mix(in srgb,var(--surface) 32%,transparent);-webkit-backdrop-filter:blur(24px) saturate(180%);backdrop-filter:blur(24px) saturate(180%);border:1px solid rgba(255,255,255,.65);box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 12px 30px rgba(0,0,0,.25)}
+  .dock-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:1px;background:transparent;border:0;cursor:pointer;color:var(--text);text-decoration:none;font-family:inherit;padding:6px 2px;border-radius:18px}
+  .dock-btn:active,.dock-btn.activo{background:rgba(217,180,92,.28)}
+  .dock-icon{font-size:22px;line-height:1}
+  .dock-label{font-size:11px;font-weight:700;line-height:1.2}
+  .sheet{position:fixed;inset:0;z-index:115;display:none;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.5);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+  .sheet.open{display:flex;animation:fadeIn .2s ease both}
+  .sheet-card{position:relative;width:100%;max-width:520px;max-height:72vh;overflow:auto;background:var(--surface);border-radius:26px 26px 0 0;padding:20px 18px calc(24px + env(safe-area-inset-bottom));animation:popIn .3s cubic-bezier(.34,1.56,.64,1) both}
+  .sheet-card h3{margin:0 0 14px;font-size:18px}
+  .sheet-close{position:absolute;top:12px;right:14px;width:32px;height:32px;border-radius:50%;border:1px solid var(--border);background:var(--surface);font-size:18px;cursor:pointer}
+  .sheet-cat{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text);padding:12px;border-radius:16px;border:1px solid var(--border);margin-bottom:10px}
+  .sheet-cat:active{background:var(--accent-soft)}
+  .sheet-cat b{flex:1}
+  .sheet-cat span{color:var(--muted);font-size:13px}
+  .search-input{width:100%;box-sizing:border-box;padding:14px 16px;border-radius:999px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:16px;outline:none}
+  .search-input:focus{border-color:var(--accent)}
+  .search-res{margin-top:12px;display:flex;flex-direction:column;gap:8px}
+  .search-item{display:flex;align-items:center;gap:10px;text-align:left;width:100%;padding:10px 12px;border-radius:14px;border:1px solid var(--border);background:var(--bg);color:var(--text);cursor:pointer;font-family:inherit}
+  .search-item:active{background:var(--accent-soft)}
+  .search-item b{flex:1;font-size:14px}
+  .search-item span{font-weight:800;font-size:14px;white-space:nowrap}
+  .search-hint{color:var(--muted);font-size:14px;text-align:center;padding:14px 6px}
 </style>
 </head>
 <body>
@@ -1090,6 +1117,94 @@
     document.addEventListener('keydown', function(e){
       if(e.key === 'Escape' && sec && sec.classList.contains('open') && typeof cerrarPedido === 'function') cerrarPedido();
     });
+  })();
+  </script>
+
+  <nav class="dock" aria-label="Navegación principal">
+    <button type="button" class="dock-btn" id="dockInicio"><span class="dock-icon">🏠</span><span class="dock-label">Inicio</span></button>
+    <button type="button" class="dock-btn" id="dockCategorias"><span class="dock-icon">🗂️</span><span class="dock-label">Categorías</span></button>
+    <button type="button" class="dock-btn" id="dockBuscar"><span class="dock-icon">🔍</span><span class="dock-label">Buscar</span></button>
+    <button type="button" class="dock-btn" id="dockPedido"><span class="dock-icon">📝</span><span class="dock-label">Pedido</span></button>
+    <a class="dock-btn" href="https://wa.me/51948053" target="_blank" rel="noopener" aria-label="WhatsApp"><span class="dock-icon">💬</span><span class="dock-label">WhatsApp</span></a>
+  </nav>
+  <div class="sheet" id="catSheet" role="dialog" aria-label="Categorías">
+    <div class="sheet-card">
+      <button type="button" class="sheet-close" data-close-sheet aria-label="Cerrar">×</button>
+      <h3>Categorías</h3>
+      <a class="sheet-cat" href="?categoria=ferreteria"><span>🔧</span><b>Ferretería</b><span>8 productos</span></a>
+      <a class="sheet-cat" href="?categoria=refrigeracion"><span>🧊</span><b>Refrigeración</b><span>8 productos</span></a>
+      <a class="sheet-cat" href="?categoria=lavanderia"><span>🧺</span><b>Lavandería</b><span>8 productos</span></a>
+      <a class="sheet-cat" href="?categoria=cocina"><span>🍳</span><b>Cocina y hogar</b><span>8 productos</span></a>
+      <a class="sheet-cat" href="?categoria=herramientas"><span>⚡</span><b>Herramientas eléctricas</b><span>8 productos</span></a>
+    </div>
+  </div>
+  <div class="sheet" id="searchSheet" role="dialog" aria-label="Buscar producto">
+    <div class="sheet-card">
+      <button type="button" class="sheet-close" data-close-sheet aria-label="Cerrar">×</button>
+      <h3>Buscar producto</h3>
+      <input class="search-input" id="searchInput" type="search" placeholder="Escribe: taladro, refrigerador, lavadora…" autocomplete="off" />
+      <div class="search-res" id="searchResults"><div class="search-hint">Escribe el producto que buscas y toca el resultado para verlo.</div></div>
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    function norm(t){ return (t||'').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase(); }
+    function openSheet(id){ var s=document.getElementById(id); if(s){ s.classList.add('open'); document.body.style.overflow='hidden'; } }
+    function closeSheets(){ document.querySelectorAll('.sheet.open').forEach(function(s){ s.classList.remove('open'); }); if(!document.getElementById('pedido').classList.contains('open')) document.body.style.overflow=''; }
+    document.querySelectorAll('.sheet').forEach(function(s){ s.addEventListener('click', function(e){ if(e.target===s) closeSheets(); }); });
+    document.querySelectorAll('[data-close-sheet]').forEach(function(b){ b.addEventListener('click', closeSheets); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeSheets(); });
+    var inicio=document.getElementById('dockInicio');
+    if(inicio) inicio.addEventListener('click', function(){
+      if(new URLSearchParams(window.location.search).get('categoria')){ window.location.href = window.location.pathname; }
+      else window.scrollTo({top:0, behavior:'smooth'});
+    });
+    var cat=document.getElementById('dockCategorias');
+    if(cat) cat.addEventListener('click', function(){ openSheet('catSheet'); });
+    var ped=document.getElementById('dockPedido');
+    if(ped) ped.addEventListener('click', function(){ if(typeof abrirPedido==='function') abrirPedido(); });
+    var buscar=document.getElementById('dockBuscar');
+    var input=document.getElementById('searchInput');
+    var res=document.getElementById('searchResults');
+    function catNameFromCard(card){
+      var row=card.closest('.row');
+      if(row && row.id==='row-ferreteria') return 'Ferretería';
+      if(row && row.id==='row-refrigeracion') return 'Refrigeración';
+      if(row && row.id==='row-lavanderia') return 'Lavandería';
+      if(row && row.id==='row-cocina') return 'Cocina y hogar';
+      if(row && row.id==='row-herramientas') return 'Herramientas eléctricas';
+      if(row && row.id==='grid-vista'){ var t=document.getElementById('titulo-vista'); return t ? t.textContent : ''; }
+      return '';
+    }
+    function renderSearch(){
+      var q=norm(input.value.trim());
+      if(!q){ res.innerHTML='<div class="search-hint">Escribe el producto que buscas y toca el resultado para verlo.</div>'; return; }
+      var found=[];
+      document.querySelectorAll('.product').forEach(function(card){
+        var nameEl=card.querySelector('.product-name');
+        var priceEl=card.querySelector('.product-price');
+        var name=nameEl ? nameEl.textContent : '';
+        if(norm(name).indexOf(q)===-1 && norm(catNameFromCard(card)).indexOf(q)===-1) return;
+        found.push({card:card, name:name, price:priceEl ? priceEl.textContent : '', cat:catNameFromCard(card)});
+      });
+      if(!found.length){ res.innerHTML='<div class="search-hint">No encontré nada con “'+input.value+'”. Prueba otra palabra, por ejemplo: taladro, refrigerador o lavadora.</div>'; return; }
+      res.innerHTML='';
+      found.slice(0,20).forEach(function(f){
+        var b=document.createElement('button');
+        b.type='button'; b.className='search-item';
+        var iconEl=f.card.querySelector('.ph-icon');
+        b.innerHTML='<span>'+(iconEl ? iconEl.textContent : '🛒')+'</span><b>'+f.name+'</b><span>'+(f.cat ? f.cat+' · ' : '')+f.price+'</span>';
+        b.addEventListener('click', function(){
+          closeSheets();
+          var media=f.card.querySelector('.product-img') || f.card.querySelector('.product-photo') || f.card.querySelector('.product-name');
+          if(media) media.click();
+        });
+        res.appendChild(b);
+      });
+    }
+    if(input) input.addEventListener('input', renderSearch);
+    if(buscar) buscar.addEventListener('click', function(){ openSheet('searchSheet'); setTimeout(function(){ if(input) input.focus(); }, 150); });
   })();
   </script>
 </body>
